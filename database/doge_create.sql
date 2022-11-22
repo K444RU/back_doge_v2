@@ -1,19 +1,18 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-11-22 11:40:26.48
+-- Last modification date: 2022-11-22 14:49:58.843
 
 -- tables
 -- Table: breed
 CREATE TABLE breed (
                        id serial  NOT NULL,
                        name varchar(20)  NOT NULL,
-                       description varchar(200)  NOT NULL,
                        CONSTRAINT breed_pk PRIMARY KEY (id)
 );
 
 -- Table: city
 CREATE TABLE city (
                       id serial  NOT NULL,
-                      name varchar(20)  NOT NULL,
+                      name varchar(255)  NOT NULL,
                       CONSTRAINT city_pk PRIMARY KEY (id)
 );
 
@@ -25,16 +24,8 @@ CREATE TABLE contact (
                          firstname varchar(30)  NOT NULL,
                          lastname varchar(30)  NOT NULL,
                          adittion_information varchar(200)  NULL,
+                         photo_data bytea  NULL,
                          CONSTRAINT contact_pk PRIMARY KEY (id)
-);
-
--- Table: contact_photo
-CREATE TABLE contact_photo (
-                               id serial  NOT NULL,
-                               photo_id int  NOT NULL,
-                               photo_name varchar(30)  NOT NULL,
-                               contact_id int  NOT NULL,
-                               CONSTRAINT contact_photo_pk PRIMARY KEY (id)
 );
 
 -- Table: dog
@@ -55,6 +46,14 @@ CREATE TABLE dog_breed (
                            CONSTRAINT dog_breed_pk PRIMARY KEY (id)
 );
 
+-- Table: dog_order
+CREATE TABLE dog_order (
+                           id serial  NOT NULL,
+                           dog_id int  NOT NULL,
+                           order_id int  NOT NULL,
+                           CONSTRAINT dog_order_pk PRIMARY KEY (id)
+);
+
 -- Table: dog_picture
 CREATE TABLE dog_picture (
                              id serial  NOT NULL,
@@ -63,43 +62,30 @@ CREATE TABLE dog_picture (
                              CONSTRAINT dog_picture_pk PRIMARY KEY (id)
 );
 
--- Table: location
-CREATE TABLE location (
-                          id serial  NOT NULL,
-                          city_id int  NOT NULL,
-                          address varchar(50)  NOT NULL,
-                          CONSTRAINT location_pk PRIMARY KEY (id)
-);
-
--- Table: order_price
-CREATE TABLE order_price (
-                             id serial  NOT NULL,
-                             price_id int  NOT NULL,
-                             set_order_id int  NOT NULL,
-                             amount int  NOT NULL,
-                             CONSTRAINT order_price_pk PRIMARY KEY (id)
-);
-
--- Table: photo
-CREATE TABLE photo (
-                       id serial  NOT NULL,
-                       name varchar(30)  NOT NULL,
-                       CONSTRAINT photo_pk PRIMARY KEY (id,name)
+-- Table: order
+CREATE TABLE "order" (
+                         id serial  NOT NULL,
+                         walking_id int  NOT NULL,
+                         walking_date date  NOT NULL,
+                         time_from time  NOT NULL,
+                         time_to time  NOT NULL,
+                         address int  NOT NULL,
+                         total_price int  NOT NULL,
+                         CONSTRAINT order_pk PRIMARY KEY (id)
 );
 
 -- Table: picture
 CREATE TABLE picture (
                          id serial  NOT NULL,
-                         name varchar(50)  NOT NULL,
+                         data bytea  NULL,
                          CONSTRAINT picture_pk PRIMARY KEY (id)
 );
 
 -- Table: price
 CREATE TABLE price (
                        id serial  NOT NULL,
-                       dog_size varchar(255)  NOT NULL,
-                       weight_type varchar(255)  NOT NULL,
-                       price int  NOT NULL,
+                       size_id int  NOT NULL,
+                       hour int  NOT NULL,
                        CONSTRAINT price_pk PRIMARY KEY (id)
 );
 
@@ -110,68 +96,45 @@ CREATE TABLE role (
                       CONSTRAINT role_pk PRIMARY KEY (id)
 );
 
--- Table: set_order
-CREATE TABLE set_order (
-                           id serial  NOT NULL,
-                           walker_user_id int  NOT NULL,
-                           dog_id int  NOT NULL,
-                           location_id int  NOT NULL,
-                           date date  NOT NULL,
-                           time time  NOT NULL,
-                           CONSTRAINT walking_pk PRIMARY KEY (id)
+-- Table: size
+CREATE TABLE size (
+                      id serial  NOT NULL,
+                      type varchar(30)  NOT NULL,
+                      price int  NOT NULL,
+                      CONSTRAINT size_pk PRIMARY KEY (id)
 );
 
 -- Table: user
 CREATE TABLE "user" (
                         id serial  NOT NULL,
+                        role_id int  NOT NULL,
                         contact_id int  NOT NULL,
-                        username varchar(10)  NOT NULL,
+                        username varchar(20)  NOT NULL,
                         password int  NOT NULL,
-                        role varchar(20)  NOT NULL,
                         CONSTRAINT user_pk PRIMARY KEY (id)
 );
 
--- Table: user_role
-CREATE TABLE user_role (
-                           id serial  NOT NULL,
-                           user_id int  NOT NULL,
-                           role_id int  NOT NULL,
-                           CONSTRAINT user_role_pk PRIMARY KEY (id)
+-- Table: walking
+CREATE TABLE walking (
+                         id serial  NOT NULL,
+                         walker_user_id int  NOT NULL,
+                         city_id int  NOT NULL,
+                         date_from date  NOT NULL,
+                         date_to date  NOT NULL,
+                         time_from time  NOT NULL,
+                         time_to time  NOT NULL,
+                         CONSTRAINT walking_pk PRIMARY KEY (id)
+);
+
+-- Table: walking_size
+CREATE TABLE walking_size (
+                              id serial  NOT NULL,
+                              walking_id int  NOT NULL,
+                              size_id int  NOT NULL,
+                              CONSTRAINT walking_size_pk PRIMARY KEY (id)
 );
 
 -- foreign keys
--- Reference: Table_8_role (table: user_role)
-ALTER TABLE user_role ADD CONSTRAINT Table_8_role
-    FOREIGN KEY (role_id)
-        REFERENCES role (id)
-        NOT DEFERRABLE
-            INITIALLY IMMEDIATE
-;
-
--- Reference: Table_8_user (table: user_role)
-ALTER TABLE user_role ADD CONSTRAINT Table_8_user
-    FOREIGN KEY (user_id)
-        REFERENCES "user" (id)
-        NOT DEFERRABLE
-            INITIALLY IMMEDIATE
-;
-
--- Reference: contact_photo_contact (table: contact_photo)
-ALTER TABLE contact_photo ADD CONSTRAINT contact_photo_contact
-    FOREIGN KEY (contact_id)
-        REFERENCES contact (id)
-        NOT DEFERRABLE
-            INITIALLY IMMEDIATE
-;
-
--- Reference: contact_photo_photo (table: contact_photo)
-ALTER TABLE contact_photo ADD CONSTRAINT contact_photo_photo
-    FOREIGN KEY (photo_id, photo_name)
-        REFERENCES photo (id, name)
-        NOT DEFERRABLE
-            INITIALLY IMMEDIATE
-;
-
 -- Reference: dog_breed_breed (table: dog_breed)
 ALTER TABLE dog_breed ADD CONSTRAINT dog_breed_breed
     FOREIGN KEY (breed_id)
@@ -184,6 +147,22 @@ ALTER TABLE dog_breed ADD CONSTRAINT dog_breed_breed
 ALTER TABLE dog_breed ADD CONSTRAINT dog_breed_dog
     FOREIGN KEY (dog_id)
         REFERENCES dog (id)
+        NOT DEFERRABLE
+            INITIALLY IMMEDIATE
+;
+
+-- Reference: dog_order_dog (table: dog_order)
+ALTER TABLE dog_order ADD CONSTRAINT dog_order_dog
+    FOREIGN KEY (dog_id)
+        REFERENCES dog (id)
+        NOT DEFERRABLE
+            INITIALLY IMMEDIATE
+;
+
+-- Reference: dog_order_order (table: dog_order)
+ALTER TABLE dog_order ADD CONSTRAINT dog_order_order
+    FOREIGN KEY (order_id)
+        REFERENCES "order" (id)
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
@@ -212,50 +191,18 @@ ALTER TABLE dog ADD CONSTRAINT dog_user
             INITIALLY IMMEDIATE
 ;
 
--- Reference: location_city (table: location)
-ALTER TABLE location ADD CONSTRAINT location_city
-    FOREIGN KEY (city_id)
-        REFERENCES city (id)
+-- Reference: order_walking (table: order)
+ALTER TABLE "order" ADD CONSTRAINT order_walking
+    FOREIGN KEY (walking_id)
+        REFERENCES walking (id)
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
 
--- Reference: order_price_price (table: order_price)
-ALTER TABLE order_price ADD CONSTRAINT order_price_price
-    FOREIGN KEY (price_id)
-        REFERENCES price (id)
-        NOT DEFERRABLE
-            INITIALLY IMMEDIATE
-;
-
--- Reference: order_price_set_order (table: order_price)
-ALTER TABLE order_price ADD CONSTRAINT order_price_set_order
-    FOREIGN KEY (set_order_id)
-        REFERENCES set_order (id)
-        NOT DEFERRABLE
-            INITIALLY IMMEDIATE
-;
-
--- Reference: set_order_dog (table: set_order)
-ALTER TABLE set_order ADD CONSTRAINT set_order_dog
-    FOREIGN KEY (dog_id)
-        REFERENCES dog (id)
-        NOT DEFERRABLE
-            INITIALLY IMMEDIATE
-;
-
--- Reference: set_order_location (table: set_order)
-ALTER TABLE set_order ADD CONSTRAINT set_order_location
-    FOREIGN KEY (location_id)
-        REFERENCES location (id)
-        NOT DEFERRABLE
-            INITIALLY IMMEDIATE
-;
-
--- Reference: set_order_user (table: set_order)
-ALTER TABLE set_order ADD CONSTRAINT set_order_user
-    FOREIGN KEY (walker_user_id)
-        REFERENCES "user" (id)
+-- Reference: price_size (table: price)
+ALTER TABLE price ADD CONSTRAINT price_size
+    FOREIGN KEY (size_id)
+        REFERENCES size (id)
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
@@ -264,6 +211,46 @@ ALTER TABLE set_order ADD CONSTRAINT set_order_user
 ALTER TABLE "user" ADD CONSTRAINT user_contact
     FOREIGN KEY (contact_id)
         REFERENCES contact (id)
+        NOT DEFERRABLE
+            INITIALLY IMMEDIATE
+;
+
+-- Reference: user_role (table: user)
+ALTER TABLE "user" ADD CONSTRAINT user_role
+    FOREIGN KEY (role_id)
+        REFERENCES role (id)
+        NOT DEFERRABLE
+            INITIALLY IMMEDIATE
+;
+
+-- Reference: walking_city (table: walking)
+ALTER TABLE walking ADD CONSTRAINT walking_city
+    FOREIGN KEY (city_id)
+        REFERENCES city (id)
+        NOT DEFERRABLE
+            INITIALLY IMMEDIATE
+;
+
+-- Reference: walking_size_size (table: walking_size)
+ALTER TABLE walking_size ADD CONSTRAINT walking_size_size
+    FOREIGN KEY (size_id)
+        REFERENCES size (id)
+        NOT DEFERRABLE
+            INITIALLY IMMEDIATE
+;
+
+-- Reference: walking_size_walking (table: walking_size)
+ALTER TABLE walking_size ADD CONSTRAINT walking_size_walking
+    FOREIGN KEY (walking_id)
+        REFERENCES walking (id)
+        NOT DEFERRABLE
+            INITIALLY IMMEDIATE
+;
+
+-- Reference: walking_user (table: walking)
+ALTER TABLE walking ADD CONSTRAINT walking_user
+    FOREIGN KEY (walker_user_id)
+        REFERENCES "user" (id)
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
