@@ -1,8 +1,8 @@
 package ee.valiit.back_doge_v2.infrastructure;
 
-import ee.bcs.ourBank.infrastructure.error.ApiError;
-import ee.bcs.ourBank.infrastructure.exception.BusinessException;
-import ee.bcs.ourBank.infrastructure.exception.DataNotFoundException;
+import ee.valiit.back_doge_v2.infrastructure.error.ApiError;
+import ee.valiit.back_doge_v2.infrastructure.exception.BusinessException;
+import ee.valiit.back_doge_v2.infrastructure.exception.DataNotFoundException;
 import org.springframework.beans.TypeMismatchException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
