@@ -1,4 +1,4 @@
-package ee.valiit.back_doge_v2.domain.walker_information.city;
+package ee.valiit.back_doge_v2.domain.order_information.order.city;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
