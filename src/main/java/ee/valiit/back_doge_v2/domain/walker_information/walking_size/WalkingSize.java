@@ -1,5 +1,7 @@
-package ee.valiit.back_doge_v2.domain.walker;
+package ee.valiit.back_doge_v2.domain.walker_information.walking_size;
 
+import ee.valiit.back_doge_v2.domain.walker_information.size.Size;
+import ee.valiit.back_doge_v2.domain.walker_information.walking.Walking;
 import lombok.Getter;
 import lombok.Setter;
 

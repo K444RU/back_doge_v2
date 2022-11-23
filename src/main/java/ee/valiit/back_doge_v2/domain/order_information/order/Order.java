@@ -1,6 +1,6 @@
-package ee.valiit.back_doge_v2.domain.walker;
+package ee.valiit.back_doge_v2.domain.order_information.order;
 
-import ee.valiit.back_doge_v2.domain.user.User;
+import ee.valiit.back_doge_v2.domain.walker_information.walking.Walking;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,8 +12,8 @@ import java.time.LocalTime;
 @Getter
 @Setter
 @Entity
-@Table(name = "walking")
-public class Walking {
+@Table(name = "\"order\"")
+public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -21,21 +21,12 @@ public class Walking {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "walker_user_id", nullable = false)
-    private User walkerUser;
+    @JoinColumn(name = "walking_id", nullable = false)
+    private Walking walking;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "city_id", nullable = false)
-    private City city;
-
-    @NotNull
-    @Column(name = "date_from", nullable = false)
-    private LocalDate dateFrom;
-
-    @NotNull
-    @Column(name = "date_to", nullable = false)
-    private LocalDate dateTo;
+    @Column(name = "walking_date", nullable = false)
+    private LocalDate walkingDate;
 
     @NotNull
     @Column(name = "time_from", nullable = false)
@@ -44,5 +35,13 @@ public class Walking {
     @NotNull
     @Column(name = "time_to", nullable = false)
     private LocalTime timeTo;
+
+    @NotNull
+    @Column(name = "address", nullable = false)
+    private Integer address;
+
+    @NotNull
+    @Column(name = "total_price", nullable = false)
+    private Integer totalPrice;
 
 }

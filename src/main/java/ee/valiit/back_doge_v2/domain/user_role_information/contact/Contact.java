@@ -1,4 +1,4 @@
-package ee.valiit.back_doge_v2.domain.user;
+package ee.valiit.back_doge_v2.domain.user_role_information.contact;
 
 import lombok.Getter;
 import lombok.Setter;

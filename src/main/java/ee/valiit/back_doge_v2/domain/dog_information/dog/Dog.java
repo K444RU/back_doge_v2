@@ -1,6 +1,6 @@
-package ee.valiit.back_doge_v2.domain.dog;
+package ee.valiit.back_doge_v2.domain.dog_information.dog;
 
-import ee.valiit.back_doge_v2.domain.user.User;
+import ee.valiit.back_doge_v2.domain.user_role_information.user.User;
 import lombok.Getter;
 import lombok.Setter;
 

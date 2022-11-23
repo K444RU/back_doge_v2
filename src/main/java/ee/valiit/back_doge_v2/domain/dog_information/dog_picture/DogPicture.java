@@ -1,6 +1,7 @@
-package ee.valiit.back_doge_v2.domain.order;
+package ee.valiit.back_doge_v2.domain.dog_information.dog_picture;
 
-import ee.valiit.back_doge_v2.domain.dog.Dog;
+import ee.valiit.back_doge_v2.domain.dog_information.picture.Picture;
+import ee.valiit.back_doge_v2.domain.dog_information.dog.Dog;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,8 +11,8 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 @Entity
-@Table(name = "dog_order")
-public class DogOrder {
+@Table(name = "dog_picture")
+public class DogPicture {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -24,7 +25,7 @@ public class DogOrder {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "order_id", nullable = false)
-    private Order order;
+    @JoinColumn(name = "picture_id", nullable = false)
+    private Picture picture;
 
 }

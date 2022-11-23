@@ -1,4 +1,4 @@
-package ee.valiit.back_doge_v2.domain.walker;
+package ee.valiit.back_doge_v2.domain.walker_information.size;
 
 import lombok.Getter;
 import lombok.Setter;

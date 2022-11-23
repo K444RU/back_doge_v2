@@ -1,4 +1,4 @@
-package ee.valiit.back_doge_v2.domain.dog;
+package ee.valiit.back_doge_v2.domain.walker_information.city;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,16 +10,16 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 @Entity
-@Table(name = "breed")
-public class Breed {
+@Table(name = "city")
+public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Size(max = 20)
+    @Size(max = 255)
     @NotNull
-    @Column(name = "name", nullable = false, length = 20)
+    @Column(name = "name", nullable = false)
     private String name;
 
 }

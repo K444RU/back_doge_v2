@@ -1,6 +1,6 @@
-package ee.valiit.back_doge_v2.domain.order;
+package ee.valiit.back_doge_v2.domain.order_information.price;
 
-import ee.valiit.back_doge_v2.domain.walker.Size;
+import ee.valiit.back_doge_v2.domain.walker_information.size.Size;
 import lombok.Getter;
 import lombok.Setter;
 
