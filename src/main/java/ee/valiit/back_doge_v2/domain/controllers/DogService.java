@@ -18,12 +18,16 @@ public class DogService {
     @Resource
     private BreedRepository breedRepository;
 
-public List<BreedDto> getAllBreeds() {
-    List<Breed> allBreeds = breedRepository.findAll();
-    List<BreedDto> result = breedMapper.breedToBreedDto(allBreeds);
-    return result;
-}
+//public List<BreedDto> getAllBreeds() {
+//    List<Breed> allEntities = breedRepository.findAll();
+//    List<BreedDto> allDtos = breedMapper.breedToBreedDto(allEntities);
+//    return allDtos;
 
+    public List<BreedDto> getAllBreeds() {
+      List<Breed> allEntities = breedRepository.findAll();
+      List<BreedDto> allDtos = breedMapper.breedToBreedDto(allEntities);
+      return allDtos;
+    }
 
 
 }
