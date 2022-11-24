@@ -11,7 +11,4 @@ public interface UserMapper {
     @Mapping(source = "role.type", target = "roleType")
     LoginResponse toLoginResponse(User user);
 
-    @InheritConfiguration(name = "userDtoToUser")
-    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    User updateUserFromUserDto(LoginResponse userDto, @MappingTarget User user);
 }

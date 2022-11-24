@@ -7,8 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BackDogeV2Application {
 
 	public static void main(String[] args) {
-
 		SpringApplication.run(BackDogeV2Application.class, args);
 	}
+
 
 }

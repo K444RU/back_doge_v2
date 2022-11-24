@@ -1,4 +1,4 @@
-package ee.valiit.back_doge_v2.login.errors;
+package ee.valiit.back_doge_v2.errors;
 
 import lombok.Getter;
 

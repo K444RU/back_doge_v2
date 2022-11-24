@@ -1,4 +1,4 @@
-package ee.valiit.back_doge_v2.login.errors;
+package ee.valiit.back_doge_v2.errors;
 
 import ee.valiit.back_doge_v2.domain.user_role_information.user.User;
 import ee.valiit.back_doge_v2.infrastructure.exception.BusinessException;

@@ -1,6 +1,6 @@
 package ee.valiit.back_doge_v2.domain.user_role_information.user;
 
-import ee.valiit.back_doge_v2.login.errors.Validation;
+import ee.valiit.back_doge_v2.errors.Validation;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
