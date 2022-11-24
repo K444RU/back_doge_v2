@@ -33,12 +33,14 @@ public class DogService {
       List<BreedDto> allDtos = breedMapper.breedToBreedDto(allEntities);
       return allDtos;
     }
+    //Väljastab kõike tõuge
 
     public List<SizeDto> getAllSizes() {
         List<Size> allEntities = sizeRepository.findAll();
         List<SizeDto> allDtos = sizeMapper.sizeToSizeDto(allEntities);
         return allDtos;
     }
+    //Väljastab kõike suurusi
 
 }
 

@@ -34,7 +34,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<ApiError> handleBusinessException(BusinessException exception) {
         ApiError apiError = new ApiError();
         apiError.setMessage(exception.getMessage());
-        apiError.setErrorCode(exception.getErrorCode());
+//        apiError.setErrorCode(exception.getErrorCode());
         return new ResponseEntity<>(apiError, HttpStatus.FORBIDDEN);
     }
 

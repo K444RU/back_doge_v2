@@ -1,13 +1,17 @@
 package ee.valiit.back_doge_v2.domain.user_role_information.user;
 
+import ee.valiit.back_doge_v2.login.LoginResponse;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface UserMapper {
-    User userDtoToUser(UserDto userDto);
 
-    UserDto userToUserDto(User user);
+    @Mapping(source = "id", target = "userId")
+    @Mapping(source = "role.id", target = "roleId")
+    @Mapping(source = "role.type", target = "roleType")
+    LoginResponse toLoginResponse(User user);
 
+    @InheritConfiguration(name = "userDtoToUser")
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    User updateUserFromUserDto(UserDto userDto, @MappingTarget User user);
+    User updateUserFromUserDto(LoginResponse userDto, @MappingTarget User user);
 }

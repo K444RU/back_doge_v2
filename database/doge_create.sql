@@ -123,7 +123,7 @@ CREATE TABLE "user"
     role_id    int         NOT NULL,
     contact_id int         NOT NULL,
     username   varchar(20) NOT NULL,
-    password   int         NOT NULL,
+    password   varchar(20)        NOT NULL,
     CONSTRAINT user_pk PRIMARY KEY (id)
 );
 

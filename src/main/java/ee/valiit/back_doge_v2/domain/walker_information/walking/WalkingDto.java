@@ -1,7 +1,6 @@
 package ee.valiit.back_doge_v2.domain.walker_information.walking;
 
 import ee.valiit.back_doge_v2.domain.walker_information.city.CityDto;
-import ee.valiit.back_doge_v2.domain.user_role_information.user.UserDto;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
@@ -15,8 +14,7 @@ import java.time.LocalTime;
 @Data
 public class WalkingDto implements Serializable {
     private final Integer id;
-    @NotNull
-    private final UserDto walkerUser;
+
     @NotNull
     private final CityDto city;
     @NotNull
