@@ -11,8 +11,8 @@ import java.io.Serializable;
  */
 @Data
 public class BreedDto implements Serializable {
-    private final Integer id;
+    private final Integer breedId;
     @Size(max = 20)
     @NotNull
-    private final String name;
+    private final String breedName;
 }
