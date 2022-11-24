@@ -35,13 +35,13 @@ INSERT INTO public.city (id, name)
 VALUES (DEFAULT, 'Sillamäe');
 
 INSERT INTO public.size (id, type, price)
-VALUES (DEFAULT, 'Small(S)', 5);
+VALUES (DEFAULT, 'Small(0-7 kg)', 5);
 INSERT INTO public.size (id, type, price)
-VALUES (DEFAULT, 'Medium(M)', 7);
+VALUES (DEFAULT, 'Medium(7-15 kg)', 7);
 INSERT INTO public.size (id, type, price)
-VALUES (DEFAULT, 'Large(L)', 10);
+VALUES (DEFAULT, 'Large(15-30 kg)', 10);
 INSERT INTO public.size (id, type, price)
-VALUES (DEFAULT, 'Extra Large(XL)', 13);
+VALUES (DEFAULT, 'Extra Large(30+ kg)', 13);
 
 INSERT INTO public.breed (id, name)
 VALUES (DEFAULT, 'Akita');
