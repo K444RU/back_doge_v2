@@ -4,6 +4,10 @@ import ee.valiit.back_doge_v2.domain.dog_information.breeds.Breed;
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.BreedDto;
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.BreedMapper;
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.BreedRepository;
+import ee.valiit.back_doge_v2.domain.walker_information.size.Size;
+import ee.valiit.back_doge_v2.domain.walker_information.size.SizeDto;
+import ee.valiit.back_doge_v2.domain.walker_information.size.SizeMapper;
+import ee.valiit.back_doge_v2.domain.walker_information.size.SizeRepository;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -14,14 +18,15 @@ public class DogService {
 
     @Resource
     private BreedMapper breedMapper;
-
     @Resource
     private BreedRepository breedRepository;
 
-//public List<BreedDto> getAllBreeds() {
-//    List<Breed> allEntities = breedRepository.findAll();
-//    List<BreedDto> allDtos = breedMapper.breedToBreedDto(allEntities);
-//    return allDtos;
+    @Resource
+    private SizeMapper sizeMapper;
+
+    @Resource
+    private SizeRepository sizeRepository;
+
 
     public List<BreedDto> getAllBreeds() {
       List<Breed> allEntities = breedRepository.findAll();
@@ -29,6 +34,11 @@ public class DogService {
       return allDtos;
     }
 
+    public List<SizeDto> getAllSizes() {
+        List<Size> allEntities = sizeRepository.findAll();
+        List<SizeDto> allDtos = sizeMapper.sizeToSizeDto(allEntities);
+        return allDtos;
+    }
 
 }
 

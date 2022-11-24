@@ -1,6 +1,7 @@
 package ee.valiit.back_doge_v2.domain.controllers;
 
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.BreedDto;
+import ee.valiit.back_doge_v2.domain.walker_information.size.SizeDto;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,11 +19,21 @@ public class DogController {
 
 
     @GetMapping("/bread")
-    @Operation(summary = "Kuvab kõike koerte tõuge")
+    @Operation(summary = "väljastab kõike koerte tõuge")
     public List <BreedDto> getAllBreeds() {
         List<BreedDto> breeds = dogService.getAllBreeds();
         return breeds;
     }
+
+    @GetMapping("/size")
+    @Operation(summary = "Väljastab kõikide koerte suurused")
+    public List<SizeDto> getAllSizes() {
+        List<SizeDto> sizes =dogService.getAllSizes();
+        return sizes;
+    }
+
+
+
 
 
 }
