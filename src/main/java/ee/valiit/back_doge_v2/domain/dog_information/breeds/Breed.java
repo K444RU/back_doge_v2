@@ -1,4 +1,4 @@
-package ee.valiit.back_doge_v2.domain.dog_information.breed;
+package ee.valiit.back_doge_v2.domain.dog_information.breeds;
 
 import lombok.Getter;
 import lombok.Setter;

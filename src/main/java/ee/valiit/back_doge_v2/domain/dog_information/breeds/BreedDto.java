@@ -1,4 +1,4 @@
-package ee.valiit.back_doge_v2.domain.dog_information.breed;
+package ee.valiit.back_doge_v2.domain.dog_information.breeds;
 
 import lombok.Data;
 
@@ -11,8 +11,8 @@ import java.io.Serializable;
  */
 @Data
 public class BreedDto implements Serializable {
-    private final Integer breedId;
+    private final Integer id;
     @Size(max = 20)
     @NotNull
-    private final String breedName;
+    private final String name;
 }
