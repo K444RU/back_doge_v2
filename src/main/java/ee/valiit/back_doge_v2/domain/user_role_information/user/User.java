@@ -34,8 +34,9 @@ public class User {
     @Column(name = "username", nullable = false, length = 20)
     private String username;
 
+    @Size(max = 20)
     @NotNull
-    @Column(name = "password", nullable = false)
-    private Integer password;
+    @Column(name = "password", nullable = false, length = 20)
+    private String password;
 
 }

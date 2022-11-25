@@ -7,16 +7,16 @@ import javax.annotation.Resource;
 import java.util.Optional;
 
 @Service
-public class UserCervice {
+public class UserService {
 
     @Resource
     private UserRepository userRepository;
 
     public User getValidUser(String username, String password) {
-        Optional<User> userLogin = userRepository.findBy(username, password);
+        Optional<User> userLogin = userRepository.findBy(username, password.toString());
         Validation.validationUser(userLogin);
-        User user = userLogin.get();
-        return user;
+        User result = userLogin.get();
+        return result;
     }
 
 

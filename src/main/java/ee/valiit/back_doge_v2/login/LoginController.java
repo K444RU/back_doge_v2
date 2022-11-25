@@ -23,10 +23,6 @@ public class LoginController {
     @Resource
     private LoginService loginService;
 
-    @Resource
-    private LoginResponse loginResponse;
-
-
     @GetMapping("/login")
     @Operation(summary = "Sisselogimiine")
     @ApiResponses(value = {
