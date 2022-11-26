@@ -4,12 +4,10 @@ import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface ContactMapper {
+    Contact contactDtoToContact(ContactDto contactDto);
 
-
-    Contact contactDto1ToContact(ContactDto contactDto1);
-
-    ContactDto contactToContactDto1(Contact contact);
+    ContactDto contactToContactDto(Contact contact);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    Contact updateContactFromContactDto1(ContactDto contactDto1, @MappingTarget Contact contact);
+    Contact updateContactFromContactDto(ContactDto contactDto, @MappingTarget Contact contact);
 }

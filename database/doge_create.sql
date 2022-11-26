@@ -26,7 +26,7 @@ CREATE TABLE contact
     city                 varchar(30)  NOT NULL,
     firstname            varchar(30)  NOT NULL,
     lastname             varchar(30)  NOT NULL,
-    adittion_information varchar(200) NULL,
+    additional_information varchar(200) NULL,
     photo_data           bytea        NULL,
     CONSTRAINT contact_pk PRIMARY KEY (id)
 );
@@ -38,7 +38,7 @@ CREATE TABLE dog
     owner_user_id          int          NOT NULL,
     name                   varchar(30)  NOT NULL,
     age                    int          NOT NULL,
-    adittional_information varchar(300) NULL,
+    additional_information varchar(300) NULL,
     CONSTRAINT dog_pk PRIMARY KEY (id)
 );
 

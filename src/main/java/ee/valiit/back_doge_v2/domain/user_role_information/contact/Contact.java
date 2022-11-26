@@ -19,16 +19,6 @@ public class Contact {
 
     @Size(max = 30)
     @NotNull
-    @Column(name = "firstname", nullable = false, length = 30)
-    private String firstname;
-
-    @Size(max = 30)
-    @NotNull
-    @Column(name = "lastname", nullable = false, length = 30)
-    private String lastname;
-
-    @Size(max = 30)
-    @NotNull
     @Column(name = "e_mail", nullable = false, length = 30)
     private String eMail;
 
@@ -37,9 +27,19 @@ public class Contact {
     @Column(name = "city", nullable = false, length = 30)
     private String city;
 
+    @Size(max = 30)
+    @NotNull
+    @Column(name = "firstname", nullable = false, length = 30)
+    private String firstname;
+
+    @Size(max = 30)
+    @NotNull
+    @Column(name = "lastname", nullable = false, length = 30)
+    private String lastname;
+
     @Size(max = 200)
-    @Column(name = "adittion_information", length = 200)
-    private String adittionInformation;
+    @Column(name = "additional_information", length = 200)
+    private String additionalInformation;
 
     @Column(name = "photo_data")
     private byte[] photoData;
