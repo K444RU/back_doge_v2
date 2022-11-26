@@ -1,6 +1,8 @@
 package ee.valiit.back_doge_v2.domain.controllers;
 
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.BreedDto;
+import ee.valiit.back_doge_v2.domain.user_role_information.contact.ContactMapper;
+import ee.valiit.back_doge_v2.domain.user_role_information.user.UserMapper;
 import ee.valiit.back_doge_v2.domain.walker_information.size.SizeDto;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.GetMapping;
