@@ -26,7 +26,7 @@ public class RegistrationService {
     private ContactRepository contactRepository;
     public void addNewUser(NewUserRegistration request) {
         User user = userMapper.toEntity(request);
-        Contact contact = contactRepository.findById(request.getContactId()).get();
+        Contact contact = contactRepository.findAll().get();
         user.setContact(contact);
         userRepository.save(user);
 
