@@ -9,9 +9,9 @@ INSERT INTO public.contact (id, e_mail, city, firstname, lastname, adittion_info
 VALUES (DEFAULT, 'vladislavjagu@gmail.com', 'Tartu', 'Vlad', 'Jagur', null, null);
 
 INSERT INTO public."user" (id, role_id, contact_id, username, password)
-VALUES (DEFAULT, 1, 1, 'oleg', 123);
+VALUES (DEFAULT, 1, 1, 'oleg', '123');
 INSERT INTO public."user" (id, role_id, contact_id, username, password)
-VALUES (DEFAULT, 2, 2, 'vlad', 123);
+VALUES (DEFAULT, 2, 2, 'vlad', '123');
 
 INSERT INTO public.city (id, name)
 VALUES (DEFAULT, 'Tallinn');
