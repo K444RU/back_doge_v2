@@ -13,4 +13,5 @@ public interface UserMapper {
     LoginResponse toLoginResponse(User user);
 
     User toEntity(NewUserRegistration request);
+
 }

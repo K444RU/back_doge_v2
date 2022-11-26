@@ -1,8 +1,5 @@
-package ee.valiit.back_doge_v2.domain.controllers;
+package ee.valiit.back_doge_v2.registration;
 
-import ee.valiit.back_doge_v2.domain.user_role_information.contact.ContactMapper;
-import ee.valiit.back_doge_v2.domain.user_role_information.user.UserMapper;
-import ee.valiit.back_doge_v2.registration.NewUserRegistration;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
