@@ -1,5 +1,7 @@
 package ee.valiit.back_doge_v2.registration;
 
+import ee.valiit.back_doge_v2.domain.user_role_information.contact.Contact;
+import ee.valiit.back_doge_v2.domain.user_role_information.contact.ContactMapper;
 import ee.valiit.back_doge_v2.domain.user_role_information.contact.ContactRepository;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.User;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.UserMapper;
