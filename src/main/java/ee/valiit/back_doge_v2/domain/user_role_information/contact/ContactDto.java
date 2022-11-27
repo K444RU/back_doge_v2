@@ -1,6 +1,8 @@
 package ee.valiit.back_doge_v2.domain.user_role_information.contact;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -10,21 +12,23 @@ import java.io.Serializable;
  * A DTO for the {@link Contact} entity
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ContactDto implements Serializable {
-    private final Integer id;
+    private Integer id;
     @Size(max = 30)
     @NotNull
-    private final String eMail;
+    private String email;
     @Size(max = 30)
     @NotNull
-    private final String city;
+    private String city;
     @Size(max = 30)
     @NotNull
-    private final String firstname;
+    private String firstname;
     @Size(max = 30)
     @NotNull
-    private final String lastname;
+    private String lastname;
     @Size(max = 200)
-    private final String adittionInformation;
-    private final byte[] photoData;
+    private String additionalInformation;
+    private byte[] photoData;
 }
