@@ -1,11 +1,9 @@
-package ee.valiit.back_doge_v2.domain.controllers;
+package ee.valiit.back_doge_v2.domain.dog_profile;
 
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.BreedDto;
 import ee.valiit.back_doge_v2.domain.walker_information.size.SizeDto;
 import io.swagger.v3.oas.annotations.Operation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -31,6 +29,15 @@ public class DogController {
         List<SizeDto> sizes =dogService.getAllSizes();
         return sizes;
     }
+
+    @PostMapping("/registration")
+    @Operation(summary = "Uue koera registreerimine")
+    public void addNewDog(@RequestBody NewDogRequest request) {
+        System.out.println();
+        dogService.addNewDog(request);
+
+    }
+
 
 
 

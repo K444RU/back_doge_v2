@@ -1,7 +1,7 @@
 package ee.valiit.back_doge_v2.domain.dog_information.dog_picture;
 
-import ee.valiit.back_doge_v2.domain.dog_information.picture.Picture;
 import ee.valiit.back_doge_v2.domain.dog_information.dog.Dog;
+import ee.valiit.back_doge_v2.domain.dog_information.picture.Picture;
 import lombok.Getter;
 import lombok.Setter;
 

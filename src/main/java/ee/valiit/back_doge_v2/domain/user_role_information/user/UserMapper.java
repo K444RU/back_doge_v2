@@ -1,13 +1,13 @@
 package ee.valiit.back_doge_v2.domain.user_role_information.user;
 
+import ee.valiit.back_doge_v2.domain.dog_profile.NewDogRequest;
 import ee.valiit.back_doge_v2.login.LoginResponse;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface UserMapper {
 
-    @Mapping(source
-            = "id", target = "userId")
+    @Mapping(source = "id", target = "userId")
     @Mapping(source = "role.id", target = "roleId")
     @Mapping(source = "role.type", target = "roleType")
     LoginResponse toLoginResponse(User user);
@@ -17,6 +17,10 @@ public interface UserMapper {
     @Mapping(source = "roleId", target = "role.id")
     @Mapping(source = "contactId", target = "contact.id")
     User userDtoToUser(UserDto userDto);
+
+    @Mapping(source = "ownerUserId", target = "id")
+    User getUser(NewDogRequest request);
+
 
 
 }

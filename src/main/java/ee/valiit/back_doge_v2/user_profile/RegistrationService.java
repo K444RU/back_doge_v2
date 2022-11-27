@@ -1,4 +1,4 @@
-package ee.valiit.back_doge_v2.registration;
+package ee.valiit.back_doge_v2.user_profile;
 
 import ee.valiit.back_doge_v2.domain.user_role_information.contact.Contact;
 import ee.valiit.back_doge_v2.domain.user_role_information.contact.ContactMapper;
@@ -26,9 +26,6 @@ public class RegistrationService {
 
     @Resource
     private RoleRepository roleRepository;
-
-    @Resource
-    private RoleMapper roleMapper;
 
     @Resource
     private ContactMapper contactMapper;

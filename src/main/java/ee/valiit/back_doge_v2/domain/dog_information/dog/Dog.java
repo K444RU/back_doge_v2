@@ -33,7 +33,7 @@ public class Dog {
     private Integer age;
 
     @Size(max = 300)
-    @Column(name = "adittional_information", length = 300)
-    private String adittionalInformation;
+    @Column(name = "additional_information", length = 300)
+    private String additionalInformation;
 
 }
