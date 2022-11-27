@@ -42,12 +42,15 @@ public class RegistrationService {
         if (optionalRole.isEmpty()) {
             System.out.println("Role not found");
         }
+
         Role newUserRole = optionalRole.get();
         UserDto userDto = new UserDto(request.getUsername(), request.getPassword(), newUserRole.getId(), newUserContact.getId());
         User user = userMapper.userDtoToUser(userDto);
         user.setContact(newUserContact);
         user.setRole(newUserRole);
         userRepository.save(user);
+
+
 
 
 
