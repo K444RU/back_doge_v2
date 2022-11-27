@@ -26,7 +26,7 @@ CREATE TABLE contact
     city                 varchar(30)  NOT NULL,
     firstname            varchar(30)  NOT NULL,
     lastname             varchar(30)  NOT NULL,
-    adittion_information varchar(200) NULL,
+    additional_information varchar(200) NULL,
     photo_data           bytea        NULL,
     CONSTRAINT contact_pk PRIMARY KEY (id)
 );
@@ -123,7 +123,7 @@ CREATE TABLE "user"
     role_id    int         NOT NULL,
     contact_id int         NOT NULL,
     username   varchar(20) NOT NULL,
-    password   varchar(20)        NOT NULL,
+    password   varchar(20) NOT NULL,
     CONSTRAINT user_pk PRIMARY KEY (id)
 );
 
