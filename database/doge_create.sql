@@ -38,7 +38,7 @@ CREATE TABLE dog
     owner_user_id          int          NOT NULL,
     name                   varchar(30)  NOT NULL,
     age                    int          NOT NULL,
-    adittional_information varchar(300) NULL,
+    additional_information varchar(300) NULL,
     CONSTRAINT dog_pk PRIMARY KEY (id)
 );
 
