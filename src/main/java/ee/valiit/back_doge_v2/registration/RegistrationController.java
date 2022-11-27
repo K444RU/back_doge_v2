@@ -16,7 +16,7 @@ public class RegistrationController {
 
 
     @PostMapping()
-    public void addNewUser(@RequestBody NewUserRegistration request) {
+    public void addNewUser(@RequestBody NewUserRequest request) {
         System.out.println();
         registrationService.addNewUser(request);
 

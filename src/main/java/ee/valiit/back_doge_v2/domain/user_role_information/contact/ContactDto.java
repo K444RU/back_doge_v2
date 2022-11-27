@@ -18,7 +18,7 @@ public class ContactDto implements Serializable {
     private Integer id;
     @Size(max = 30)
     @NotNull
-    private String eMail;
+    private String email;
     @Size(max = 30)
     @NotNull
     private String city;

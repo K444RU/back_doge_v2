@@ -2,6 +2,7 @@ package ee.valiit.back_doge_v2.domain.user_role_information.contact;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -20,7 +21,7 @@ public class Contact {
     @Size(max = 30)
     @NotNull
     @Column(name = "e_mail", nullable = false, length = 30)
-    private String eMail;
+    private String email;
 
     @Size(max = 30)
     @NotNull
@@ -41,6 +42,7 @@ public class Contact {
     @Column(name = "additional_information", length = 200)
     private String additionalInformation;
 
+    @Nullable
     @Column(name = "photo_data")
     private byte[] photoData;
 

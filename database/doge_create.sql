@@ -38,7 +38,7 @@ CREATE TABLE dog
     owner_user_id          int          NOT NULL,
     name                   varchar(30)  NOT NULL,
     age                    int          NOT NULL,
-    additional_information varchar(300) NULL,
+    adittional_information varchar(300) NULL,
     CONSTRAINT dog_pk PRIMARY KEY (id)
 );
 
@@ -123,7 +123,7 @@ CREATE TABLE "user"
     role_id    int         NOT NULL,
     contact_id int         NOT NULL,
     username   varchar(20) NOT NULL,
-    password   varchar(20)        NOT NULL,
+    password   varchar(20) NOT NULL,
     CONSTRAINT user_pk PRIMARY KEY (id)
 );
 
