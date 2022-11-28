@@ -1,6 +1,7 @@
 package ee.valiit.back_doge_v2.domain.dog_information.dog_breed;
 
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.BreedDto;
+import ee.valiit.back_doge_v2.domain.dog_information.dog.DogDto;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;

@@ -35,7 +35,6 @@ public class DogController {
     public void addNewDog(@RequestBody DogRequest request) {
         System.out.println();
         dogService.addNewDog(request);
-
     }
 
 

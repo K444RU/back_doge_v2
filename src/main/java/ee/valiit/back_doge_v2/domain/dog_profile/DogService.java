@@ -7,6 +7,9 @@ import ee.valiit.back_doge_v2.domain.dog_information.breeds.BreedRepository;
 import ee.valiit.back_doge_v2.domain.dog_information.dog.Dog;
 import ee.valiit.back_doge_v2.domain.dog_information.dog.DogMapper;
 import ee.valiit.back_doge_v2.domain.dog_information.dog.DogRepository;
+import ee.valiit.back_doge_v2.domain.user_role_information.role.Role;
+import ee.valiit.back_doge_v2.domain.user_role_information.role.RoleMapper;
+import ee.valiit.back_doge_v2.domain.user_role_information.role.RoleRepository;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.User;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.UserRepository;
 import ee.valiit.back_doge_v2.domain.walker_information.size.Size;
@@ -42,29 +45,31 @@ public class DogService {
     @Resource
     private DogRepository dogRepository;
 
+
+
+
     public List<BreedDto> getAllBreeds() {
       List<Breed> allEntities = breedRepository.findAll();
-      List<BreedDto> allDtos = breedMapper.breedToBreedDto(allEntities);
-      return allDtos;
+      List<BreedDto> breedAllDtos = breedMapper.breedToBreedDto(allEntities);
+      return breedAllDtos;
     }
     //Väljastab kõike tõuge
 
     public List<SizeDto> getAllSizes() {
         List<Size> allEntities = sizeRepository.findAll();
-        List<SizeDto> allDtos = sizeMapper.sizeToSizeDto(allEntities);
-        return allDtos;
+        List<SizeDto> sizeAllDtos = sizeMapper.sizeToSizeDto(allEntities);
+        return sizeAllDtos;
     }
     //Väljastab kõike suurusi
-
 
     public void addNewDog(DogRequest request) {
 
         User user = getValidUser(request.getOwnerUserId());
+        Size validSize = getValidSize(request.getDogSizeId());
 
         Dog dog = dogMapper.dogRequestToDog(request);
         dog.setOwnerUser(user);
-
-        dog.setOwnerUser(user);
+        dog.setSize(validSize);
         dogRepository.save(dog);
 
 
@@ -79,7 +84,18 @@ public class DogService {
 //        dogRepository.save(dog);
 
     }
-//    @org.jetbrains.annotations.NotNull
+
+    private Size getValidSize(Integer dogSizeId) {
+        Optional<Size> optionalSize = sizeRepository.findById(dogSizeId);
+        if (optionalSize.isEmpty()) {
+            System.out.println("Size not found");
+        }
+
+        Size size = optionalSize.get();
+        return size;
+    }
+
+    //    @org.jetbrains.annotations.NotNull
     private User getValidUser(Integer ownerUserId) {
         Optional<User> optionalUser = userRepository.findById(ownerUserId);
         if (optionalUser.isEmpty()) {

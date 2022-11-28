@@ -4,6 +4,8 @@ import ee.valiit.back_doge_v2.domain.user_role_information.contact.Contact;
 import ee.valiit.back_doge_v2.domain.user_role_information.contact.ContactMapper;
 import ee.valiit.back_doge_v2.domain.user_role_information.contact.ContactRepository;
 import ee.valiit.back_doge_v2.domain.user_role_information.role.Role;
+import ee.valiit.back_doge_v2.domain.user_role_information.role.RoleDto;
+import ee.valiit.back_doge_v2.domain.user_role_information.role.RoleMapper;
 import ee.valiit.back_doge_v2.domain.user_role_information.role.RoleRepository;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.User;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.UserMapper;
@@ -12,6 +14,7 @@ import ee.valiit.back_doge_v2.login.LoginResponse;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class RegistrationService {
@@ -26,10 +29,20 @@ public class RegistrationService {
     private RoleRepository roleRepository;
 
     @Resource
+    private RoleMapper roleMapper;
+
+    @Resource
     private ContactMapper contactMapper;
 
     @Resource
     private ContactRepository contactRepository;
+
+    public List<RoleDto> getAllRoles() {
+        List<Role> all = roleRepository.findAll();
+        List<RoleDto> roleDtos = roleMapper.roleToRoleDto(all);
+        return roleDtos;
+    }
+
     public LoginResponse addNewUser(NewUserRequest request)  {
         // TODO: valideeri, kas on olemas sama usernmae
         Contact contact = contactMapper.newUserRequestToContact(request);

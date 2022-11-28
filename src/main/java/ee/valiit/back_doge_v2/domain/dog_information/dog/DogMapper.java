@@ -6,9 +6,9 @@ import org.mapstruct.*;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface DogMapper {
 
-    @Mapping(source = "name", target = "name")
-    @Mapping(source = "age", target = "age")
-    @Mapping(source = "additionalInformation", target = "additionalInformation")
+    @Mapping(source = "dogName", target = "name")
+    @Mapping(source = "dogAge", target = "age")
+    @Mapping(source = "dogAdditionalInformation", target = "additionalInformation")
     Dog dogRequestToDog(DogRequest request);
 
 

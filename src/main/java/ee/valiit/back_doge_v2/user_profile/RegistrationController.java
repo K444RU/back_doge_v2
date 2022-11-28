@@ -1,13 +1,15 @@
 package ee.valiit.back_doge_v2.user_profile;
 
+import ee.valiit.back_doge_v2.domain.dog_information.breeds.BreedDto;
+import ee.valiit.back_doge_v2.domain.dog_profile.DogService;
+import ee.valiit.back_doge_v2.domain.user_role_information.role.Role;
+import ee.valiit.back_doge_v2.domain.user_role_information.role.RoleDto;
 import ee.valiit.back_doge_v2.login.LoginResponse;
 import io.swagger.v3.oas.annotations.Operation;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 @RequestMapping("/register")
@@ -15,6 +17,14 @@ public class RegistrationController {
 
     @Resource
     private RegistrationService registrationService;
+
+
+    @GetMapping("/role")
+    @Operation(summary = "Väljastab kõik rollid")
+    public List<RoleDto> getAllRoles() {
+       List <RoleDto> roles = registrationService.getAllRoles();
+       return roles;
+    }
 
 
     @PostMapping()
