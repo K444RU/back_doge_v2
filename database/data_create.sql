@@ -3,9 +3,9 @@ VALUES (DEFAULT, 'walker');
 INSERT INTO public.role (id, type)
 VALUES (DEFAULT, 'owner');
 
-INSERT INTO public.contact (id, e_mail, city, firstname, lastname, additional_information, photo_data)
+INSERT INTO public.contact (id, e_mail, city, firstname, lastname, addition_information, photo_data)
 VALUES (DEFAULT, 'olegtrofimov@gmail.com', 'Tartu', 'Oleg', 'Trofimov', null, null);
-INSERT INTO public.contact (id, e_mail, city, firstname, lastname, additional_information, photo_data)
+INSERT INTO public.contact (id, e_mail, city, firstname, lastname, addition_information, photo_data)
 VALUES (DEFAULT, 'vladislavjagu@gmail.com', 'Tartu', 'Vlad', 'Jagur', null, null);
 
 INSERT INTO public."user" (id, role_id, contact_id, username, password)

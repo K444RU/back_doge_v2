@@ -11,7 +11,7 @@ public class NewUserRequest {
     private String city;
     private String username;
     private String password;
-    private String role;
+    private Integer roleId;
     @Nullable
     private String additionalInformation;
 

@@ -5,7 +5,6 @@ import ee.valiit.back_doge_v2.domain.dog_information.breeds.BreedDto;
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.BreedMapper;
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.BreedRepository;
 import ee.valiit.back_doge_v2.domain.dog_information.dog.Dog;
-import ee.valiit.back_doge_v2.domain.dog_information.dog.DogDto;
 import ee.valiit.back_doge_v2.domain.dog_information.dog.DogMapper;
 import ee.valiit.back_doge_v2.domain.dog_information.dog.DogRepository;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.User;
@@ -58,17 +57,16 @@ public class DogService {
     //Väljastab kõike suurusi
 
 
-    public void addNewDog(NewDogRequest request) {
-        Optional<User> optionalUser = userRepository.findById(request.getOwnerUserId());
-        if (optionalUser.isEmpty()) {
-            System.out.println("User not found");
-        }
+    public void addNewDog(DogRequest request) {
 
-        User newDogUser = optionalUser.get();
-        DogDto dogDto = new DogDto(newDogUser.getId(), request.getDogName(), request.getDogAge(), request.getDogAdditionalInformation());
-        Dog dog = dogMapper.dogDtoToDog(dogDto);
-        dog.setOwnerUser(newDogUser);
+        User user = getValidUser(request.getOwnerUserId());
+
+        Dog dog = dogMapper.dogRequestToDog(request);
+        dog.setOwnerUser(user);
+
+        dog.setOwnerUser(user);
         dogRepository.save(dog);
+
 
 //        Optional<User> optionalUser = userRepository.findById(request.getOwnerUserId());
 //        if (optionalUser.isEmpty()) {
@@ -80,10 +78,16 @@ public class DogService {
 //        dog.setOwnerUser(userNewDog);
 //        dogRepository.save(dog);
 
+    }
+//    @org.jetbrains.annotations.NotNull
+    private User getValidUser(Integer ownerUserId) {
+        Optional<User> optionalUser = userRepository.findById(ownerUserId);
+        if (optionalUser.isEmpty()) {
+            System.out.println("User not found");
+        }
 
-
-
-
+        User user = optionalUser.get();
+        return user;
     }
 
 }

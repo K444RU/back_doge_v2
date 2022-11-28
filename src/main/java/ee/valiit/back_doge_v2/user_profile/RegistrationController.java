@@ -1,5 +1,6 @@
 package ee.valiit.back_doge_v2.user_profile;
 
+import ee.valiit.back_doge_v2.login.LoginResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,10 +19,8 @@ public class RegistrationController {
 
     @PostMapping()
     @Operation(summary = "Uue kasutaja registreerimine")
-    public void addNewUser(@RequestBody NewUserRequest request) {
-        System.out.println();
-        registrationService.addNewUser(request);
-
+    public LoginResponse addNewUser(@RequestBody NewUserRequest request) {
+        return registrationService.addNewUser(request);
     }
 
 

@@ -4,16 +4,14 @@ import ee.valiit.back_doge_v2.domain.user_role_information.contact.Contact;
 import ee.valiit.back_doge_v2.domain.user_role_information.contact.ContactMapper;
 import ee.valiit.back_doge_v2.domain.user_role_information.contact.ContactRepository;
 import ee.valiit.back_doge_v2.domain.user_role_information.role.Role;
-import ee.valiit.back_doge_v2.domain.user_role_information.role.RoleMapper;
 import ee.valiit.back_doge_v2.domain.user_role_information.role.RoleRepository;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.User;
-import ee.valiit.back_doge_v2.domain.user_role_information.user.UserDto;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.UserMapper;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.UserRepository;
+import ee.valiit.back_doge_v2.login.LoginResponse;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Optional;
 
 @Service
 public class RegistrationService {
@@ -32,26 +30,21 @@ public class RegistrationService {
 
     @Resource
     private ContactRepository contactRepository;
-    public void addNewUser(NewUserRequest request)  {
-        Contact newUserContact = contactMapper.newUserRequestToContact(request);
-        contactRepository.save(newUserContact);
-        Optional<Role> optionalRole = roleRepository.findByType(request.getRole());
-        if (optionalRole.isEmpty()) {
-            System.out.println("Role not found");
-        }
-
-        Role newUserRole = optionalRole.get();
-        UserDto userDto = new UserDto(request.getUsername(), request.getPassword(), newUserRole.getId(), newUserContact.getId());
-        User user = userMapper.userDtoToUser(userDto);
-        user.setContact(newUserContact);
-        user.setRole(newUserRole);
+    public LoginResponse addNewUser(NewUserRequest request)  {
+        // TODO: valideeri, kas on olemas sama usernmae
+        Contact contact = contactMapper.newUserRequestToContact(request);
+        contactRepository.save(contact);
+        Role role = roleRepository.findById(request.getRoleId()).get();
+        User user = userMapper.newUserRequestToUser(request);
+        user.setContact(contact);
+        user.setRole(role);
         userRepository.save(user);
 
-
-
-
-
-
+        LoginResponse loginResponse = new LoginResponse();
+        loginResponse.setUserId(user.getId());
+        loginResponse.setRoleId(role.getId());
+        loginResponse.setRoleType(role.getType());
+        return loginResponse;
 
 
     }

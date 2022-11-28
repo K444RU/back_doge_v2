@@ -23,6 +23,11 @@ public class Dog {
     @JoinColumn(name = "owner_user_id", nullable = false)
     private User ownerUser;
 
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "size_id", nullable = false)
+    private ee.valiit.back_doge_v2.domain.walker_information.size.Size size;
+
     @Size(max = 30)
     @NotNull
     @Column(name = "name", nullable = false, length = 30)
@@ -35,5 +40,6 @@ public class Dog {
     @Size(max = 300)
     @Column(name = "additional_information", length = 300)
     private String additionalInformation;
+
 
 }

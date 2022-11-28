@@ -32,7 +32,7 @@ public class DogController {
 
     @PostMapping("/registration")
     @Operation(summary = "Uue koera registreerimine")
-    public void addNewDog(@RequestBody NewDogRequest request) {
+    public void addNewDog(@RequestBody DogRequest request) {
         System.out.println();
         dogService.addNewDog(request);
 
