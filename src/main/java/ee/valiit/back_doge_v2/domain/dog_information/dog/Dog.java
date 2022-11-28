@@ -1,12 +1,12 @@
 package ee.valiit.back_doge_v2.domain.dog_information.dog;
 
-import ee.valiit.back_doge_v2.domain.user_role_information.user.User;
+import ee.valiit.back_doge_v2.domain.dog_information.breeds.Breed;
+import ee.valiit.back_doge_v2.domain.dog_information.size.Size;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Getter
 @Setter
@@ -25,21 +25,28 @@ public class Dog {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "size_id", nullable = false)
-    private ee.valiit.back_doge_v2.domain.walker_information.size.Size size;
+    @JoinColumn(name = "breed_id", nullable = false)
+    private Breed breed;
 
-    @Size(max = 30)
     @NotNull
-    @Column(name = "name", nullable = false, length = 30)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "size_id", nullable = false)
+    private Size size;
+
+    @javax.validation.constraints.Size(max = 50)
+    @NotNull
+    @Column(name = "name", nullable = false, length = 50)
     private String name;
 
     @NotNull
     @Column(name = "age", nullable = false)
     private Integer age;
 
-    @Size(max = 300)
+    @javax.validation.constraints.Size(max = 300)
     @Column(name = "additional_information", length = 300)
     private String additionalInformation;
 
+    @Column(name = "photo_data")
+    private byte[] photoData;
 
 }

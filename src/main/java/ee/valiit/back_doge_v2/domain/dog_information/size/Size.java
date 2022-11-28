@@ -1,25 +1,28 @@
-package ee.valiit.back_doge_v2.domain.user_role_information.role;
+package ee.valiit.back_doge_v2.domain.dog_information.size;
 
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "role")
-public class Role {
+@Table(name = "size")
+public class Size {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Size(max = 30)
+    @javax.validation.constraints.Size(max = 30)
     @NotNull
     @Column(name = "type", nullable = false, length = 30)
     private String type;
+
+    @NotNull
+    @Column(name = "price", nullable = false)
+    private Integer price;
 
 }

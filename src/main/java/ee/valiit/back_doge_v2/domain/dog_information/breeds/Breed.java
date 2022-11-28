@@ -17,9 +17,9 @@ public class Breed {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Size(max = 20)
+    @Size(max = 50)
     @NotNull
-    @Column(name = "name", nullable = false, length = 20)
+    @Column(name = "name", nullable = false, length = 50)
     private String name;
 
 }

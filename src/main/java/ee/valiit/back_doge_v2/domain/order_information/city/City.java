@@ -1,4 +1,4 @@
-package ee.valiit.back_doge_v2.domain.user_role_information.role;
+package ee.valiit.back_doge_v2.domain.order_information.city;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,16 +10,16 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 @Entity
-@Table(name = "role")
-public class Role {
+@Table(name = "city")
+public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Size(max = 30)
+    @Size(max = 255)
     @NotNull
-    @Column(name = "type", nullable = false, length = 30)
-    private String type;
+    @Column(name = "name", nullable = false)
+    private String name;
 
 }

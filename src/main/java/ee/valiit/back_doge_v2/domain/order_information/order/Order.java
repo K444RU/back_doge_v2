@@ -1,11 +1,11 @@
 package ee.valiit.back_doge_v2.domain.order_information.order;
 
-import ee.valiit.back_doge_v2.domain.walker_information.walking.Walking;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -36,9 +36,10 @@ public class Order {
     @Column(name = "time_to", nullable = false)
     private LocalTime timeTo;
 
+    @Size(max = 255)
     @NotNull
     @Column(name = "address", nullable = false)
-    private Integer address;
+    private String address;
 
     @NotNull
     @Column(name = "total_price", nullable = false)

@@ -29,14 +29,14 @@ public class User {
     @JoinColumn(name = "contact_id", nullable = false)
     private Contact contact;
 
-    @Size(max = 20)
+    @Size(max = 50)
     @NotNull
-    @Column(name = "username", nullable = false, length = 20)
+    @Column(name = "username", nullable = false, length = 50)
     private String username;
 
-    @Size(max = 20)
+    @Size(max = 50)
     @NotNull
-    @Column(name = "password", nullable = false, length = 20)
+    @Column(name = "password", nullable = false, length = 50)
     private String password;
 
 }

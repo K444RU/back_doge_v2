@@ -1,6 +1,6 @@
 package ee.valiit.back_doge_v2.domain.user_role_information.user;
 
-import ee.valiit.back_doge_v2.domain.dog_profile.DogRequest;
+import ee.valiit.back_doge_v2.dog_profile.DogRequest;
 import ee.valiit.back_doge_v2.login.LoginResponse;
 import ee.valiit.back_doge_v2.user_profile.NewUserRequest;
 import org.mapstruct.*;

@@ -1,5 +1,7 @@
 package ee.valiit.back_doge_v2.domain.user_role_information.user;
 
+import ee.valiit.back_doge_v2.domain.user_role_information.contact.ContactDto;
+import ee.valiit.back_doge_v2.domain.user_role_information.role.RoleDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,16 +17,15 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDto implements Serializable {
-    @Size(max = 20)
+    private Integer id;
+    @NotNull
+    private RoleDto roleId;
+    @NotNull
+    private ContactDto contactId;
+    @Size(max = 50)
     @NotNull
     private String username;
-    @Size(max = 20)
+    @Size(max = 50)
     @NotNull
     private String password;
-    @Size(max = 20)
-    @NotNull
-    private Integer roleId;
-    @Size(max = 20)
-    @NotNull
-    private Integer contactId;
 }

@@ -1,9 +1,11 @@
 package ee.valiit.back_doge_v2.domain.order_information.order;
 
-import ee.valiit.back_doge_v2.domain.walker_information.walking.WalkingDto;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -12,18 +14,21 @@ import java.time.LocalTime;
  * A DTO for the {@link Order} entity
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class OrderDto implements Serializable {
-    private final Integer id;
+    private Integer orderId;
     @NotNull
-    private final WalkingDto walking;
+    private WalkingDto walkingId;
     @NotNull
-    private final LocalDate walkingDate;
+    private LocalDate walkingDate;
     @NotNull
-    private final LocalTime timeFrom;
+    private LocalTime timeFrom;
     @NotNull
-    private final LocalTime timeTo;
+    private LocalTime timeTo;
+    @Size(max = 255)
     @NotNull
-    private final Integer address;
+    private String address;
     @NotNull
-    private final Integer totalPrice;
+    private Integer totalPrice;
 }

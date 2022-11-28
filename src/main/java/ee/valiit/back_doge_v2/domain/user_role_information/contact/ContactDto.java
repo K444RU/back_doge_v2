@@ -15,7 +15,13 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ContactDto implements Serializable {
-    private Integer id;
+    private Integer contactId;
+    @NotNull
+    private String firstname;
+    @Size(max = 30)
+    @NotNull
+    private String lastname;
+    @Size(max = 200)
     @Size(max = 30)
     @NotNull
     private String email;
@@ -23,12 +29,7 @@ public class ContactDto implements Serializable {
     @NotNull
     private String city;
     @Size(max = 30)
-    @NotNull
-    private String firstname;
-    @Size(max = 30)
-    @NotNull
-    private String lastname;
-    @Size(max = 200)
+
     private String additionalInformation;
     private byte[] photoData;
 }

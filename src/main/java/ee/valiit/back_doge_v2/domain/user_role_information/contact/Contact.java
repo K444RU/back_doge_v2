@@ -28,18 +28,18 @@ public class Contact {
     @Column(name = "city", nullable = false, length = 30)
     private String city;
 
-    @Size(max = 30)
+    @Size(max = 50)
     @NotNull
-    @Column(name = "firstname", nullable = false, length = 30)
+    @Column(name = "firstname", nullable = false, length = 50)
     private String firstname;
 
-    @Size(max = 30)
+    @Size(max = 50)
     @NotNull
-    @Column(name = "lastname", nullable = false, length = 30)
+    @Column(name = "lastname", nullable = false, length = 50)
     private String lastname;
 
-    @Size(max = 200)
-    @Column(name = "additional_information", length = 200)
+    @Size(max = 300)
+    @Column(name = "additional_information", length = 300)
     private String additionalInformation;
 
     @Nullable

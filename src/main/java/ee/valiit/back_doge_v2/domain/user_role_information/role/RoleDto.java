@@ -11,8 +11,8 @@ import java.io.Serializable;
  */
 @Data
 public class RoleDto implements Serializable {
-    private final Integer id;
+    private final Integer roleId;
     @Size(max = 20)
     @NotNull
-    private final String type;
+    private final String roleType;
 }
