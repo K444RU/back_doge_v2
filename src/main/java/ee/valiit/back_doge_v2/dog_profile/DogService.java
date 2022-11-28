@@ -43,12 +43,10 @@ public class DogService {
     private DogRepository dogRepository;
 
 
-
-
     public List<BreedDto> getAllBreeds() {
-      List<Breed> allEntities = breedRepository.findAll();
-      List<BreedDto> breedAllDtos = breedMapper.breedToBreedDto(allEntities);
-      return breedAllDtos;
+        List<Breed> allEntities = breedRepository.findAll();
+        List<BreedDto> breedAllDtos = breedMapper.breedToBreedDto(allEntities);
+        return breedAllDtos;
     }
     //Väljastab kõike tõuge
 
@@ -62,13 +60,11 @@ public class DogService {
     public void addNewDog(DogRequest request) {
 
         User user = getValidUser(request.getOwnerUserId());
+        Breed validBreed = getValidBreed(request.getDogBreedId());
         Size validSize = getValidSize(request.getDogSizeId());
-
         Dog dog = dogMapper.dogRequestToDog(request);
-
         dog.setOwnerUser(user);
-
-//        dog.setOwnerUser(user);
+        dog.setBreed(validBreed);
         dog.setSize(validSize);
         dogRepository.save(dog);
 
@@ -85,26 +81,27 @@ public class DogService {
 
     }
 
+
+    private User getValidUser(Integer ownerUserId) {
+        Optional<User> optionalUser = userRepository.findById(ownerUserId);
+        User user = optionalUser.get();
+        return user;
+    }
+
+    private Breed getValidBreed(Integer dogBreedId) {
+        Optional<Breed> optionalBreed = breedRepository.findById(dogBreedId);
+        Breed breed = optionalBreed.get();
+        return breed;
+    }
+
     private Size getValidSize(Integer dogSizeId) {
         Optional<Size> optionalSize = sizeRepository.findById(dogSizeId);
-        if (optionalSize.isEmpty()) {
-            System.out.println("Size not found");
-        }
-
         Size size = optionalSize.get();
         return size;
     }
 
     //    @org.jetbrains.annotations.NotNull
-    private User getValidUser(Integer ownerUserId) {
-        Optional<User> optionalUser = userRepository.findById(ownerUserId);
-        if (optionalUser.isEmpty()) {
-            System.out.println("User not found");
-        }
 
-        User user = optionalUser.get();
-        return user;
-    }
 
 }
 

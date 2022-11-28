@@ -1,6 +1,6 @@
 package ee.valiit.back_doge_v2.domain.user_role_information.contact;
 
-import ee.valiit.back_doge_v2.user_profile.NewUserRequest;
+import ee.valiit.back_doge_v2.login.register.NewUserRequest;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")

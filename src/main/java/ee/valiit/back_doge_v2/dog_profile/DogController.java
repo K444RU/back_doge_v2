@@ -18,7 +18,7 @@ public class DogController {
 
     @GetMapping("/bread")
     @Operation(summary = "väljastab kõike koerte tõuge")
-    public List <BreedDto> getAllBreeds() {
+    public List<BreedDto> getAllBreeds() {
         List<BreedDto> breeds = dogService.getAllBreeds();
         return breeds;
     }
@@ -26,7 +26,7 @@ public class DogController {
     @GetMapping("/size")
     @Operation(summary = "Väljastab kõikide koerte suurused")
     public List<SizeDto> getAllSizes() {
-        List<SizeDto> sizes =dogService.getAllSizes();
+        List<SizeDto> sizes = dogService.getAllSizes();
         return sizes;
     }
 
@@ -36,10 +36,6 @@ public class DogController {
         System.out.println();
         dogService.addNewDog(request);
     }
-
-
-
-
 
 
 }

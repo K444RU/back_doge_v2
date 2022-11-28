@@ -15,10 +15,9 @@ public interface DogMapper {
     @Mapping(source = "dogAdditionalInformation", target = "additionalInformation")
     Dog dogRequestToDog(DogRequest request);
 
-    @InheritInverseConfiguration(name = "dogDtoToDog")
-    DogDto dogToDogDto(Dog dog);
+//    @Mapping(source = "dogName", target = "name")
+//    @Mapping(source = "dogAge", target = "age")
+//    @Mapping(source = "dogAdditionalInformation", target = "additionalInformation")
+//    Dog dogRequestToDog(DogRequest request);
 
-    @InheritConfiguration(name = "dogDtoToDog")
-    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    Dog updateDogFromDogDto(DogDto dogDto, @MappingTarget Dog dog);
 }

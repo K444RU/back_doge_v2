@@ -7,14 +7,10 @@ import org.springframework.lang.Nullable;
 public class DogRequest {
     private Integer ownerUserId;
     private Integer dogSizeId;
-//    private String breed;
-//    @Nullable
-//    private String secondBreed;
+    private Integer dogBreedId;
     private String dogName;
     private Integer dogAge;
-
     @Nullable
     private String dogAdditionalInformation;
-//    private byte dogPhoto;
 
 }

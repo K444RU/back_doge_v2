@@ -1,6 +1,7 @@
 package ee.valiit.back_doge_v2.domain.order_information.walking;
 
 import ee.valiit.back_doge_v2.domain.order_information.city.CityDto;
+import ee.valiit.back_doge_v2.domain.user_role_information.user.UserDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

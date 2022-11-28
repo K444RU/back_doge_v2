@@ -1,6 +1,6 @@
 package ee.valiit.back_doge_v2.domain.user_role_information.role;
 
-import ee.valiit.back_doge_v2.user_profile.NewUserRequest;
+import ee.valiit.back_doge_v2.login.register.NewUserRequest;
 import org.mapstruct.*;
 
 import java.util.List;
@@ -11,6 +11,10 @@ public interface RoleMapper {
     @Mapping(source = "roleId", target = "id")
     Role saveNewUserRole(NewUserRequest request);
 
+    @Mapping(source = "id", target = "roleId")
+    @Mapping(source = "type", target = "roleType")
+    RoleDto toDto(Role role);
+    List <RoleDto> toDtos(List<Role> all);
 
-    List <RoleDto>  roleToRoleDto(List<Role> all);
+
 }

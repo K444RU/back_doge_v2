@@ -2,6 +2,7 @@ package ee.valiit.back_doge_v2.domain.dog_information.dog;
 
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.BreedDto;
 import ee.valiit.back_doge_v2.domain.dog_information.size.SizeDto;
+import ee.valiit.back_doge_v2.domain.user_role_information.user.UserDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,5 +32,4 @@ public class DogDto implements Serializable {
     private Integer dogAge;
     @Size(max = 300)
     private String dogAdditionalInformation;
-    private byte[] dogPhotoData;
 }

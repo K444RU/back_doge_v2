@@ -1,6 +1,7 @@
 package ee.valiit.back_doge_v2.domain.order_information.dog_order;
 
 import ee.valiit.back_doge_v2.domain.dog_information.dog.Dog;
+import ee.valiit.back_doge_v2.domain.order_information.order.Order;
 import lombok.Getter;
 import lombok.Setter;
 

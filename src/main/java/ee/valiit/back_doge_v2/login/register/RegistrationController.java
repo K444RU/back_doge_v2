@@ -1,4 +1,4 @@
-package ee.valiit.back_doge_v2.user_profile;
+package ee.valiit.back_doge_v2.login.register;
 
 import ee.valiit.back_doge_v2.domain.user_role_information.role.RoleDto;
 import ee.valiit.back_doge_v2.login.LoginResponse;
@@ -19,8 +19,8 @@ public class RegistrationController {
     @GetMapping("/role")
     @Operation(summary = "Väljastab kõik rollid")
     public List<RoleDto> getAllRoles() {
-       List <RoleDto> roles = registrationService.getAllRoles();
-       return roles;
+        List<RoleDto> roles = registrationService.getAllRoles();
+        return roles;
     }
 
 
@@ -29,8 +29,6 @@ public class RegistrationController {
     public LoginResponse addNewUser(@RequestBody NewUserRequest request) {
         return registrationService.addNewUser(request);
     }
-
-
 
 
 }

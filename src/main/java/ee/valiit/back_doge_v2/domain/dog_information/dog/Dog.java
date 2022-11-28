@@ -2,6 +2,7 @@ package ee.valiit.back_doge_v2.domain.dog_information.dog;
 
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.Breed;
 import ee.valiit.back_doge_v2.domain.dog_information.size.Size;
+import ee.valiit.back_doge_v2.domain.user_role_information.user.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -45,8 +46,5 @@ public class Dog {
     @javax.validation.constraints.Size(max = 300)
     @Column(name = "additional_information", length = 300)
     private String additionalInformation;
-
-    @Column(name = "photo_data")
-    private byte[] photoData;
 
 }

@@ -1,4 +1,4 @@
-package ee.valiit.back_doge_v2.user_profile;
+package ee.valiit.back_doge_v2.login.register;
 
 import ee.valiit.back_doge_v2.domain.user_role_information.contact.Contact;
 import ee.valiit.back_doge_v2.domain.user_role_information.contact.ContactMapper;
@@ -39,11 +39,11 @@ public class RegistrationService {
 
     public List<RoleDto> getAllRoles() {
         List<Role> all = roleRepository.findAll();
-        List<RoleDto> roleDtos = roleMapper.roleToRoleDto(all);
+        List<RoleDto> roleDtos = roleMapper.toDtos(all);
         return roleDtos;
     }
 
-    public LoginResponse addNewUser(NewUserRequest request)  {
+    public LoginResponse addNewUser(NewUserRequest request) {
         // TODO: valideeri, kas on olemas sama usernmae
         Contact contact = contactMapper.newUserRequestToContact(request);
         contactRepository.save(contact);
