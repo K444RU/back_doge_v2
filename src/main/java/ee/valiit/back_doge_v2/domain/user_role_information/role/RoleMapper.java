@@ -1,6 +1,6 @@
 package ee.valiit.back_doge_v2.domain.user_role_information.role;
 
-import ee.valiit.back_doge_v2.login.register.NewUserRequest;
+import ee.valiit.back_doge_v2.business.register.NewUserRequest;
 import org.mapstruct.*;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package ee.valiit.back_doge_v2.login;
+package ee.valiit.back_doge_v2.business.login;
 
 import ee.valiit.back_doge_v2.domain.user_role_information.user.User;
 import lombok.AllArgsConstructor;

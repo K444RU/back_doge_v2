@@ -13,9 +13,6 @@ VALUES (DEFAULT, 1, 1, 'oleg', '123');
 INSERT INTO public."user" (id, role_id, contact_id, username, password)
 VALUES (DEFAULT, 2, 2, 'vlad', '123');
 
-INSERT INTO public.dog (id, owner_user_id, breed_id, size_id, name, age, additional_information) VALUES (2, 2, 4, 3, 'Charlie', 5, 'Big Beagle');
-INSERT INTO public.dog (id, owner_user_id, breed_id, size_id, name, age, additional_information) VALUES (3, 1, 38, 1, 'Valera', 28, 'Big Papa Valera');
-
 INSERT INTO public.city (id, name)
 VALUES (DEFAULT, 'Tallinn');
 INSERT INTO public.city (id, name)
@@ -146,3 +143,6 @@ INSERT INTO public.breed (id, name)
 VALUES (DEFAULT, 'West Highland White');
 INSERT INTO public.breed (id, name)
 VALUES (DEFAULT, 'Yorkshire Terrier');
+
+INSERT INTO public.dog (id, owner_user_id, breed_id, size_id, name, age, additional_information) VALUES (2, 2, 4, 3, 'Charlie', 5, 'Big Beagle');
+INSERT INTO public.dog (id, owner_user_id, breed_id, size_id, name, age, additional_information) VALUES (3, 1, 38, 1, 'Valera', 28, 'Big Papa Valera');

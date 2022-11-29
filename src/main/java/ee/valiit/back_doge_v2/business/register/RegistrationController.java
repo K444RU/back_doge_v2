@@ -1,7 +1,7 @@
-package ee.valiit.back_doge_v2.login.register;
+package ee.valiit.back_doge_v2.business.register;
 
 import ee.valiit.back_doge_v2.domain.user_role_information.role.RoleDto;
-import ee.valiit.back_doge_v2.login.LoginResponse;
+import ee.valiit.back_doge_v2.business.login.LoginResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,4 +1,4 @@
-package ee.valiit.back_doge_v2.dog_profile;
+package ee.valiit.back_doge_v2.business.dog_profile;
 
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.BreedDto;
 import ee.valiit.back_doge_v2.domain.dog_information.size.SizeDto;
@@ -10,31 +10,31 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/dog")
-public class DogController {
+public class DogRegistrationController {
 
     @Resource
-    private DogService dogService;
+    private DogRegistrationService dogRegistrationService;
 
 
     @GetMapping("/bread")
     @Operation(summary = "väljastab kõike koerte tõuge")
     public List<BreedDto> getAllBreeds() {
-        List<BreedDto> breeds = dogService.getAllBreeds();
+        List<BreedDto> breeds = dogRegistrationService.getAllBreeds();
         return breeds;
     }
 
     @GetMapping("/size")
     @Operation(summary = "Väljastab kõikide koerte suurused")
     public List<SizeDto> getAllSizes() {
-        List<SizeDto> sizes = dogService.getAllSizes();
+        List<SizeDto> sizes = dogRegistrationService.getAllSizes();
         return sizes;
     }
 
     @PostMapping("/registration")
     @Operation(summary = "Uue koera registreerimine")
-    public void addNewDog(@RequestBody DogRequest request) {
+    public void addNewDog(@RequestBody DogRegistrationRequest request) {
         System.out.println();
-        dogService.addNewDog(request);
+        dogRegistrationService.addNewDog(request);
     }
 
 

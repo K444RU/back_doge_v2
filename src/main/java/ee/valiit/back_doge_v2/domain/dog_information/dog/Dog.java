@@ -47,4 +47,7 @@ public class Dog {
     @Column(name = "additional_information", length = 300)
     private String additionalInformation;
 
+    @Column(name = "dog_photo")
+    private byte[] dogPhoto;
+
 }

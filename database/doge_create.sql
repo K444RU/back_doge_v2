@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-11-28 12:54:55.02
+-- Last modification date: 2022-11-28 20:23:02.178
 
 -- tables
 -- Table: breed
@@ -37,6 +37,7 @@ CREATE TABLE dog (
                      name varchar(50)  NOT NULL,
                      age int  NOT NULL,
                      additional_information varchar(300)  NULL,
+                     dog_photo bytea  NULL,
                      CONSTRAINT dog_pk PRIMARY KEY (id)
 );
 

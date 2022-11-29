@@ -1,5 +1,6 @@
-package ee.valiit.back_doge_v2.login;
+package ee.valiit.back_doge_v2.business.login;
 
+import ee.valiit.back_doge_v2.domain.user_role_information.role.Role;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.User;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.UserMapper;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.UserService;
@@ -20,6 +21,14 @@ public class LoginService {
     public LoginResponse login(String username, String password) {
         User user = userService.getValidUser(username, password);
         LoginResponse loginResponse = userMapper.toLoginResponse(user);
+        return loginResponse;
+    }
+
+    public LoginResponse fromRegisterToLogin(Role role, User user) {
+        LoginResponse loginResponse = new LoginResponse();
+        loginResponse.setUserId(user.getId());
+        loginResponse.setRoleId(role.getId());
+        loginResponse.setRoleType(role.getType());
         return loginResponse;
     }
 }

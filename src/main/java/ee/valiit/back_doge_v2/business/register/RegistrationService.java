@@ -1,5 +1,6 @@
-package ee.valiit.back_doge_v2.login.register;
+package ee.valiit.back_doge_v2.business.register;
 
+import ee.valiit.back_doge_v2.business.login.LoginService;
 import ee.valiit.back_doge_v2.domain.user_role_information.contact.Contact;
 import ee.valiit.back_doge_v2.domain.user_role_information.contact.ContactMapper;
 import ee.valiit.back_doge_v2.domain.user_role_information.contact.ContactRepository;
@@ -10,7 +11,7 @@ import ee.valiit.back_doge_v2.domain.user_role_information.role.RoleRepository;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.User;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.UserMapper;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.UserRepository;
-import ee.valiit.back_doge_v2.login.LoginResponse;
+import ee.valiit.back_doge_v2.business.login.LoginResponse;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -21,21 +22,18 @@ public class RegistrationService {
 
     @Resource
     private UserMapper userMapper;
-
     @Resource
     private UserRepository userRepository;
-
-    @Resource
-    private RoleRepository roleRepository;
-
     @Resource
     private RoleMapper roleMapper;
-
+    @Resource
+    private RoleRepository roleRepository;
     @Resource
     private ContactMapper contactMapper;
-
     @Resource
     private ContactRepository contactRepository;
+    @Resource
+    private LoginService loginService;
 
     public List<RoleDto> getAllRoles() {
         List<Role> all = roleRepository.findAll();
@@ -52,13 +50,9 @@ public class RegistrationService {
         user.setContact(contact);
         user.setRole(role);
         userRepository.save(user);
-
-        LoginResponse loginResponse = new LoginResponse();
-        loginResponse.setUserId(user.getId());
-        loginResponse.setRoleId(role.getId());
-        loginResponse.setRoleType(role.getType());
-        return loginResponse;
+        return loginService.fromRegisterToLogin(role, user);
 
 
     }
+
 }
