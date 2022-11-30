@@ -19,7 +19,7 @@ public class LoginService {
 
 
     public LoginResponse login(String username, String password) {
-        User user = userService.getValidUser(username, password);
+        User user = userService.getValidUserByNameAndPassword(username, password);
         LoginResponse loginResponse = userMapper.toLoginResponse(user);
         return loginResponse;
     }

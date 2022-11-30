@@ -9,9 +9,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
-/**
- * A DTO for the {@link User} entity
- */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
