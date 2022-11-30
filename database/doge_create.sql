@@ -37,7 +37,7 @@ CREATE TABLE dog (
                      name varchar(50)  NOT NULL,
                      age int  NOT NULL,
                      additional_information varchar(300)  NULL,
-                     photo_data bytea  NULL,
+                     dog_photo bytea  NULL,
                      status char(1)  NOT NULL,
                      CONSTRAINT dog_pk PRIMARY KEY (id)
 );

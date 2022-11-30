@@ -53,7 +53,7 @@ public class DogRegistrationService {
     public void addNewDog(DogRegistrationRequest request) {
         User validUser = getValidUser(request.getUserId());
         Breed validBreed = getValidBreed(request.getBreedId());
-        Size validSize = getValidSize(request.getDogSizeId());
+        Size validSize = getValidSize(request.getSizeId());
         Dog dog = dogMapper.dogRequestToDog(request);
         dog.setOwnerUser(validUser);
         dog.setBreed(validBreed);
