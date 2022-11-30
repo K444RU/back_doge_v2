@@ -50,4 +50,9 @@ public class Dog {
     @Column(name = "dog_photo")
     private byte[] dogPhoto;
 
+    @javax.validation.constraints.Size(max = 1)
+    @NotNull
+    @Column(name = "status", nullable = false, length = 1)
+    private String status;
+
 }

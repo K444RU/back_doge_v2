@@ -18,7 +18,5 @@ import java.io.Serializable;
 public class LoginResponse implements Serializable {
     private Integer userId;
     private Integer roleId;
-    @Size(max = 20)
-    @NotNull
-    private String roleType;
+
 }

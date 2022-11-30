@@ -23,7 +23,7 @@ public class LoginController {
     private LoginService loginService;
 
     @GetMapping("/login")
-    @Operation(summary = "Sisselogimine")
+    @Operation(summary = "Get User by username and password (login)")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Tagastab login objekti, kus sees on olemas kasutaia 'userId' ja tema roll 'roleType'"),
             @ApiResponse(responseCode = "403", description = "Valed kasutaja rekviisid. Ebaõnnestunud sisselogimine", content = @Content(schema = @Schema(implementation = ApiError.class)))

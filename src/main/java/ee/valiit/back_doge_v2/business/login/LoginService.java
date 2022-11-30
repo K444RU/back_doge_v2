@@ -3,7 +3,7 @@ package ee.valiit.back_doge_v2.business.login;
 import ee.valiit.back_doge_v2.domain.user_role_information.role.Role;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.User;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.UserMapper;
-import ee.valiit.back_doge_v2.domain.user_role_information.user.UserService;
+import ee.valiit.back_doge_v2.business.user.services.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -28,7 +28,6 @@ public class LoginService {
         LoginResponse loginResponse = new LoginResponse();
         loginResponse.setUserId(user.getId());
         loginResponse.setRoleId(role.getId());
-        loginResponse.setRoleType(role.getType());
         return loginResponse;
     }
 }

@@ -1,6 +1,7 @@
-package ee.valiit.back_doge_v2.business.register;
+package ee.valiit.back_doge_v2.business.register.services;
 
 import ee.valiit.back_doge_v2.business.login.LoginService;
+import ee.valiit.back_doge_v2.business.register.dtos.NewUserRequest;
 import ee.valiit.back_doge_v2.domain.user_role_information.contact.Contact;
 import ee.valiit.back_doge_v2.domain.user_role_information.contact.ContactMapper;
 import ee.valiit.back_doge_v2.domain.user_role_information.contact.ContactRepository;
@@ -18,7 +19,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Service
-public class RegistrationService {
+public class UserRegistrationService {
 
     @Resource
     private UserMapper userMapper;
@@ -37,7 +38,7 @@ public class RegistrationService {
 
     public List<RoleDto> getAllRoles() {
         List<Role> all = roleRepository.findAll();
-        List<RoleDto> roleDtos = roleMapper.toDtos(all);
+        List<RoleDto> roleDtos = roleMapper.roleListToDtos(all);
         return roleDtos;
     }
 

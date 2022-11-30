@@ -1,5 +1,6 @@
-package ee.valiit.back_doge_v2.business.dog_profile;
+package ee.valiit.back_doge_v2.business.register.services;
 
+import ee.valiit.back_doge_v2.business.register.dtos.DogRegistrationRequest;
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.Breed;
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.BreedDto;
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.BreedMapper;
@@ -7,7 +8,6 @@ import ee.valiit.back_doge_v2.domain.dog_information.breeds.BreedRepository;
 import ee.valiit.back_doge_v2.domain.dog_information.dog.Dog;
 import ee.valiit.back_doge_v2.domain.dog_information.dog.DogMapper;
 import ee.valiit.back_doge_v2.domain.dog_information.dog.DogRepository;
-import ee.valiit.back_doge_v2.domain.dog_information.dog.DogService;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.User;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.UserRepository;
 import ee.valiit.back_doge_v2.domain.dog_information.size.Size;
@@ -17,7 +17,6 @@ import ee.valiit.back_doge_v2.domain.dog_information.size.SizeRepository;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,9 +37,6 @@ public class DogRegistrationService {
     private DogMapper dogMapper;
     @Resource
     private DogRepository dogRepository;
-
-    @Resource
-    private DogService dogService;
 
     public List<BreedDto> getAllBreeds() {
         List<Breed> allEntities = breedRepository.findAll();
@@ -64,7 +60,6 @@ public class DogRegistrationService {
         dog.setSize(validSize);
         dogRepository.save(dog);
     }
-
 
     private User getValidUser(Integer ownerUserId) {
         Optional<User> optionalUser = userRepository.findById(ownerUserId);

@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-11-28 20:23:02.178
+-- Last modification date: 2022-11-30 07:30:11.348
 
 -- tables
 -- Table: breed
@@ -37,7 +37,8 @@ CREATE TABLE dog (
                      name varchar(50)  NOT NULL,
                      age int  NOT NULL,
                      additional_information varchar(300)  NULL,
-                     dog_photo bytea  NULL,
+                     photo_data bytea  NULL,
+                     status char(1)  NOT NULL,
                      CONSTRAINT dog_pk PRIMARY KEY (id)
 );
 
@@ -58,6 +59,7 @@ CREATE TABLE "order" (
                          time_to time  NOT NULL,
                          address varchar(255)  NOT NULL,
                          total_price int  NOT NULL,
+                         status char(1)  NOT NULL,
                          CONSTRAINT order_pk PRIMARY KEY (id)
 );
 
@@ -95,6 +97,7 @@ CREATE TABLE walking (
                          date_to date  NOT NULL,
                          time_from time  NOT NULL,
                          time_to time  NOT NULL,
+                         status char(1)  NOT NULL,
                          CONSTRAINT walking_pk PRIMARY KEY (id)
 );
 

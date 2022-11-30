@@ -1,7 +1,6 @@
 package ee.valiit.back_doge_v2.domain.dog_information.dog;
 
-import ee.valiit.back_doge_v2.business.dog_profile.DogRegistrationRequest;
-import jdk.jfr.Name;
+import ee.valiit.back_doge_v2.business.register.dtos.DogRegistrationRequest;
 import org.mapstruct.*;
 
 import java.nio.charset.StandardCharsets;
@@ -17,8 +16,8 @@ public interface DogMapper {
     @Mapping(source = "dogAge", target = "age")
     @Mapping(source = "dogAdditionalInformation", target = "additionalInformation")
     @Mapping(source = "dogPhoto", target = "dogPhoto", qualifiedByName = "byteArrayToString")
+    @Mapping(constant = "A", target = "status")
     Dog dogRequestToDog(DogRegistrationRequest request);
-
 
     @Named("byteArrayToString")
     static byte[] byteArrayToString(String dogPhoto) {

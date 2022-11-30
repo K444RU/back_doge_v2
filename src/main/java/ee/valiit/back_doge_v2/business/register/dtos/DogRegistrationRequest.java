@@ -1,4 +1,4 @@
-package ee.valiit.back_doge_v2.business.dog_profile;
+package ee.valiit.back_doge_v2.business.register.dtos;
 
 import lombok.Data;
 import org.springframework.lang.Nullable;
