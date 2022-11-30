@@ -46,12 +46,6 @@ public class UserService {
     public void addUserPhoto(OwnerPictureRequest request) {
         User userBy = getUserBy(request.getUserId());
         saveUserPhoto(userBy, request.getPhotoData());
-//        private void saveUserPhoto(User userBy, String photoData) {
-//            byte[] bytes = photoData.getBytes(StandardCharsets.UTF_8);
-//            userBy.getContact().setPhotoData(bytes);
-//            userRepository.save(userBy);
-//
-//        }
     }
 
 

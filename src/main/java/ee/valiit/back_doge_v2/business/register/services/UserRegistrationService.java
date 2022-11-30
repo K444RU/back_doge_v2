@@ -13,10 +13,12 @@ import ee.valiit.back_doge_v2.domain.user_role_information.user.User;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.UserMapper;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.UserRepository;
 import ee.valiit.back_doge_v2.business.login.LoginResponse;
+import ee.valiit.back_doge_v2.errors.Validation;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserRegistrationService {
@@ -43,17 +45,20 @@ public class UserRegistrationService {
     }
 
     public LoginResponse addNewUser(NewUserRequest request) {
-        // TODO: valideeri, kas on olemas sama usernmae
         Contact contact = contactMapper.newUserRequestToContact(request);
         contactRepository.save(contact);
         Role role = roleRepository.findById(request.getRoleId()).get();
         User user = userMapper.newUserRequestToUser(request);
+        getValidUserByUsername(user);
         user.setContact(contact);
         user.setRole(role);
         userRepository.save(user);
-        return loginService.fromRegisterToLogin(role, user);
+        return loginService.fromRegisterToLogin(r3ole, user);
+    }
 
-
+    private void getValidUserByUsername(User user) {
+        Optional<User> optionalUser = userRepository.findByUsername(user.getUsername());
+        Validation.validationUsername(optionalUser);
     }
 
 }
