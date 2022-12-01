@@ -53,7 +53,7 @@ public class UserRegistrationService {
         user.setContact(contact);
         user.setRole(role);
         userRepository.save(user);
-        return loginService.fromRegisterToLogin(r3ole, user);
+        return loginService.fromRegisterToLogin(role, user);
     }
 
     private void getValidUserByUsername(User user) {

@@ -2,11 +2,10 @@ package ee.valiit.back_doge_v2.domain.order_information.walking;
 
 import ee.valiit.back_doge_v2.domain.order_information.city.CityDto;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.UserDto;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -15,20 +14,21 @@ import java.time.LocalTime;
  * A DTO for the {@link Walking} entity
  */
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class WalkingDto implements Serializable {
-    private Integer id;
+    private final Integer id;
     @NotNull
-    private UserDto walkerUserId;
+    private final UserDto walkerUser;
     @NotNull
-    private CityDto cityId;
+    private final CityDto city;
     @NotNull
-    private LocalDate dateFrom;
+    private final LocalDate dateFrom;
     @NotNull
-    private LocalDate dateTo;
+    private final LocalDate dateTo;
     @NotNull
-    private LocalTime timeFrom;
+    private final LocalTime timeFrom;
     @NotNull
-    private LocalTime timeTo;
+    private final LocalTime timeTo;
+    @Size(max = 1)
+    @NotNull
+    private final String status;
 }

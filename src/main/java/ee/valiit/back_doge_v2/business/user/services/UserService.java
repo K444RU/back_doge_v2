@@ -1,8 +1,10 @@
 package ee.valiit.back_doge_v2.business.user.services;
 
+import ee.valiit.back_doge_v2.business.user.dtos.OwnerHomePageDogInfoResponse;
 import ee.valiit.back_doge_v2.business.user.dtos.OwnerPictureRequest;
 import ee.valiit.back_doge_v2.business.user.dtos.OwnerHomepageInfoResponse;
 import ee.valiit.back_doge_v2.domain.dog_information.dog.Dog;
+import ee.valiit.back_doge_v2.domain.dog_information.dog.DogMapper;
 import ee.valiit.back_doge_v2.domain.dog_information.dog.DogRepository;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.User;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.UserMapper;
@@ -23,17 +25,18 @@ public class UserService {
     @Resource
     private UserMapper userMapper;
 
+    @Resource
+    private DogMapper dogMapper;
+
+    @Resource
+    private DogRepository dogRepository;
+
     public OwnerHomepageInfoResponse getUserInfoByUserId(Integer userId) {
         User userById = getUserById(userId);
         OwnerHomepageInfoResponse ownerHomepageInfoResponse = userMapper.userToHomepageResponse(userById);
         return ownerHomepageInfoResponse;
     }
 
-    public User getUserById(Integer userId){
-        Optional<User> optionalUser = userRepository.findById(userId);
-        User user = optionalUser.get();
-        return user;
-    }
 
     public User getValidUserByNameAndPassword(String username, String password) {
         Optional<User> userLogin = userRepository.findBy(username, password);
@@ -64,4 +67,21 @@ public class UserService {
     }
 
 
+    public OwnerHomePageDogInfoResponse getDogInfoByUserId(Integer userId) {
+        Dog dogByUserId = getDogByUserId(userId);
+        OwnerHomePageDogInfoResponse ownerHomePageDogInfoResponse = dogMapper.ownerHomePageDogInfoResponse(dogByUserId);
+        return ownerHomePageDogInfoResponse;
+    }
+
+    private Dog getDogByUserId(Integer userId) {
+        Optional<Dog> optionalUser = dogRepository.findByOwnerUserId(userId);
+        Dog dog = optionalUser.get();
+        return dog;
+    }
+
+    public User getUserById(Integer userId){
+        Optional<User> optionalUser = userRepository.findById(userId);
+        User user = optionalUser.get();
+        return user;
+    }
 }

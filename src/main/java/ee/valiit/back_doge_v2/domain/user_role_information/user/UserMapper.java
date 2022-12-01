@@ -2,6 +2,7 @@ package ee.valiit.back_doge_v2.domain.user_role_information.user;
 
 import ee.valiit.back_doge_v2.business.login.LoginResponse;
 import ee.valiit.back_doge_v2.business.register.dtos.NewUserRequest;
+import ee.valiit.back_doge_v2.business.user.dtos.OwnerHomePageDogInfoResponse;
 import ee.valiit.back_doge_v2.business.user.dtos.OwnerHomepageInfoResponse;
 import ee.valiit.back_doge_v2.business.user.dtos.OwnerPictureRequest;
 import jdk.jfr.Name;
@@ -22,9 +23,12 @@ public interface UserMapper {
     OwnerHomepageInfoResponse userToHomepageResponse(User byId);
 
     @Named("userPhotoByteToString")
-    static String userPhotoByteToString(byte[] pictureData) {
-        String picture = new String(pictureData);
-        return picture;
+    static String userPhotoByteToString(byte[] photoData) {
+        if (photoData == null) {
+            return null;
+        }
+            String picture = new String(photoData);
+            return picture;
     }
 
     User newUserRequestToUser(NewUserRequest request);

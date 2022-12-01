@@ -1,5 +1,6 @@
 package ee.valiit.back_doge_v2.business.user;
 
+import ee.valiit.back_doge_v2.business.user.dtos.OwnerHomePageDogInfoResponse;
 import ee.valiit.back_doge_v2.business.user.dtos.OwnerPictureRequest;
 import ee.valiit.back_doge_v2.business.user.dtos.OwnerHomepageInfoResponse;
 import ee.valiit.back_doge_v2.business.user.services.UserService;
@@ -38,4 +39,11 @@ public class UserController {
         userService.addUserPhoto(userPhoto);
     }
 
+
+    @GetMapping("/dog/info")
+    @Operation(summary = "Get dog information by userId")
+    public OwnerHomePageDogInfoResponse getDogInfoByUserId(@RequestParam Integer userId){
+        OwnerHomePageDogInfoResponse dogInfoByUserId = userService.getDogInfoByUserId(userId);
+        return dogInfoByUserId;
+    }
 }

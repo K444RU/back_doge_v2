@@ -24,12 +24,12 @@ public class Walking {
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "walker_user_id", nullable = false)
-    private User walkerUserId;
+    private User walkerUser;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "city_id", nullable = false)
-    private City cityId;
+    private City city;
 
     @NotNull
     @Column(name = "date_from", nullable = false)

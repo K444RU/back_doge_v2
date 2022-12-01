@@ -6,9 +6,10 @@ import org.springframework.lang.Nullable;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 @Data
-public class NewUserRequest {
+public class NewUserRequest implements Serializable {
     @NotNull(message = "Täida eesnimi väli.")
     @Size(min = 4, max = 20)
     private String firstname;

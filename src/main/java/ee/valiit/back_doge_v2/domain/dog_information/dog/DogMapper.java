@@ -1,6 +1,8 @@
 package ee.valiit.back_doge_v2.domain.dog_information.dog;
 
 import ee.valiit.back_doge_v2.business.register.dtos.DogRegistrationRequest;
+import ee.valiit.back_doge_v2.business.user.dtos.OwnerHomePageDogInfoResponse;
+import ee.valiit.back_doge_v2.domain.user_role_information.user.User;
 import org.mapstruct.*;
 
 import java.nio.charset.StandardCharsets;
@@ -23,17 +25,25 @@ public interface DogMapper {
     static byte[] byteArrayToString(String dogPhoto) {
         byte[] bytes = dogPhoto.getBytes(StandardCharsets.UTF_8);
         return bytes;
-
     }
-//    @Named("byteArrayToString")
-//    static String byteArrayToString(byte[] dogPicture) {
-//        if (dogPicture == null) {
-//            System.out.println("Koeral puudub pilt, palun salvestage selle");
-//        }
-//        String pictureAsString = new String(dogPicture);
-//        return pictureAsString;
-//    }
-    //Tulevikuks --> meetod muudab koera tööpi byte[]`st String´iks
+
+
+    @Mapping(source = "name", target = "dogName")
+    @Mapping(source = "age", target = "dogAge")
+    @Mapping(source = "additionalInformation", target = "dogAdditionalInformation")
+    @Mapping(source = "size.type", target = "dogSizeType")
+    @Mapping(source = "breed.name", target = "dogBreed")
+    @Mapping(source = "dogPhoto", target = "dogPhoto", qualifiedByName = "dogPhotoToString")
+    OwnerHomePageDogInfoResponse ownerHomePageDogInfoResponse(Dog userById);
+
+    @Named("dogPhotoToString")
+    static String dogPhotoToString(byte[] dogPhoto) {
+        if (dogPhoto == null) {
+            return null;
+        }
+        String pictureAsString = new String(dogPhoto);
+        return pictureAsString;
+    }
 
 
 }
