@@ -5,3 +5,4 @@ CREATE SCHEMA public
 -- taastab vajalikud andmebaasi õigused
     GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
+

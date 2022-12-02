@@ -3,6 +3,7 @@ package ee.valiit.back_doge_v2.business.dog;
 import ee.valiit.back_doge_v2.business.dog.dto.DogRegistrationRequest;
 import ee.valiit.back_doge_v2.business.dog.dto.OwnerHomePageDogInfoResponse;
 import ee.valiit.back_doge_v2.business.dog.service.*;
+import ee.valiit.back_doge_v2.business.register.service.DogRegistrationService;
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.BreedDto;
 import ee.valiit.back_doge_v2.domain.dog_information.size.SizeDto;
 import ee.valiit.back_doge_v2.infrastructure.error.ApiError;
@@ -38,16 +39,16 @@ public class DogController {
     }
 
     @GetMapping("/size")
-    @Operation(summary = "Get all gog izes")
+    @Operation(summary = "Get all gog sizes")
     public List<SizeDto> getAllSizes() {
-        List<SizeDto> sizes = dogRegistrationService.getAllSizes();
+        List<SizeDto> sizes = dogService.getAllSizes();
         return sizes;
     }
 
     @GetMapping("/bread")
     @Operation(summary = "Get all dog breeds")
     public List<BreedDto> getAllBreeds() {
-        List<BreedDto> breeds = dogRegistrationService.getAllBreeds();
+        List<BreedDto> breeds = dogService.getAllBreeds();
         return breeds;
     }
 

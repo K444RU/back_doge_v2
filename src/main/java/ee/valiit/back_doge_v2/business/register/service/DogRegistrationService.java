@@ -1,6 +1,8 @@
-package ee.valiit.back_doge_v2.business.dog.service;
+package ee.valiit.back_doge_v2.business.register.service;
 
 import ee.valiit.back_doge_v2.business.dog.dto.DogRegistrationRequest;
+import ee.valiit.back_doge_v2.business.dog.service.DogService;
+import ee.valiit.back_doge_v2.business.user.service.UserService;
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.Breed;
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.BreedDto;
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.BreedMapper;
@@ -23,62 +25,30 @@ import java.util.Optional;
 @Service
 public class DogRegistrationService {
 
-    @Resource
-    private BreedMapper breedMapper;
-    @Resource
-    private BreedRepository breedRepository;
-    @Resource
-    private SizeMapper sizeMapper;
-    @Resource
-    private SizeRepository sizeRepository;
-    @Resource
-    private UserRepository userRepository;
+
     @Resource
     private DogMapper dogMapper;
     @Resource
     private DogRepository dogRepository;
 
-    public List<BreedDto> getAllBreeds() {
-        List<Breed> allEntities = breedRepository.findAll();
-        List<BreedDto> breedAllDtos = breedMapper.breedToBreedDto(allEntities);
-        return breedAllDtos;
-    }
+    @Resource
+    private UserService userService;
 
-    public List<SizeDto> getAllSizes() {
-        List<Size> allEntities = sizeRepository.findAll();
-        List<SizeDto> sizeAllDtos = sizeMapper.sizeToSizeDto(allEntities);
-        return sizeAllDtos;
-    }
+    @Resource
+    private DogService dogService;
+
+
 
     public void addNewDog(DogRegistrationRequest request) {
-        User validUser = getValidUser(request.getUserId());
-        Breed validBreed = getValidBreed(request.getBreedId());
-        Size validSize = getValidSize(request.getSizeId());
+        User validUser = userService.getUserById(request.getUserId());
+        Breed validBreed = dogService.getValidBreed(request.getBreedId());
+        Size validSize = dogService.getValidSize(request.getSizeId());
         Dog dog = dogMapper.dogRequestToDog(request);
         dog.setOwnerUser(validUser);
         dog.setBreed(validBreed);
         dog.setSize(validSize);
         dogRepository.save(dog);
     }
-
-    private User getValidUser(Integer ownerUserId) {
-        Optional<User> optionalUser = userRepository.findById(ownerUserId);
-        User user = optionalUser.get();
-        return user;
-    }
-
-    private Breed getValidBreed(Integer dogBreedId) {
-        Optional<Breed> optionalBreed = breedRepository.findById(dogBreedId);
-        Breed breed = optionalBreed.get();
-        return breed;
-    }
-
-    private Size getValidSize(Integer dogSizeId) {
-        Optional<Size> optionalSize = sizeRepository.findById(dogSizeId);
-        Size size = optionalSize.get();
-        return size;
-    }
-
 
     //        Optional<User> optionalUser = userRepository.findById(request.getOwnerUserId());
 //        if (optionalUser.isEmpty()) {

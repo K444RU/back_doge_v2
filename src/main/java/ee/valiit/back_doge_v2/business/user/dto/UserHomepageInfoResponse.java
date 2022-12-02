@@ -4,7 +4,7 @@ import lombok.Data;
 import org.springframework.lang.Nullable;
 
 @Data
-public class OwnerHomepageInfoResponse {
+public class UserHomepageInfoResponse {
     private Integer userId;
     private String firstname;
     private String lastname;
