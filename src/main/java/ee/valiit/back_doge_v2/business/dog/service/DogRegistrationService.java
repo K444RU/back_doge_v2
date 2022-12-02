@@ -1,6 +1,6 @@
-package ee.valiit.back_doge_v2.business.register.services;
+package ee.valiit.back_doge_v2.business.dog.service;
 
-import ee.valiit.back_doge_v2.business.register.dtos.DogRegistrationRequest;
+import ee.valiit.back_doge_v2.business.dog.dto.DogRegistrationRequest;
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.Breed;
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.BreedDto;
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.BreedMapper;

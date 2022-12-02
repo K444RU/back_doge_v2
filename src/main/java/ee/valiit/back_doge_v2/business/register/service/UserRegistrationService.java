@@ -1,7 +1,7 @@
-package ee.valiit.back_doge_v2.business.register.services;
+package ee.valiit.back_doge_v2.business.register.service;
 
-import ee.valiit.back_doge_v2.business.login.LoginService;
-import ee.valiit.back_doge_v2.business.register.dtos.NewUserRequest;
+import ee.valiit.back_doge_v2.business.login.service.LoginService;
+import ee.valiit.back_doge_v2.business.register.dto.NewUserRequest;
 import ee.valiit.back_doge_v2.domain.user_role_information.contact.Contact;
 import ee.valiit.back_doge_v2.domain.user_role_information.contact.ContactMapper;
 import ee.valiit.back_doge_v2.domain.user_role_information.contact.ContactRepository;
@@ -12,7 +12,7 @@ import ee.valiit.back_doge_v2.domain.user_role_information.role.RoleRepository;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.User;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.UserMapper;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.UserRepository;
-import ee.valiit.back_doge_v2.business.login.LoginResponse;
+import ee.valiit.back_doge_v2.business.login.dto.LoginResponse;
 import ee.valiit.back_doge_v2.errors.Validation;
 import org.springframework.stereotype.Service;
 

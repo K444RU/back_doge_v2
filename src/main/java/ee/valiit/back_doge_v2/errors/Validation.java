@@ -1,11 +1,8 @@
 package ee.valiit.back_doge_v2.errors;
 
-import ee.valiit.back_doge_v2.business.user.services.UserService;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.User;
-import ee.valiit.back_doge_v2.domain.user_role_information.user.UserRepository;
 import ee.valiit.back_doge_v2.infrastructure.exception.BusinessException;
 
-import javax.annotation.Resource;
 import java.util.Optional;
 
 

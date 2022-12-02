@@ -1,4 +1,4 @@
-package ee.valiit.back_doge_v2.business.user.dtos;
+package ee.valiit.back_doge_v2.business.dog.dto;
 
 
 import lombok.Data;

@@ -1,9 +1,8 @@
 package ee.valiit.back_doge_v2.business.user;
 
-import ee.valiit.back_doge_v2.business.user.dtos.OwnerHomePageDogInfoResponse;
-import ee.valiit.back_doge_v2.business.user.dtos.OwnerPictureRequest;
-import ee.valiit.back_doge_v2.business.user.dtos.OwnerHomepageInfoResponse;
-import ee.valiit.back_doge_v2.business.user.services.UserService;
+import ee.valiit.back_doge_v2.business.user.dto.OwnerHomepageInfoResponse;
+import ee.valiit.back_doge_v2.business.user.dto.OwnerPictureRequest;
+import ee.valiit.back_doge_v2.business.user.service.UserService;
 import ee.valiit.back_doge_v2.infrastructure.error.ApiError;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -37,13 +36,5 @@ public class UserController {
     @Operation(summary = "Post user photo (save user photo)")
     public void adduserPhoto(@RequestBody OwnerPictureRequest userPhoto) {
         userService.addUserPhoto(userPhoto);
-    }
-
-
-    @GetMapping("/dog/info")
-    @Operation(summary = "Get dog information by userId")
-    public OwnerHomePageDogInfoResponse getDogInfoByUserId(@RequestParam Integer userId){
-        OwnerHomePageDogInfoResponse dogInfoByUserId = userService.getDogInfoByUserId(userId);
-        return dogInfoByUserId;
     }
 }

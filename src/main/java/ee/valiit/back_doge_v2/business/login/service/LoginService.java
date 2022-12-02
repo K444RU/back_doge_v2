@@ -1,9 +1,10 @@
-package ee.valiit.back_doge_v2.business.login;
+package ee.valiit.back_doge_v2.business.login.service;
 
+import ee.valiit.back_doge_v2.business.login.dto.LoginResponse;
 import ee.valiit.back_doge_v2.domain.user_role_information.role.Role;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.User;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.UserMapper;
-import ee.valiit.back_doge_v2.business.user.services.UserService;
+import ee.valiit.back_doge_v2.business.user.service.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
