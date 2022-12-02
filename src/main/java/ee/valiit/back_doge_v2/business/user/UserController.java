@@ -25,7 +25,7 @@ public class UserController {
     @Resource
     private UserService userService;
 
-    @GetMapping("/owner")
+    @GetMapping("/info")
     @Operation(summary = "Get User Information by userId")
     public OwnerHomepageInfoResponse getUserInfoByUserId(@RequestParam Integer userId) {
         OwnerHomepageInfoResponse userInfoByUserId = userService.getUserInfoByUserId(userId);
