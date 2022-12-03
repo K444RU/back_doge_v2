@@ -23,7 +23,8 @@ public class OrderService {
     public  List<CityDto> getAllCities(){
         List<City> allCities = cityRepository.findAll();
         List<CityDto> allCitiesDto = cityMapper.cityToCityDto(allCities);
-
         return allCitiesDto;
     }
+
+
 }

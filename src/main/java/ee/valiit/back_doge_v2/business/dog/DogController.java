@@ -34,7 +34,6 @@ public class DogController {
     @PostMapping("/registration")
     @Operation(summary = "Post dog information (new dog register)")
     public void addNewDog(@RequestBody DogRegistrationRequest request) {
-        System.out.println();
         dogRegistrationService.addNewDog(request);
     }
 

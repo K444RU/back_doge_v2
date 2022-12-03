@@ -2,6 +2,7 @@ package ee.valiit.back_doge_v2.business.order;
 
 import ee.valiit.back_doge_v2.business.order.dto.WalkingRequest;
 import ee.valiit.back_doge_v2.business.order.service.OrderService;
+import ee.valiit.back_doge_v2.business.order.service.WalkingRegistrationService;
 import ee.valiit.back_doge_v2.domain.order_information.city.CityDto;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,9 @@ public class OrderController {
     @Resource
     private OrderService orderService;
 
+    @Resource
+    private WalkingRegistrationService walkingRegistrationService;
+
     @GetMapping("/city")
     @Operation(summary = "Appear the list of All cities")
     public List<CityDto> getAllCities(){
@@ -26,7 +30,7 @@ public class OrderController {
     @PostMapping("/register")
     @Operation(summary = "Post walking information")
     public void addNewWalking(@RequestBody WalkingRequest request){
-
+        walkingRegistrationService.addNewWalking(request);
     }
 
 
