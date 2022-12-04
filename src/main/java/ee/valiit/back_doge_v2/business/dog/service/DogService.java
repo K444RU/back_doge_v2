@@ -1,6 +1,7 @@
 package ee.valiit.back_doge_v2.business.dog.service;
 
 import ee.valiit.back_doge_v2.business.dog.dto.OwnerHomePageDogInfoResponse;
+import ee.valiit.back_doge_v2.business.dog.dto.dogNameDropdownByUserId;
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.Breed;
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.BreedDto;
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.BreedMapper;
@@ -43,10 +44,18 @@ public class DogService {
         return dogMapper.ownerHomePageDogInfoResponse(dogByUserId);
     }
 
+    public List <dogNameDropdownByUserId> SelectDogByUserId(Integer userId){
+        List <Dog> dogsByUserId = dogRepository.findDogsByOwnerUserId (userId);
+        List<dogNameDropdownByUserId> dogNameDropdownByUserIds = dogMapper.dogsNamesDropdownByUserId(dogsByUserId);
+        return dogNameDropdownByUserIds;
+    }
+
     private Dog getDogByUserId(Integer userId) {
         Optional<Dog> optionalUser = dogRepository.findByOwnerUserId(userId);
         return optionalUser.get();
     }
+
+
 
     public Breed getValidBreed(Integer dogBreedId) {
         Optional<Breed> optionalBreed = breedRepository.findById(dogBreedId);
@@ -71,4 +80,7 @@ public class DogService {
         List<BreedDto> breedAllDtos = breedMapper.breedToBreedDto(allEntities);
         return breedAllDtos;
     }
+
+
+
 }

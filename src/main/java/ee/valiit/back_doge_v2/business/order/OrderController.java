@@ -1,5 +1,6 @@
 package ee.valiit.back_doge_v2.business.order;
 
+import ee.valiit.back_doge_v2.business.order.dto.OrderRequest;
 import ee.valiit.back_doge_v2.business.order.dto.WalkingRequest;
 import ee.valiit.back_doge_v2.business.order.service.OrderService;
 import ee.valiit.back_doge_v2.business.order.service.WalkingRegistrationService;
@@ -20,6 +21,9 @@ public class OrderController {
     @Resource
     private WalkingRegistrationService walkingRegistrationService;
 
+
+
+
     @GetMapping("/city")
     @Operation(summary = "Appear the list of All cities")
     public List<CityDto> getAllCities(){
@@ -32,6 +36,17 @@ public class OrderController {
     public void addNewWalking(@RequestBody WalkingRequest request){
         walkingRegistrationService.addNewWalking(request);
     }
+
+//    @PostMapping("/order")
+//    @Operation(summary = "Post order information")
+//    public void addNewOrder(@RequestBody OrderRequest request){
+//        orderService.addNewOrder(request);
+//    }
+
+
+
+
+
 
 
 

@@ -2,6 +2,7 @@ package ee.valiit.back_doge_v2.business.dog;
 
 import ee.valiit.back_doge_v2.business.dog.dto.DogRegistrationRequest;
 import ee.valiit.back_doge_v2.business.dog.dto.OwnerHomePageDogInfoResponse;
+import ee.valiit.back_doge_v2.business.dog.dto.dogNameDropdownByUserId;
 import ee.valiit.back_doge_v2.business.dog.service.*;
 import ee.valiit.back_doge_v2.business.register.service.DogRegistrationService;
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.BreedDto;
@@ -57,4 +58,14 @@ public class DogController {
         OwnerHomePageDogInfoResponse dogInfoByUserId = dogService.getDogInfoByUserId(userId);
         return dogInfoByUserId;
     }
+
+    @GetMapping("/select")
+    @Operation(summary = "Get dog Name by userId")
+    public List<dogNameDropdownByUserId>  SelectDogByUserId(@RequestParam Integer userId){
+        List<dogNameDropdownByUserId>  dogNameDropdownByUserId = dogService.SelectDogByUserId(userId);
+        return dogNameDropdownByUserId;
+    }
+
+
+
 }

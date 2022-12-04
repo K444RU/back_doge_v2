@@ -8,11 +8,9 @@ import ee.valiit.back_doge_v2.domain.order_information.walking.Walking;
 import ee.valiit.back_doge_v2.domain.order_information.walking.WalkingMapper;
 import ee.valiit.back_doge_v2.domain.order_information.walking.WalkingRepository;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.User;
-import ee.valiit.back_doge_v2.domain.user_role_information.user.UserRepository;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Optional;
 
 @Service
 public class WalkingRegistrationService {
