@@ -26,8 +26,7 @@ public class OrderController {
     @GetMapping("/city")
     @Operation(summary = "Appear the list of All cities")
     public List<CityDto> getAllCities() {
-        List<CityDto> cities = orderService.getAllCities();
-        return cities;
+        return orderService.getAllCities();
     }
 
     @PostMapping("/register")
