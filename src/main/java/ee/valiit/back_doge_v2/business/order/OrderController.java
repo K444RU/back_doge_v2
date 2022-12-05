@@ -7,14 +7,7 @@ import ee.valiit.back_doge_v2.business.order.service.OrderService;
 import ee.valiit.back_doge_v2.business.order.service.WalkingService;
 import ee.valiit.back_doge_v2.domain.order_information.city.CityDto;
 import io.swagger.v3.oas.annotations.Operation;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestBody;
-
-
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -58,3 +51,4 @@ public class OrderController {
 
 
 }
+

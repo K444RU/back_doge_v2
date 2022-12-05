@@ -41,15 +41,13 @@ public class DogController {
     @GetMapping("/size")
     @Operation(summary = "Get all gog sizes")
     public List<SizeDto> getAllSizes() {
-        List<SizeDto> sizes = dogService.getAllSizes();
-        return sizes;
+        return dogService.getAllSizes();
     }
 
     @GetMapping("/bread")
     @Operation(summary = "Get all dog breeds")
     public List<BreedDto> getAllBreeds() {
-        List<BreedDto> breeds = dogService.getAllBreeds();
-        return breeds;
+        return dogService.getAllBreeds();
     }
 
     @GetMapping("/info")
