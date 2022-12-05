@@ -1,7 +1,7 @@
 package ee.valiit.back_doge_v2.business.dog.service;
 
+import ee.valiit.back_doge_v2.business.dog.dto.DogNameDropdownByUserId;
 import ee.valiit.back_doge_v2.business.dog.dto.OwnerHomePageDogInfoResponse;
-import ee.valiit.back_doge_v2.business.dog.dto.dogNameDropdownByUserId;
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.Breed;
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.BreedDto;
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.BreedMapper;
@@ -16,7 +16,6 @@ import ee.valiit.back_doge_v2.domain.dog_information.size.SizeRepository;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,7 +50,7 @@ public class DogService {
 
     }
 
-    public List<dogNameDropdownByUserId> SelectDogByUserId(Integer userId) {
+    public List<DogNameDropdownByUserId> SelectDogByUserId(Integer userId) {
         List<Dog> dogsByUserId = dogRepository.findDogsByUserId(userId);
         return dogMapper.dogsNamesDropdownByUserId(dogsByUserId);
     }

@@ -1,6 +1,7 @@
 package ee.valiit.back_doge_v2.business.order.service;
 
 import ee.valiit.back_doge_v2.business.order.dto.WalkingRequest;
+import ee.valiit.back_doge_v2.business.order.dto.WalkingResponse;
 import ee.valiit.back_doge_v2.business.user.service.UserService;
 import ee.valiit.back_doge_v2.domain.dog_information.size.Size;
 import ee.valiit.back_doge_v2.domain.dog_information.size.SizeDto;
@@ -11,6 +12,7 @@ import ee.valiit.back_doge_v2.domain.order_information.walking.Walking;
 import ee.valiit.back_doge_v2.domain.order_information.walking.WalkingMapper;
 import ee.valiit.back_doge_v2.domain.order_information.walking.WalkingRepository;
 import ee.valiit.back_doge_v2.domain.order_information.walking_size.WalkingSize;
+import ee.valiit.back_doge_v2.domain.order_information.walking_size.WalkingSizeMapper;
 import ee.valiit.back_doge_v2.domain.order_information.walking_size.WalkingSizeRepository;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.User;
 import org.springframework.stereotype.Service;
@@ -41,6 +43,9 @@ public class WalkingService {
     @Resource
     private WalkingSizeRepository walkingSizeRepository;
 
+    @Resource
+    private WalkingSizeMapper walkingSizeMapper;
+
     public void addNewWalking(WalkingRequest request) {
         User user = userService.getUserById(request.getUserId());
         City city = cityRepository.findById(request.getCityId()).get();
@@ -52,7 +57,7 @@ public class WalkingService {
     }
 
     private void createWalkingSize(WalkingRequest request, Walking walking) {
-        List<SizeDto> sizes = request.getSizeTypes();
+        List<SizeDto> sizes = request.getSizeId();
         for (SizeDto size : sizes) {
             if (size.getIsSelected()) {
                 Integer sizeId = size.getSizeId();
@@ -61,7 +66,6 @@ public class WalkingService {
                 walkingSize.setWalking(walking);
                 walkingSize.setSize(sizeFromEntity);
                 walkingSizeRepository.save(walkingSize);
-
             }
         }
     }
@@ -71,5 +75,14 @@ public class WalkingService {
         return optionalWalking.get();
     }
 
+    public List<WalkingResponse> getAllWalkingByUserId(Integer userId) {
+        List<WalkingSize> walkingByUserId = walkingSizeRepository.findWalkingByUserId(userId);
+        for (WalkingSize walkings : walkingByUserId) {
+            if (walkings.getWalking().getStatus().equals('I')) {
+                return null;
+            }
+        }
+        return walkingSizeMapper.walkingsInfoResponse(walkingByUserId);
+    }
 
 }

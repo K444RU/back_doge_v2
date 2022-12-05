@@ -35,6 +35,7 @@ public class OrderService {
     @Resource
     private OrderMapper orderMapper;
 
+
     @Resource
     private OrderRepository orderRepository;
 
@@ -52,7 +53,7 @@ public class OrderService {
     }
 
 
-    public void addNewOrder(OrderRequest request){
+    public void addNewOrder(OrderRequest request) {
         Walking walking = walkingService.findWalkingById(request.getWalkingId());
         Order order = orderMapper.toEntity(request);
         order.setWalking(walking);
@@ -73,7 +74,6 @@ public class OrderService {
             }
         }
     }
-
 
 }
 

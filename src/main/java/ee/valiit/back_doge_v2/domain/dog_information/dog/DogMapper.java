@@ -1,8 +1,8 @@
 package ee.valiit.back_doge_v2.domain.dog_information.dog;
 
+import ee.valiit.back_doge_v2.business.dog.dto.DogNameDropdownByUserId;
 import ee.valiit.back_doge_v2.business.dog.dto.DogRegistrationRequest;
 import ee.valiit.back_doge_v2.business.dog.dto.OwnerHomePageDogInfoResponse;
-import ee.valiit.back_doge_v2.business.dog.dto.dogNameDropdownByUserId;
 import org.mapstruct.*;
 
 import java.nio.charset.StandardCharsets;
@@ -47,6 +47,6 @@ public interface DogMapper {
 
     @Mapping(source = "id", target = "dogId")
     @Mapping(source = "name", target = "dogName")
-    dogNameDropdownByUserId dogNameDropdownByUserId(Dog dogByUserId);
-    List<dogNameDropdownByUserId> dogsNamesDropdownByUserId(List<Dog> dogsByUserId);
+    DogNameDropdownByUserId dogNameDropdownByUserId(Dog dogByUserId);
+    List<DogNameDropdownByUserId> dogsNamesDropdownByUserId(List<Dog> dogsByUserId);
 }

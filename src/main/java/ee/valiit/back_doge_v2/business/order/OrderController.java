@@ -2,11 +2,19 @@ package ee.valiit.back_doge_v2.business.order;
 
 import ee.valiit.back_doge_v2.business.order.dto.OrderRequest;
 import ee.valiit.back_doge_v2.business.order.dto.WalkingRequest;
+import ee.valiit.back_doge_v2.business.order.dto.WalkingResponse;
 import ee.valiit.back_doge_v2.business.order.service.OrderService;
 import ee.valiit.back_doge_v2.business.order.service.WalkingService;
 import ee.valiit.back_doge_v2.domain.order_information.city.CityDto;
 import io.swagger.v3.oas.annotations.Operation;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
+
+
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -19,35 +27,34 @@ public class OrderController {
     private OrderService orderService;
 
     @Resource
-    private WalkingService walkingRegistrationService;
-
-
+    private WalkingService walkingService;
 
 
     @GetMapping("/city")
     @Operation(summary = "Appear the list of All cities")
-    public List<CityDto> getAllCities(){
+    public List<CityDto> getAllCities() {
         List<CityDto> cities = orderService.getAllCities();
         return cities;
     }
 
     @PostMapping("/register")
     @Operation(summary = "Post walking information")
-    public void addNewWalking(@RequestBody WalkingRequest request){
-        walkingRegistrationService.addNewWalking(request);
+    public void addNewWalking(@RequestBody WalkingRequest request) {
+        walkingService.addNewWalking(request);
     }
 
     @PostMapping("/order")
     @Operation(summary = "Post order information")
-    public void addNewOrder(@RequestBody OrderRequest request){
+    public void addNewOrder(@RequestBody OrderRequest request) {
         orderService.addNewOrder(request);
     }
 
+    @GetMapping()
+    @Operation(summary = "Get all posted walkings by userId (walker user id)")
+    public List<WalkingResponse> getAllWalkingByUserId(@RequestParam Integer userId) {
+        return walkingService.getAllWalkingByUserId(userId);
 
-
-
-
-
+    }
 
 
 }
