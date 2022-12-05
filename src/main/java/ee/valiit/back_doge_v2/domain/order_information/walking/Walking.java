@@ -23,8 +23,8 @@ public class Walking {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "walker_user_id", nullable = false)
-    private User walkerUser;
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -51,5 +51,7 @@ public class Walking {
     @NotNull
     @Column(name = "status", nullable = false, length = 1)
     private String status;
+
+
 
 }

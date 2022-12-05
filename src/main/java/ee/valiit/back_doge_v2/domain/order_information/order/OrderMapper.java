@@ -5,10 +5,7 @@ import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface OrderMapper {
-//    Order toEntity(OrderRequest request);
-
-
-//@Mapping(constant = "A", target = "status")
-//    Order toEntity(OrderRequest request);
-
+    @Mapping(source = "walkingId", target = "walking.id")
+    @Mapping(constant = "A", target = "status")
+    Order toEntity(OrderRequest request);
 }

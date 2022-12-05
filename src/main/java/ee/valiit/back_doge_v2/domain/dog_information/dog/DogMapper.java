@@ -11,11 +11,6 @@ import java.util.List;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface DogMapper {
 
-    @Mapping(source = "ownerUserId", target = "ownerUser")
-    @Mapping(source = "breedId", target = "breed")
-    @Mapping(source = "sizeId", target = "size")
-    Dog dogDtoToDog(DogDto dogDto);
-
     @Mapping(source = "dogName", target = "name")
     @Mapping(source = "dogAge", target = "age")
     @Mapping(source = "dogAdditionalInformation", target = "additionalInformation")
@@ -29,7 +24,10 @@ public interface DogMapper {
     @Mapping(source = "size.type", target = "dogSizeType")
     @Mapping(source = "breed.name", target = "dogBreed")
     @Mapping(source = "dogPhoto", target = "dogPhoto", qualifiedByName = "dogPhotoToString")
-    OwnerHomePageDogInfoResponse ownerHomePageDogInfoResponse(Dog userById);
+    OwnerHomePageDogInfoResponse ownerHomePageDogInfoResponse(Dog dogByUserId);
+    List<OwnerHomePageDogInfoResponse> ownerHomePageDogsInfoResponse(List<Dog> dogsByUserId);
+
+
 
     @Named("byteArrayToString")
     static byte[] byteArrayToString(String dogPhoto) {
@@ -46,11 +44,9 @@ public interface DogMapper {
         return pictureAsString;
     }
 
-    List<DogDto> dogDtoToDog(List<Dog> allDogs);
-
 
     @Mapping(source = "id", target = "dogId")
     @Mapping(source = "name", target = "dogName")
-    dogNameDropdownByUserId dogNamesDropdownByUserId(Dog dogByUserId);
+    dogNameDropdownByUserId dogNameDropdownByUserId(Dog dogByUserId);
     List<dogNameDropdownByUserId> dogsNamesDropdownByUserId(List<Dog> dogsByUserId);
 }

@@ -16,6 +16,7 @@ import ee.valiit.back_doge_v2.domain.dog_information.size.SizeRepository;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,40 +40,35 @@ public class DogService {
     @Resource
     private SizeMapper sizeMapper;
 
-    public OwnerHomePageDogInfoResponse getDogInfoByUserId(Integer userId) {
-        Dog dogByUserId = getDogByUserId(userId);
-        return dogMapper.ownerHomePageDogInfoResponse(dogByUserId);
+    public List<OwnerHomePageDogInfoResponse> getDogInfoByUserId(Integer userId) {
+        List<Dog> dogsByUserId = dogRepository.findDogsByUserId(userId);
+        for (Dog dogByUserId : dogsByUserId) {
+            if (dogByUserId.getStatus().equals('I')) {
+                return null;
+            }
+        }
+        return dogMapper.ownerHomePageDogsInfoResponse(dogsByUserId);
+
     }
 
-    public List <dogNameDropdownByUserId> SelectDogByUserId(Integer userId){
-        List <Dog> dogsByUserId = dogRepository.findDogsByOwnerUserId (userId);
-        List<dogNameDropdownByUserId> dogNameDropdownByUserIds = dogMapper.dogsNamesDropdownByUserId(dogsByUserId);
-        return dogNameDropdownByUserIds;
+    public List<dogNameDropdownByUserId> SelectDogByUserId(Integer userId) {
+        List<Dog> dogsByUserId = dogRepository.findDogsByUserId(userId);
+        return dogMapper.dogsNamesDropdownByUserId(dogsByUserId);
     }
-
-    private Dog getDogByUserId(Integer userId) {
-        Optional<Dog> optionalUser = dogRepository.findByOwnerUserId(userId);
-        return optionalUser.get();
-    }
-
-
 
     public Breed getValidBreed(Integer dogBreedId) {
         Optional<Breed> optionalBreed = breedRepository.findById(dogBreedId);
-        Breed breed = optionalBreed.get();
-        return breed;
+        return optionalBreed.get();
     }
 
     public Size getValidSize(Integer dogSizeId) {
         Optional<Size> optionalSize = sizeRepository.findById(dogSizeId);
-        Size size = optionalSize.get();
-        return size;
+        return optionalSize.get();
     }
 
     public List<SizeDto> getAllSizes() {
         List<Size> allEntities = sizeRepository.findAll();
-        List<SizeDto> sizeAllDtos = sizeMapper.sizeToSizeDto(allEntities);
-        return sizeAllDtos;
+        return sizeMapper.sizeToSizeDto(allEntities);
     }
 
     public List<BreedDto> getAllBreeds() {
@@ -80,7 +76,6 @@ public class DogService {
         List<BreedDto> breedAllDtos = breedMapper.breedToBreedDto(allEntities);
         return breedAllDtos;
     }
-
 
 
 }

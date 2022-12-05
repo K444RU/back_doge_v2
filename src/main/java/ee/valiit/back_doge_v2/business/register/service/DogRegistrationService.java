@@ -44,7 +44,7 @@ public class DogRegistrationService {
         Breed validBreed = dogService.getValidBreed(request.getBreedId());
         Size validSize = dogService.getValidSize(request.getSizeId());
         Dog dog = dogMapper.dogRequestToDog(request);
-        dog.setOwnerUser(validUser);
+        dog.setUser(validUser);
         dog.setBreed(validBreed);
         dog.setSize(validSize);
         dogRepository.save(dog);

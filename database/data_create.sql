@@ -144,5 +144,5 @@ VALUES (DEFAULT, 'West Highland White');
 INSERT INTO public.breed (id, name)
 VALUES (DEFAULT, 'Yorkshire Terrier');
 
-INSERT INTO public.dog (id, owner_user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) VALUES (2, 2, 4, 3, 'Charlie', 5, 'Big Beagle', null, 'A');
-INSERT INTO public.dog (id, owner_user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) VALUES (3, 1, 38, 1, 'Valera', 28, 'Big Papa Valera', null, 'A');
+INSERT INTO public.dog (id, user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) VALUES (2, 2, 4, 3, 'Charlie', 5, 'Big Beagle', null, 'A');
+INSERT INTO public.dog (id, user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) VALUES (3, 1, 38, 1, 'Valera', 28, 'Big Papa Valera', null, 'A');

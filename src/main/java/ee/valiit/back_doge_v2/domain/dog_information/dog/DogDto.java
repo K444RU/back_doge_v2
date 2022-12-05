@@ -1,7 +1,8 @@
 package ee.valiit.back_doge_v2.domain.dog_information.dog;
 
+import ee.valiit.back_doge_v2.domain.dog_information.breeds.Breed;
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.BreedDto;
-import ee.valiit.back_doge_v2.domain.dog_information.size.SizeDto;
+import ee.valiit.back_doge_v2.domain.user_role_information.user.User;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.UserDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,18 +19,26 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DogDto implements Serializable {
-    private Integer dogId;
+    private Integer id;
     @NotNull
-    private UserDto ownerUserId;
+    private User user;
     @NotNull
-    private BreedDto breedId;
+    private Breed breed;
+    private Integer sizeId;
+    @Size(max = 30)
     @NotNull
-    private SizeDto sizeId;
+    private String sizeType;
+    @NotNull
+    private Integer sizePrice;
     @Size(max = 50)
     @NotNull
-    private String dogName;
+    private String name;
     @NotNull
-    private Integer dogAge;
+    private Integer age;
     @Size(max = 300)
-    private String dogAdditionalInformation;
+    private String additionalInformation;
+    private byte[] dogPhoto;
+    @Size(max = 1)
+    @NotNull
+    private String status;
 }

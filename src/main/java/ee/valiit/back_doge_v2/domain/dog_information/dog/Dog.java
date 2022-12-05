@@ -21,8 +21,8 @@ public class Dog {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "owner_user_id", nullable = false)
-    private User ownerUser;
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -54,5 +54,7 @@ public class Dog {
     @NotNull
     @Column(name = "status", nullable = false, length = 1)
     private String status;
+
+
 
 }

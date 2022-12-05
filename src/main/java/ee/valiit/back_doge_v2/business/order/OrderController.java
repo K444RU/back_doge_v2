@@ -3,7 +3,7 @@ package ee.valiit.back_doge_v2.business.order;
 import ee.valiit.back_doge_v2.business.order.dto.OrderRequest;
 import ee.valiit.back_doge_v2.business.order.dto.WalkingRequest;
 import ee.valiit.back_doge_v2.business.order.service.OrderService;
-import ee.valiit.back_doge_v2.business.order.service.WalkingRegistrationService;
+import ee.valiit.back_doge_v2.business.order.service.WalkingService;
 import ee.valiit.back_doge_v2.domain.order_information.city.CityDto;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +19,7 @@ public class OrderController {
     private OrderService orderService;
 
     @Resource
-    private WalkingRegistrationService walkingRegistrationService;
+    private WalkingService walkingRegistrationService;
 
 
 
@@ -37,11 +37,11 @@ public class OrderController {
         walkingRegistrationService.addNewWalking(request);
     }
 
-//    @PostMapping("/order")
-//    @Operation(summary = "Post order information")
-//    public void addNewOrder(@RequestBody OrderRequest request){
-//        orderService.addNewOrder(request);
-//    }
+    @PostMapping("/order")
+    @Operation(summary = "Post order information")
+    public void addNewOrder(@RequestBody OrderRequest request){
+        orderService.addNewOrder(request);
+    }
 
 
 

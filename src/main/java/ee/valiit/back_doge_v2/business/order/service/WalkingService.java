@@ -17,9 +17,10 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class WalkingRegistrationService {
+public class WalkingService {
 
     @Resource
     private UserService userService;
@@ -44,10 +45,13 @@ public class WalkingRegistrationService {
         User user = userService.getUserById(request.getUserId());
         City city = cityRepository.findById(request.getCityId()).get();
         Walking walking = walkingMapper.toEntity(request);
-        walking.setWalkerUser(user);
+        walking.setUser(user);
         walking.setCity(city);
         walkingRepository.save(walking);
+        createWalkingSize(request, walking);
+    }
 
+    private void createWalkingSize(WalkingRequest request, Walking walking) {
         List<SizeDto> sizes = request.getSizeTypes();
         for (SizeDto size : sizes) {
             if (size.getIsSelected()) {
@@ -60,6 +64,11 @@ public class WalkingRegistrationService {
 
             }
         }
+    }
+
+    public Walking findWalkingById(Integer walkingId) {
+        Optional<Walking> optionalWalking = walkingRepository.findById(walkingId);
+        return optionalWalking.get();
     }
 
 

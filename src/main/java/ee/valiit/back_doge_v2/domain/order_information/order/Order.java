@@ -31,11 +31,11 @@ public class Order {
 
     @NotNull
     @Column(name = "time_from", nullable = false)
-    private LocalTime timeFrom;
+    private Integer timeFrom;
 
     @NotNull
     @Column(name = "time_to", nullable = false)
-    private LocalTime timeTo;
+    private Integer timeTo;
 
     @Size(max = 255)
     @NotNull

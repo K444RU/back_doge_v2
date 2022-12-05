@@ -8,9 +8,9 @@ import java.util.Optional;
 
 @Repository
 public interface DogRepository extends JpaRepository<Dog, Integer> {
-    Optional<Dog> findByOwnerUserId(Integer id);
+    Optional<Dog> findDogByUserId(Integer id);
+    List<Dog> findDogsByUserId(Integer id);
 
-    List<Dog> findDogsByOwnerUserId(Integer id);
 
 
 

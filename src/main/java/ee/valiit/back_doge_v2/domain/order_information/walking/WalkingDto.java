@@ -1,34 +1,37 @@
 package ee.valiit.back_doge_v2.domain.order_information.walking;
 
-import ee.valiit.back_doge_v2.domain.order_information.city.CityDto;
-import ee.valiit.back_doge_v2.domain.user_role_information.user.UserDto;
+import ee.valiit.back_doge_v2.domain.order_information.city.City;
+import ee.valiit.back_doge_v2.domain.user_role_information.user.User;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalTime;
 
 /**
  * A DTO for the {@link Walking} entity
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class WalkingDto implements Serializable {
-    private final Integer id;
+    private Integer id;
     @NotNull
-    private final UserDto walkerUser;
+    private User user;
     @NotNull
-    private final CityDto city;
+    private City city;
     @NotNull
-    private final LocalDate dateFrom;
+    private LocalDate dateFrom;
     @NotNull
-    private final LocalDate dateTo;
+    private LocalDate dateTo;
     @NotNull
-    private final LocalTime timeFrom;
+    private Integer timeFrom;
     @NotNull
-    private final LocalTime timeTo;
+    private Integer timeTo;
     @Size(max = 1)
     @NotNull
-    private final String status;
+    private String status;
 }

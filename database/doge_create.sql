@@ -31,7 +31,7 @@ CREATE TABLE contact (
 -- Table: dog
 CREATE TABLE dog (
                      id serial  NOT NULL,
-                     owner_user_id int  NOT NULL,
+                     user_id int  NOT NULL,
                      breed_id int  NOT NULL,
                      size_id int  NOT NULL,
                      name varchar(50)  NOT NULL,
@@ -91,7 +91,7 @@ CREATE TABLE "user" (
 -- Table: walking
 CREATE TABLE walking (
                          id serial  NOT NULL,
-                         walker_user_id int  NOT NULL,
+                         user_id int  NOT NULL,
                          city_id int  NOT NULL,
                          date_from date  NOT NULL,
                          date_to date  NOT NULL,
@@ -144,7 +144,7 @@ ALTER TABLE dog ADD CONSTRAINT dog_size
 
 -- Reference: dog_user (table: dog)
 ALTER TABLE dog ADD CONSTRAINT dog_user
-    FOREIGN KEY (owner_user_id)
+    FOREIGN KEY (user_id)
         REFERENCES "user" (id)
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
@@ -200,7 +200,7 @@ ALTER TABLE walking_size ADD CONSTRAINT walking_size_walking
 
 -- Reference: walking_user (table: walking)
 ALTER TABLE walking ADD CONSTRAINT walking_user
-    FOREIGN KEY (walker_user_id)
+    FOREIGN KEY (user_id)
         REFERENCES "user" (id)
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
