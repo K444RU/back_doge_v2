@@ -14,5 +14,6 @@ public class SizeDto implements Serializable {
     @javax.validation.constraints.Size(max = 30)
     @NotNull
     private String sizeType;
+    private Boolean isSelected;
 
 }

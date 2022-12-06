@@ -58,7 +58,7 @@ public class DogController {
     }
 
     @GetMapping("/select")
-    @Operation(summary = "Get dog Name by userId")
+    @Operation(summary = "Get dogName and dogId by userId")
     public List<DogNameDropdownByUserId> GetDogNameByUserId(@RequestParam Integer userId){
         List<DogNameDropdownByUserId>  dogNameDropdownByUserId = dogService.GetDogNameByUserId(userId);
         return dogNameDropdownByUserId;

@@ -60,8 +60,8 @@ public class WalkingService {
     }
 
     private void createWalkingSize(WalkingRequest request, Walking walking) {
-        List<SizeDtoToWalkingResponse> sizes = request.getSizeId();
-        for (SizeDtoToWalkingResponse size : sizes) {
+        List<SizeDto> sizes = request.getSize();
+        for (SizeDto size : sizes) {
             if (size.getIsSelected()) {
                 Integer sizeId = size.getSizeId();
                 Size sizeFromEntity = sizeRepository.findById(sizeId).get();

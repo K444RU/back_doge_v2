@@ -12,6 +12,7 @@ public interface SizeMapper {
 
     @Mapping(source = "id", target = "sizeId")
     @Mapping(source = "type", target = "sizeType")
+    @Mapping(constant = "false", target = "isSelected")
     SizeDto toDto(Size size);
     List<SizeDto> sizeToSizeDto(List<Size> size);
     @Mapping(source = "type", target = "sizeType")
