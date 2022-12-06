@@ -12,9 +12,7 @@ import java.io.Serializable;
  */
 @Data
 public class WalkingSizeDto implements Serializable {
-    private final Integer id;
+
     @NotNull
-    private final WalkingDto walking;
-    @NotNull
-    private final SizeDto size;
+    private String sizeType;
 }
