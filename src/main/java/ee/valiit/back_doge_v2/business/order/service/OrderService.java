@@ -3,7 +3,7 @@ package ee.valiit.back_doge_v2.business.order.service;
 
 import ee.valiit.back_doge_v2.business.order.dto.OrderRequest;
 import ee.valiit.back_doge_v2.domain.dog_information.dog.Dog;
-import ee.valiit.back_doge_v2.domain.dog_information.dog.DogDto;
+import ee.valiit.back_doge_v2.domain.dog_information.dog.DogDtoToOrderRequest;
 import ee.valiit.back_doge_v2.domain.dog_information.dog.DogRepository;
 import ee.valiit.back_doge_v2.domain.order_information.city.City;
 import ee.valiit.back_doge_v2.domain.order_information.city.CityDto;
@@ -53,7 +53,7 @@ public class OrderService {
 
 
     public void addNewOrder(OrderRequest request) {
-        Walking walking = walkingService.findWalkingById(request.getWalkingId());
+        Walking walking = walkingService.getWalkingById(request.getWalkingId());
         Order order = orderMapper.toEntity(request);
         order.setWalking(walking);
         orderRepository.save(order);
@@ -61,10 +61,10 @@ public class OrderService {
     }
 
     private void createDogOrder(OrderRequest request, Order order) {
-        List<DogDto> dogs = request.getDogs();
-        for (DogDto dog : dogs) {
-            if (dog.getStatus().equals('A')) {
-                Integer dogId = dog.getId();
+        List<DogDtoToOrderRequest> dogs = request.getDog();
+        for (DogDtoToOrderRequest dog : dogs) {
+            if (dog.getIsSelected()) {
+                Integer dogId = dog.getDogId();
                 Dog dogFromEntity = dogRepository.findById(dogId).get();
                 DogOrder dogOrder = new DogOrder();
                 dogOrder.setDog(dogFromEntity);

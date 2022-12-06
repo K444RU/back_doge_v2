@@ -1,4 +1,4 @@
-package ee.valiit.back_doge_v2.domain.dog_information.size;
+package ee.valiit.back_doge_v2.domain.order_information.walking_size;
 
 import lombok.Data;
 

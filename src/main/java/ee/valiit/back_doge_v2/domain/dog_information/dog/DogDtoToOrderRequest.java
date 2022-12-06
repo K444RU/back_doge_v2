@@ -5,4 +5,6 @@ import lombok.Data;
 @Data
 public class DogDtoToOrderRequest {
 
+    private Integer dogId;
+    private Boolean isSelected;
 }

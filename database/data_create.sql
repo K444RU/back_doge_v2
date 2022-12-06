@@ -144,5 +144,13 @@ VALUES (DEFAULT, 'West Highland White');
 INSERT INTO public.breed (id, name)
 VALUES (DEFAULT, 'Yorkshire Terrier');
 
-INSERT INTO public.dog (id, user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) VALUES (2, 2, 4, 3, 'Charlie', 5, 'Big Beagle', null, 'A');
-INSERT INTO public.dog (id, user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) VALUES (3, 1, 38, 1, 'Valera', 28, 'Big Papa Valera', null, 'A');
+INSERT INTO public.dog (id, user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) VALUES (DEFAULT, 2, 4, 3, 'Charlie', 5, 'Big Beagle', null, 'A');
+INSERT INTO public.dog (id, user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) VALUES (DEFAULT, 1, 38, 1, 'Valera', 28, 'Big Papa Valera', null, 'A');
+insert into public.dog (id, user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) values (DEFAULT, 2, 3, 2, 'NotActiveTest', 7, 'Test to not active dog', null, 'I');
+
+
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-06', '2022-12-06', 10, 11, 'A');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-06', '2022-12-06', 10, 11, 'A');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-01', '2022-12-06', 10, 11, 'A');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-01', '2022-12-06', 10, 11, 'A');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-01', '2022-12-06', 10, 11, 'I');

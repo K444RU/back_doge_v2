@@ -1,8 +1,5 @@
 package ee.valiit.back_doge_v2.domain.order_information.walking_size;
 
-import ee.valiit.back_doge_v2.business.order.dto.WalkingResponse;
-import ee.valiit.back_doge_v2.domain.dog_information.size.SizeDtoToWalkingResponse;
-import ee.valiit.back_doge_v2.domain.order_information.order.Order;
 import org.mapstruct.*;
 
 import java.util.List;

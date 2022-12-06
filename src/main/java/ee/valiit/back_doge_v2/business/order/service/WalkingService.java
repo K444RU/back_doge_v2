@@ -75,7 +75,7 @@ public class WalkingService {
 
 
 
-    public Walking findWalkingById(Integer walkingId) {
+    public Walking getWalkingById(Integer walkingId) {
         Optional<Walking> optionalWalking = walkingRepository.findById(walkingId);
         return optionalWalking.get();
     }
