@@ -47,6 +47,10 @@ public class OrderController {
         return walkingService.getUserAllWalkingsByUserId(userId);
     }
 
+//    @GetMapping
+//    @Operation(summary = "Get walkings by cityId && date && timeFrom && timeTo && dogSize")
+//
+
 
 }
 

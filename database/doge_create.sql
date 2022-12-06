@@ -58,7 +58,7 @@ CREATE TABLE "order" (
                          time_from int  NOT NULL,
                          time_to int  NOT NULL,
                          address varchar(255)  NOT NULL,
-                         total_price int  NOT NULL,
+--                          total_price int  NOT NULL,
                          status char(1)  NOT NULL,
                          CONSTRAINT order_pk PRIMARY KEY (id)
 );

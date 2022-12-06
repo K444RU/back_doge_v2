@@ -42,10 +42,6 @@ public class Order {
     @Column(name = "address", nullable = false)
     private String address;
 
-    @NotNull
-    @Column(name = "total_price", nullable = false)
-    private Integer totalPrice;
-
     @Size(max = 1)
     @NotNull
     @Column(name = "status", nullable = false, length = 1)
