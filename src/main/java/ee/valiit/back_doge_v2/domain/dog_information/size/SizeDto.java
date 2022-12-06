@@ -11,10 +11,8 @@ import java.io.Serializable;
 @Data
 public class SizeDto implements Serializable {
     private Integer sizeId;
-//    @javax.validation.constraints.Size(max = 30)
-//    @NotNull
-//    private String sizeType;
-//    @NotNull
-//    private Integer sizePrice;
-    private Boolean isSelected;
+    @javax.validation.constraints.Size(max = 30)
+    @NotNull
+    private String sizeType;
+
 }

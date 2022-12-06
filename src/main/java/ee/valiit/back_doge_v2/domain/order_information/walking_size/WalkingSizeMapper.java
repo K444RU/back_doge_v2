@@ -19,7 +19,7 @@ public interface WalkingSizeMapper {
 //    WalkingResponse walkingInfoResponse(WalkingSize walkingByUserId);
 //    List<WalkingResponse> walkingsInfoResponse(List<WalkingSize> walkingsByUserId);
 
-    @Mapping(source = "size.type", target = "sizeType")
+    @Mapping(source = "size.id", target = "sizeId")
     SizeDtoToWalkingResponse fromEntityToSizeDtoToWalkingResponse(WalkingSize sizeTypeByWalkingId);
     List<SizeDtoToWalkingResponse> fromEntityToSizeDtoToWalkingResponse(List<WalkingSize> sizeTypeByWalkingId);
 }

@@ -4,5 +4,6 @@ import lombok.Data;
 
 @Data
 public class SizeDtoToWalkingResponse {
-    private String sizeType;
+    private Integer sizeId;
+    private Boolean isSelected;
 }

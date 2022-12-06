@@ -56,12 +56,12 @@ public class WalkingService {
         walking.setUser(user);
         walking.setCity(city);
         walkingRepository.save(walking);
-        getWalkingSize(request, walking);
+        createWalkingSize(request, walking);
     }
 
-    private void getWalkingSize(WalkingRequest request, Walking walking) {
-        List<SizeDto> sizes = request.getSizeId();
-        for (SizeDto size : sizes) {
+    private void createWalkingSize(WalkingRequest request, Walking walking) {
+        List<SizeDtoToWalkingResponse> sizes = request.getSizeId();
+        for (SizeDtoToWalkingResponse size : sizes) {
             if (size.getIsSelected()) {
                 Integer sizeId = size.getSizeId();
                 Size sizeFromEntity = sizeRepository.findById(sizeId).get();
