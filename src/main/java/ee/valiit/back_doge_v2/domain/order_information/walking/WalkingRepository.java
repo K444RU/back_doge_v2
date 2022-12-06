@@ -6,8 +6,10 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface WalkingRepository extends JpaRepository<Walking, Integer> {
-    @Query("select w from Walking w where w.user.id = ?1")
-    List<Walking> findWalkingByUserId(Integer id);
+
+    @Query("select w from Walking w where w.user.id = ?1 and w.status = ?2")
+    List<Walking> findWalkingByUserId(Integer id, String status);
+
 
 
 

@@ -91,7 +91,7 @@ public class WalkingService {
 //    }
 
     public List<WalkingResponse> getUserAllWalkingsByUserId(Integer userId) {
-        List<Walking> walkings = walkingRepository.findWalkingByUserId(userId);
+        List<Walking> walkings = walkingRepository.findWalkingByUserId(userId, "A");
         List<WalkingResponse> walkingDtos = createWalkingDtos(walkings);
         return walkingDtos;
     }
