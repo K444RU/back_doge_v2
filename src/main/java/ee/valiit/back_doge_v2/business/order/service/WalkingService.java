@@ -1,5 +1,6 @@
 package ee.valiit.back_doge_v2.business.order.service;
 
+import ee.valiit.back_doge_v2.business.order.dto.AllActiveWalkingResponse;
 import ee.valiit.back_doge_v2.business.order.dto.WalkingRequest;
 import ee.valiit.back_doge_v2.business.order.dto.WalkingResponse;
 import ee.valiit.back_doge_v2.business.user.service.UserService;
@@ -114,5 +115,9 @@ public class WalkingService {
         List<WalkingSizeDto> sizeDtos = sizeMapper.fromEntityToWalkingSizeDtos(sizes);
         response.setSizeTypes(sizeDtos);
 
+    }
+
+    public List<AllActiveWalkingResponse> getAllActiveWalkers(Integer cityId, String date, String timeFrom, String timeTo, Integer sizeId) {
+        return null;
     }
 }

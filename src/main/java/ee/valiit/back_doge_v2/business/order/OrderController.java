@@ -1,5 +1,6 @@
 package ee.valiit.back_doge_v2.business.order;
 
+import ee.valiit.back_doge_v2.business.order.dto.AllActiveWalkingResponse;
 import ee.valiit.back_doge_v2.business.order.dto.OrderRequest;
 import ee.valiit.back_doge_v2.business.order.dto.WalkingRequest;
 import ee.valiit.back_doge_v2.business.order.dto.WalkingResponse;
@@ -42,14 +43,17 @@ public class OrderController {
     }
 
     @GetMapping()
-    @Operation(summary = "Get all walkings by userId (walker user id)")
+    @Operation(summary = "Get all walkings by userId and status 'A'")
     public List<WalkingResponse> getUserAllWalkingsByUserId(@RequestParam Integer userId) {
         return walkingService.getUserAllWalkingsByUserId(userId);
     }
 
-//    @GetMapping
-//    @Operation(summary = "Get walkings by cityId && date && timeFrom && timeTo && dogSize")
-//
+    @GetMapping
+    @Operation(summary = "Get walkings by cityId && date && timeFrom && timeTo && dogSize && status 'A' ")
+    public List<AllActiveWalkingResponse> getAllActiveWalkers(@RequestParam Integer cityId, String date, String timeFrom, String timeTo, Integer sizeId) {
+        return walkingService.getAllActiveWalkers(cityId, date, timeFrom, timeTo, sizeId);
+    }
+
 
 
 }
