@@ -14,6 +14,6 @@ public class WalkingRequest {
     private LocalDate dateTo;
     private Integer timeFrom;
     private Integer timeTo;
-    private List<SizeDto> size;
+    private List<SizeDto> sizes;
 
 }

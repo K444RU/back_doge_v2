@@ -6,6 +6,7 @@ import ee.valiit.back_doge_v2.domain.order_information.walking_size.WalkingSizeR
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,7 +23,12 @@ public class WalkingSizeService {
     }
 
     public List<Size> findSizeBy(Integer walkingId){
-        List<Size> sizes = walkingSizeRepository.findSizeTypeByWalkingId(walkingId);
+        List<WalkingSize> walkingSizes = walkingSizeRepository.findSizeTypeByWalkingId(walkingId);
+        List<Size> sizes = new ArrayList<>();
+        for (WalkingSize walkingSize : walkingSizes) {
+           sizes.add(walkingSize.getSize());
+        }
+
         return sizes;
 
 //    public void addSizeTypeToSizeDto(WalkingResponse sizes) {

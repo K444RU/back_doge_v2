@@ -60,7 +60,7 @@ public class WalkingService {
     }
 
     private void createWalkingSize(WalkingRequest request, Walking walking) {
-        List<SizeDto> sizes = request.getSize();
+        List<SizeDto> sizes = request.getSizes();
         for (SizeDto size : sizes) {
             if (size.getIsSelected()) {
                 Integer sizeId = size.getSizeId();
@@ -90,9 +90,9 @@ public class WalkingService {
 //        return walkingSizeMapper.walkingsInfoResponse(walkingByUserId);
 //    }
 
-    public List<WalkingResponse> getWalkingListByUserId(Integer userId) {
-        List<Walking> walkingByUserId = walkingRepository.findWalkingByUserId(userId);
-        List<WalkingResponse> walkingDtos = createWalkingDtos(walkingByUserId);
+    public List<WalkingResponse> getUserAllWalkingsByUserId(Integer userId) {
+        List<Walking> walkings = walkingRepository.findWalkingByUserId(userId);
+        List<WalkingResponse> walkingDtos = createWalkingDtos(walkings);
         return walkingDtos;
     }
 
@@ -103,12 +103,13 @@ public class WalkingService {
     }
 
     private void addWalkingSizeType(List<WalkingResponse> walkingResponses) {
-        for (WalkingResponse sizes : walkingResponses) {
-            addSizeTypeToSizeDto(sizes);
+        for (WalkingResponse walkingResponse : walkingResponses) {
+            addSizeTypeToWalkingResponse(walkingResponse);
+            System.out.println();
         }
     }
 
-    public void addSizeTypeToSizeDto(WalkingResponse response) {
+    public void addSizeTypeToWalkingResponse(WalkingResponse response) {
         List<Size> sizes = walkingSizeService.findSizeBy(response.getWalkingId());
         List<WalkingSizeDto> sizeDtos = sizeMapper.fromEntityToWalkingSizeDtos(sizes);
         response.setSizeType(sizeDtos);

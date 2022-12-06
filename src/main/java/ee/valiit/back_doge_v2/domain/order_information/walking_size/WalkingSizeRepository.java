@@ -16,5 +16,8 @@ public interface WalkingSizeRepository extends JpaRepository<WalkingSize, Intege
             select w from WalkingSize w
             where w.walking.id = ?1
             order by w.walking.id, w.walking.dateFrom, w.walking.dateTo""")
-    List<Size> findSizeTypeByWalkingId(Integer id);
+    List<WalkingSize> findSizeTypeByWalkingId(Integer walkingId);
+
+
+
 }

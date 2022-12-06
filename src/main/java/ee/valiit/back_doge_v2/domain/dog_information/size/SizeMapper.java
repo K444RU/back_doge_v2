@@ -15,6 +15,7 @@ public interface SizeMapper {
     @Mapping(constant = "false", target = "isSelected")
     SizeDto toDto(Size size);
     List<SizeDto> sizeToSizeDto(List<Size> size);
+    @Mapping(source = "id", target = "sizeId")
     @Mapping(source = "type", target = "sizeType")
     WalkingSizeDto fromEntityToWalkingSizeDto(Size sizeTypeByWalkingId);
     List<WalkingSizeDto> fromEntityToWalkingSizeDtos(List<Size> sizeTypeByWalkingIds);

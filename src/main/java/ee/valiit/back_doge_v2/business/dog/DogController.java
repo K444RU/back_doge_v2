@@ -2,6 +2,7 @@ package ee.valiit.back_doge_v2.business.dog;
 
 import ee.valiit.back_doge_v2.business.dog.dto.DogNameDropdownByUserId;
 import ee.valiit.back_doge_v2.business.dog.dto.DogRegistrationRequest;
+import ee.valiit.back_doge_v2.business.dog.dto.DogStatusUpdate;
 import ee.valiit.back_doge_v2.business.dog.dto.OwnerHomePageDogInfoResponse;
 import ee.valiit.back_doge_v2.business.dog.service.*;
 import ee.valiit.back_doge_v2.business.register.service.DogRegistrationService;
@@ -59,9 +60,15 @@ public class DogController {
 
     @GetMapping("/select")
     @Operation(summary = "Get dogName and dogId by userId")
-    public List<DogNameDropdownByUserId> GetDogNameByUserId(@RequestParam Integer userId){
-        List<DogNameDropdownByUserId>  dogNameDropdownByUserId = dogService.GetDogNameByUserId(userId);
+    public List<DogNameDropdownByUserId> getDogNameByUserId(@RequestParam Integer userId){
+        List<DogNameDropdownByUserId>  dogNameDropdownByUserId = dogService.getDogNameByUserId(userId);
         return dogNameDropdownByUserId;
+    }
+
+    @PutMapping("/update")
+    @Operation(summary = "Update dogStatus by dogId")
+    public void updateDogStatus(@RequestParam Integer dogId, @RequestBody DogStatusUpdate request) {
+        dogService.updateDogStatus(dogId, request);
     }
 
 

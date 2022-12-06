@@ -18,5 +18,5 @@ public interface WalkingSizeMapper {
 
     @Mapping(source = "size.id", target = "sizeId")
     SizeDtoToWalkingResponse fromEntityToSizeDtoToWalkingResponse(WalkingSize sizeTypeByWalkingId);
-    List<SizeDtoToWalkingResponse> fromEntityToSizeDtoToWalkingResponse(List<WalkingSize> sizeTypeByWalkingId);
+    List<SizeDtoToWalkingResponse> fromEntityToSizeDtoToWalkingResponses(List<WalkingSize> sizeTypeByWalkingId);
 }

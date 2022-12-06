@@ -154,3 +154,15 @@ insert into public.walking (id, user_id, city_id, date_from, date_to, time_from,
 insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-01', '2022-12-06', 10, 11, 'A');
 insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-01', '2022-12-06', 10, 11, 'A');
 insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-01', '2022-12-06', 10, 11, 'I');
+
+insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 1, 1);
+insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 1, 2);
+insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 1, 3);
+insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 1, 4);
+insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 2, 2);
+insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 3, 3);
+insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 4, 1);
+insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 4, 3);
+insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 4, 4);
+insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 5, 2);
+insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 5, 3);

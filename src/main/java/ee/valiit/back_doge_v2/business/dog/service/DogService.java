@@ -1,6 +1,7 @@
 package ee.valiit.back_doge_v2.business.dog.service;
 
 import ee.valiit.back_doge_v2.business.dog.dto.DogNameDropdownByUserId;
+import ee.valiit.back_doge_v2.business.dog.dto.DogStatusUpdate;
 import ee.valiit.back_doge_v2.business.dog.dto.OwnerHomePageDogInfoResponse;
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.Breed;
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.BreedDto;
@@ -40,17 +41,12 @@ public class DogService {
     private SizeMapper sizeMapper;
 
     public List<OwnerHomePageDogInfoResponse> getDogInfoByUserId(Integer userId) {
-        List<Dog> dogsByUserId = dogRepository.findDogsByUserId(userId);
-        for (Dog dogByUserId : dogsByUserId) {
-            if (dogByUserId.getStatus().equals('I')) {
-                return null;
-            }
-        }
+        List<Dog> dogsByUserId = dogRepository.findDogsByUserId(userId, "A");
         return dogMapper.ownerHomePageDogsInfoResponse(dogsByUserId);
 
     }
 
-    public List<DogNameDropdownByUserId> GetDogNameByUserId(Integer userId) {
+    public List<DogNameDropdownByUserId> getDogNameByUserId(Integer userId) {
         List<Dog> dogsByUserId = dogRepository.findDogsByUserId(userId);
         return dogMapper.dogsNamesDropdownByUserId(dogsByUserId);
     }
@@ -76,5 +72,12 @@ public class DogService {
         return breedAllDtos;
     }
 
+
+    public void updateDogStatus(Integer dogId, DogStatusUpdate request) {
+        Dog dog = dogRepository.findById(dogId).get();
+        dogMapper.updateDogStatus(request, dog);
+        dogRepository.save(dog);
+
+    }
 
 }
