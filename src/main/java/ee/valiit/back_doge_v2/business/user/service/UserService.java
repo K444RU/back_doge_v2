@@ -1,7 +1,9 @@
 package ee.valiit.back_doge_v2.business.user.service;
 
 import ee.valiit.back_doge_v2.business.user.dto.UserHomepageInfoResponse;
+import ee.valiit.back_doge_v2.business.user.dto.UserInfoUpdate;
 import ee.valiit.back_doge_v2.business.user.dto.UserPhotoRequest;
+import ee.valiit.back_doge_v2.domain.user_role_information.contact.ContactMapper;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.User;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.UserMapper;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.UserRepository;
@@ -48,4 +50,10 @@ public class UserService {
         return optionalUser.get();
     }
 
+    public void updateUserInfo(Integer userId, UserInfoUpdate request) {
+        User user = userRepository.findById(userId).get();
+        userMapper.updateUserInformation(request, user);
+        userRepository.save(user);
+
+    }
 }

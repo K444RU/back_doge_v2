@@ -3,6 +3,8 @@ package ee.valiit.back_doge_v2.domain.user_role_information.user;
 import ee.valiit.back_doge_v2.business.login.dto.LoginResponse;
 import ee.valiit.back_doge_v2.business.register.dto.NewUserRequest;
 import ee.valiit.back_doge_v2.business.user.dto.UserHomepageInfoResponse;
+import ee.valiit.back_doge_v2.business.user.dto.UserInfoUpdate;
+import ee.valiit.back_doge_v2.domain.user_role_information.contact.Contact;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
@@ -29,6 +31,15 @@ public interface UserMapper {
     }
 
     User newUserRequestToUser(NewUserRequest request);
+
+    @Mapping(source = "email", target = "contact.email")
+    @Mapping(source = "city", target = "contact.city")
+    @Mapping(source = "firstname", target = "contact.firstname")
+    @Mapping(source = "lastname", target = "contact.lastname")
+    @Mapping(source = "additionalInformation", target = "contact.additionalInformation")
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateUserInformation(UserInfoUpdate userInfoUpdate, @MappingTarget User user);
+
 
 //    @Mapping(source = "userId", target = "id")
 //    @Mapping(source = "photoData", target = "contact.photoData", qualifiedByName = "stringPhotoToBYteArray")

@@ -52,7 +52,7 @@ public interface DogMapper {
     DogNameDropdownByUserId dogNameDropdownByUserId(Dog dogByUserId);
     List<DogNameDropdownByUserId> dogsNamesDropdownByUserId(List<Dog> dogsByUserId);
 
-    @Mapping(source = "dogStatus", target = "status")
+    @Mapping(constant = "I", target = "status")
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateDogStatus(DogStatusUpdate dogStatusUpdate, @MappingTarget Dog dog);
 }

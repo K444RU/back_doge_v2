@@ -1,6 +1,7 @@
 package ee.valiit.back_doge_v2.business.user;
 
 import ee.valiit.back_doge_v2.business.user.dto.UserHomepageInfoResponse;
+import ee.valiit.back_doge_v2.business.user.dto.UserInfoUpdate;
 import ee.valiit.back_doge_v2.business.user.dto.UserPhotoRequest;
 import ee.valiit.back_doge_v2.business.user.service.UserService;
 import ee.valiit.back_doge_v2.infrastructure.error.ApiError;
@@ -36,5 +37,11 @@ public class UserController {
     @Operation(summary = "Post user photo (save user photo)")
     public void adduserPhoto(@RequestBody UserPhotoRequest userPhoto) {
         userService.addUserPhoto(userPhoto);
+    }
+
+    @PutMapping()
+    @Operation(summary = "Update user information")
+    public void updateUserInfo(@RequestParam Integer userId, @RequestBody UserInfoUpdate request){
+        userService.updateUserInfo(userId, request);
     }
 }

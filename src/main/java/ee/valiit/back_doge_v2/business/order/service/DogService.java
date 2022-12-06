@@ -1,4 +1,4 @@
-package ee.valiit.back_doge_v2.business.dog.service;
+package ee.valiit.back_doge_v2.business.order.service;
 
 import ee.valiit.back_doge_v2.business.dog.dto.DogNameDropdownByUserId;
 import ee.valiit.back_doge_v2.business.dog.dto.DogStatusUpdate;

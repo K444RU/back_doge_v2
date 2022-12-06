@@ -147,6 +147,11 @@ VALUES (DEFAULT, 'Yorkshire Terrier');
 INSERT INTO public.dog (id, user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) VALUES (DEFAULT, 2, 4, 3, 'Charlie', 5, 'Big Beagle', null, 'A');
 INSERT INTO public.dog (id, user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) VALUES (DEFAULT, 1, 38, 1, 'Valera', 28, 'Big Papa Valera', null, 'A');
 insert into public.dog (id, user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) values (DEFAULT, 2, 3, 2, 'NotActiveTest', 7, 'Test to not active dog', null, 'I');
+insert into public.dog (id, user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) values (DEFAULT, 2, 3, 2, 'Tori', 1, 'Corgi', null, 'A');
+insert into public.dog (id, user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) values (DEFAULT, 2, 35, 2, 'Tori', 1, 'Corgi', null, 'A');
+insert into public.dog (id, user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) values (DEFAULT, 2, 1, 1, 'Yato', 3, 'Cat', null, 'A');
+insert into public.dog (id, user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) values (DEFAULT, 2, 3, 2, 'Test', 7, 'Test', null, 'I');
+
 
 
 insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-06', '2022-12-06', 10, 11, 'A');
@@ -161,7 +166,6 @@ insert into public.walking (id, user_id, city_id, date_from, date_to, time_from,
 insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-13', '2022-12-13', 9, 19, 'A');
 insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 2, '2022-12-19', '2022-12-19', 9, 19, 'A');
 insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-13', '2022-12-13', 9, 19, 'A');
-insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 3, 1, '2022-12-13', '2022-12-13', 9, 19, 'A');
 insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-12', '2022-12-12', 9, 19, 'A');
 insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 2, '2022-12-13', '2022-12-13', 9, 19, 'A');
 insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 2, '2022-12-14', '2022-12-16', 9, 19, 'A');
@@ -173,9 +177,6 @@ insert into public.walking (id, user_id, city_id, date_from, date_to, time_from,
 insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 4, '2022-12-13', '2022-12-13', 9, 19, 'A');
 insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 10, '2022-12-13', '2022-12-13', 9, 19, 'A');
 insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 5, '2022-12-13', '2022-12-16', 10, 23, 'A');
-
-
-
 
 
 insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 1, 1);
