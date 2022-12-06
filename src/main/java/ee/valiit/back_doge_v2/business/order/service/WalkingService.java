@@ -112,7 +112,7 @@ public class WalkingService {
     public void addSizeTypeToWalkingResponse(WalkingResponse response) {
         List<Size> sizes = walkingSizeService.findSizeBy(response.getWalkingId());
         List<WalkingSizeDto> sizeDtos = sizeMapper.fromEntityToWalkingSizeDtos(sizes);
-        response.setSizeType(sizeDtos);
+        response.setSizeTypes(sizeDtos);
 
     }
 }

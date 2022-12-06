@@ -14,5 +14,5 @@ public class WalkingResponse {
     private LocalDate dateTo;
     private Integer timeFrom;
     private Integer timeTo;
-    private List<WalkingSizeDto> sizeType;
+    private List<WalkingSizeDto> sizeTypes;
 }
