@@ -52,7 +52,7 @@ public class DogController {
     }
 
     @GetMapping("/info")
-    @Operation(summary = "Get dog information by userId")
+    @Operation(summary = "Get dog information by userId and status('A')")
     public List <OwnerHomePageDogInfoResponse> getDogInfoByUserId(@RequestParam Integer userId){
         List <OwnerHomePageDogInfoResponse> dogInfoByUserId = dogService.getDogInfoByUserId(userId);
         return dogInfoByUserId;

@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public interface DogRepository extends JpaRepository<Dog, Integer> {
     Optional<Dog> findDogByUserId(Integer id);
-    List<Dog> findDogsByUserId(Integer id);
+
 
     @Query("select d from Dog d where d.user.id = ?1 and d.status = ?2")
     List<Dog> findDogsByUserId(Integer userId, String status);

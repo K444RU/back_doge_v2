@@ -47,7 +47,7 @@ public class DogService {
     }
 
     public List<DogNameDropdownByUserId> getDogNameByUserId(Integer userId) {
-        List<Dog> dogsByUserId = dogRepository.findDogsByUserId(userId);
+        List<Dog> dogsByUserId = dogRepository.findDogsByUserId(userId, "A");
         return dogMapper.dogsNamesDropdownByUserId(dogsByUserId);
     }
 

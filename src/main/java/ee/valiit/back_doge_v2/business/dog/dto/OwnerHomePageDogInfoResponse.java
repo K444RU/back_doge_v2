@@ -6,6 +6,7 @@ import org.springframework.lang.Nullable;
 
 @Data
 public class OwnerHomePageDogInfoResponse {
+    private Integer dogId;
     @Nullable
     private String dogPhoto;
     private String dogName;

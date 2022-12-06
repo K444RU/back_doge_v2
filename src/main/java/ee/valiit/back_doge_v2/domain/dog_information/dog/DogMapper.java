@@ -19,6 +19,7 @@ public interface DogMapper {
     @Mapping(constant = "A", target = "status")
     Dog dogRequestToDog(DogRegistrationRequest request);
 
+    @Mapping(source = "id", target = "dogId")
     @Mapping(source = "name", target = "dogName")
     @Mapping(source = "age", target = "dogAge")
     @Mapping(source = "additionalInformation", target = "dogAdditionalInformation")
