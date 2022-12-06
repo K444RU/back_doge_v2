@@ -41,13 +41,6 @@ public class OrderController {
         orderService.addNewOrder(request);
     }
 
-//    @GetMapping("/get")
-//    @Operation(summary = "TEST. Get all posted walkings by userId (walker user id)")
-//    public List<WalkingResponse> getAllWalkingByUserId(@RequestParam Integer userId) {
-//        return walkingService.getAllWalkingByUserId(userId);
-//
-//    }
-
     @GetMapping()
     @Operation(summary = "Get all walkings by userId (walker user id)")
     public List<WalkingResponse> getUserAllWalkingsByUserId(@RequestParam Integer userId) {
