@@ -154,6 +154,29 @@ insert into public.walking (id, user_id, city_id, date_from, date_to, time_from,
 insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-01', '2022-12-06', 10, 11, 'A');
 insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-01', '2022-12-06', 10, 11, 'A');
 insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-01', '2022-12-06', 10, 11, 'I');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-06', '2022-12-06', 9, 23, 'I');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-13', '2022-12-13', 9, 19, 'I');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-13', '2022-12-13', 9, 19, 'I');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-13', '2022-12-13', 9, 19, 'A');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-13', '2022-12-13', 9, 19, 'A');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 2, '2022-12-19', '2022-12-19', 9, 19, 'A');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-13', '2022-12-13', 9, 19, 'A');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 3, 1, '2022-12-13', '2022-12-13', 9, 19, 'A');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-12', '2022-12-12', 9, 19, 'A');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 2, '2022-12-13', '2022-12-13', 9, 19, 'A');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 2, '2022-12-14', '2022-12-16', 9, 19, 'A');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-08', '2022-12-12', 9, 19, 'A');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 4, '2022-12-13', '2022-12-13', 9, 19, 'A');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 4, '2022-12-13', '2022-12-13', 9, 19, 'A');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 4, '2022-12-13', '2022-12-13', 9, 19, 'A');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 4, '2022-12-13', '2022-12-13', 9, 19, 'A');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 4, '2022-12-13', '2022-12-13', 9, 19, 'A');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 10, '2022-12-13', '2022-12-13', 9, 19, 'A');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 5, '2022-12-13', '2022-12-16', 10, 23, 'A');
+
+
+
+
 
 insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 1, 1);
 insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 1, 2);
