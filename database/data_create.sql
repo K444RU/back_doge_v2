@@ -170,3 +170,7 @@ insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 4, 3)
 insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 4, 4);
 insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 5, 2);
 insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 5, 3);
+
+
+INSERT INTO public."order" (id, walking_id, walking_date, time_from, time_to, address, status) VALUES (DEFAULT, 1, '2022-12-07', '10:00:00', '11:00:00', 'some address 1', 'A');
+INSERT INTO public."order" (id, walking_id, walking_date, time_from, time_to, address, status) VALUES (DEFAULT, 1, '2022-12-07', '12:00:00', '13:00:00', 'some address 2', 'A');
