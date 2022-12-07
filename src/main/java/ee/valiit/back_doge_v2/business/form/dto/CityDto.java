@@ -1,4 +1,4 @@
-package ee.valiit.back_doge_v2.business.dog.dto;
+package ee.valiit.back_doge_v2.business.form.dto;
 
 import ee.valiit.back_doge_v2.domain.order_information.city.City;
 import lombok.Data;

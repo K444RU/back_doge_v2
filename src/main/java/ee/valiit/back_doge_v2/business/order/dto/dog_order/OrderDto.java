@@ -1,4 +1,4 @@
-package ee.valiit.back_doge_v2.business.order.dto;
+package ee.valiit.back_doge_v2.business.order.dto.dog_order;
 
 import ee.valiit.back_doge_v2.domain.order_information.order.Order;
 import ee.valiit.back_doge_v2.domain.order_information.walking.Walking;
@@ -18,6 +18,10 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderDto implements Serializable {
+
+    // TODO: 07.12.2022 KAS SEDA KLASSI ON VAJA
+
+
     private Integer orderId;
     @NotNull
     private Walking walkingId;

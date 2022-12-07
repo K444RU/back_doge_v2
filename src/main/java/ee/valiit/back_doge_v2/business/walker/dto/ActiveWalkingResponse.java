@@ -1,14 +1,16 @@
-package ee.valiit.back_doge_v2.business.order.dto;
+package ee.valiit.back_doge_v2.business.walker.dto;
 
 import lombok.Data;
 
 import java.time.LocalDate;
 
 @Data
-public class AllActiveWalkingResponse {
+public class ActiveWalkingResponse {
     private Integer walkingId;
-    private String walkerName;
+    private Integer userId;
+    private String cityName;
     private LocalDate date;
     private Integer timeFrom;
     private Integer timeTo;
+
 }

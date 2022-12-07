@@ -1,19 +1,17 @@
 package ee.valiit.back_doge_v2.business.walker;
 
-import ee.valiit.back_doge_v2.business.dog.dto.CityDto;
-import ee.valiit.back_doge_v2.business.dog.dto.DogSizeDto;
+import ee.valiit.back_doge_v2.business.form.dto.DogSizeDto;
 import ee.valiit.back_doge_v2.business.dog.dto.WalkerSearchRequest;
 import ee.valiit.back_doge_v2.business.dog.dto.WalkingSizeDto;
 import ee.valiit.back_doge_v2.business.order.OrdersService;
-import ee.valiit.back_doge_v2.business.order.dto.AllActiveWalkingResponse;
-import ee.valiit.back_doge_v2.business.order.dto.WalkingRequest;
-import ee.valiit.back_doge_v2.business.order.dto.WalkingResponse;
+import ee.valiit.back_doge_v2.business.walker.dto.AllActiveWalkingResponse;
+import ee.valiit.back_doge_v2.business.walker.dto.WalkingRequest;
+import ee.valiit.back_doge_v2.business.walker.dto.WalkingResponse;
 import ee.valiit.back_doge_v2.business.user.UsersService;
 import ee.valiit.back_doge_v2.domain.dog_information.size.Size;
 import ee.valiit.back_doge_v2.domain.dog_information.size.SizeMapper;
 import ee.valiit.back_doge_v2.domain.dog_information.size.SizeService;
 import ee.valiit.back_doge_v2.domain.order_information.city.City;
-import ee.valiit.back_doge_v2.domain.order_information.city.CityMapper;
 import ee.valiit.back_doge_v2.domain.order_information.city.CityService;
 import ee.valiit.back_doge_v2.domain.order_information.order.Order;
 import ee.valiit.back_doge_v2.domain.order_information.walking.Walking;
@@ -30,7 +28,6 @@ import java.util.List;
 
 @Service
 public class WalkerService {
-
 
     @Resource
     private CityService cityService;
@@ -51,18 +48,10 @@ public class WalkerService {
     private WalkingSizeService walkingSizeService;
 
     @Resource
-    private CityMapper cityMapper;
-
-    @Resource
     private SizeMapper sizeMapper;
 
     @Resource
     private WalkingMapper walkingMapper;
-
-    public List<CityDto> getAllCities() {
-        List<City> allCities = cityService.findAllCities();
-        return cityMapper.cityToCityDto(allCities);
-    }
 
     public void addNewWalking(WalkingRequest request) {
         User user = usersService.getUserById(request.getUserId());

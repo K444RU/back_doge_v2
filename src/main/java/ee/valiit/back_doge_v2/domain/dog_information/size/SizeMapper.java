@@ -1,6 +1,6 @@
 package ee.valiit.back_doge_v2.domain.dog_information.size;
 
-import ee.valiit.back_doge_v2.business.dog.dto.DogSizeDto;
+import ee.valiit.back_doge_v2.business.form.dto.DogSizeDto;
 import ee.valiit.back_doge_v2.business.dog.dto.WalkingSizeDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

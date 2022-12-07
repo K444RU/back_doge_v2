@@ -1,6 +1,6 @@
 package ee.valiit.back_doge_v2.domain.dog_information.breed;
 
-import ee.valiit.back_doge_v2.business.dog.dto.DogBreedDto;
+import ee.valiit.back_doge_v2.business.form.dto.DogBreedDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;

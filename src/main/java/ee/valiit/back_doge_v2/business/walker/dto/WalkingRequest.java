@@ -1,6 +1,6 @@
-package ee.valiit.back_doge_v2.business.order.dto;
+package ee.valiit.back_doge_v2.business.walker.dto;
 
-import ee.valiit.back_doge_v2.business.dog.dto.DogSizeDto;
+import ee.valiit.back_doge_v2.business.form.dto.DogSizeDto;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -15,5 +15,4 @@ public class WalkingRequest {
     private Integer timeFrom;
     private Integer timeTo;
     private List<DogSizeDto> sizes;
-
 }

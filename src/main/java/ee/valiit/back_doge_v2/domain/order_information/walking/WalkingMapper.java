@@ -1,7 +1,7 @@
 package ee.valiit.back_doge_v2.domain.order_information.walking;
 
-import ee.valiit.back_doge_v2.business.order.dto.WalkingRequest;
-import ee.valiit.back_doge_v2.business.order.dto.WalkingResponse;
+import ee.valiit.back_doge_v2.business.walker.dto.WalkingRequest;
+import ee.valiit.back_doge_v2.business.walker.dto.WalkingResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;

@@ -1,4 +1,4 @@
-package ee.valiit.back_doge_v2.business.dog.dto;
+package ee.valiit.back_doge_v2.business.order.dto.dog_order;
 
 import ee.valiit.back_doge_v2.domain.dog_information.breed.Breed;
 import ee.valiit.back_doge_v2.domain.dog_information.dog.Dog;
@@ -18,6 +18,10 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DogDto implements Serializable {
+
+    // TODO: 07.12.2022 KAS SEDA KLASSI ON VAJA
+
+
     private Integer id;
     @NotNull
     private User user;

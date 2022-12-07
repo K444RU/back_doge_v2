@@ -1,6 +1,6 @@
 package ee.valiit.back_doge_v2.domain.order_information.city;
 
-import ee.valiit.back_doge_v2.business.dog.dto.CityDto;
+import ee.valiit.back_doge_v2.business.form.dto.CityDto;
 import org.mapstruct.*;
 
 import java.util.List;

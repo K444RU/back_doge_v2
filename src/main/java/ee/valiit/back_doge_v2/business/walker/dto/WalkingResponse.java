@@ -1,4 +1,4 @@
-package ee.valiit.back_doge_v2.business.order.dto;
+package ee.valiit.back_doge_v2.business.walker.dto;
 
 import ee.valiit.back_doge_v2.business.dog.dto.WalkingSizeDto;
 import lombok.Data;
