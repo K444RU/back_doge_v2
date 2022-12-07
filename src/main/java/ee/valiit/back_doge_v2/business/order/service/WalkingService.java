@@ -117,7 +117,7 @@ public class WalkingService {
 
     }
 
-    public List<AllActiveWalkingResponse> getAllActiveWalkers(Integer cityId, String date, String timeFrom, String timeTo, Integer sizeId) {
-        return null;
-    }
+//    public List<AllActiveWalkingResponse> getAllActiveWalkers(Integer cityId, String date, String timeFrom, String timeTo, Integer sizeId) {
+//        return null;
+//    }
 }

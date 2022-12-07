@@ -48,11 +48,11 @@ public class OrderController {
         return walkingService.getUserAllWalkingsByUserId(userId);
     }
 
-    @GetMapping
-    @Operation(summary = "Get walkings by cityId && date && timeFrom && timeTo && dogSize && status 'A' ")
-    public List<AllActiveWalkingResponse> getAllActiveWalkers(@RequestParam Integer cityId, String date, String timeFrom, String timeTo, Integer sizeId) {
-        return walkingService.getAllActiveWalkers(cityId, date, timeFrom, timeTo, sizeId);
-    }
+//    @GetMapping
+//    @Operation(summary = "Get walkings by cityId && date && timeFrom && timeTo && dogSize && status 'A' ")
+//    public List<AllActiveWalkingResponse> getAllActiveWalkers(@RequestParam Integer cityId, String date, String timeFrom, String timeTo, Integer sizeId) {
+//        return walkingService.getAllActiveWalkers(cityId, date, timeFrom, timeTo, sizeId);
+//    }
 
 
 
