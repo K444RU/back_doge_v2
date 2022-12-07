@@ -4,6 +4,8 @@ package ee.valiit.back_doge_v2.business.dog.dto;
 import lombok.Data;
 import org.springframework.lang.Nullable;
 
+import javax.validation.constraints.NotNull;
+
 @Data
 public class OwnerHomePageDogInfoResponse {
     private Integer dogId;
@@ -15,5 +17,7 @@ public class OwnerHomePageDogInfoResponse {
     private String dogSizeType;
     @Nullable
     private String dogAdditionalInformation;
+    @NotNull
+    private String status;
 
 }
