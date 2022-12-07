@@ -152,11 +152,11 @@ insert into public.dog (id, user_id, breed_id, size_id, name, age, additional_in
 insert into public.dog (id, user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) values (DEFAULT, 2, 1, 1, 'Yato', 3, 'Cat', null, 'A');
 insert into public.dog (id, user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) values (DEFAULT, 2, 3, 2, 'Test', 7, 'Test', null, 'I');
 
-insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-06', '2022-12-08', 10, 13, 'A');
-insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-06', '2022-12-08', 10, 15, 'A');
-insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-06', '2022-12-06', 10, 15, 'A');
-insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-06', '2022-12-06', 9, 23, 'A');
-insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-06', '2022-12-06', 10, 13, 'A');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-06', '2022-12-08', '10:00:00', '13:00:00', 'A');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-06', '2022-12-08', '10:00:00', '15:00:00', 'A');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-06', '2022-12-06', '10:00:00', '15:00:00', 'A');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-06', '2022-12-06', '09:00:00', '23:00:00', 'A');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-06', '2022-12-06', '10:00:00', '13:00:00', 'A');
 
 
 insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 1, 1);

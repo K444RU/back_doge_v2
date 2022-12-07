@@ -55,8 +55,8 @@ CREATE TABLE "order" (
                          id serial  NOT NULL,
                          walking_id int  NOT NULL,
                          walking_date date  NOT NULL,
-                         time_from int  NOT NULL,
-                         time_to int  NOT NULL,
+                         time_from time  NOT NULL,
+                         time_to time  NOT NULL,
                          address varchar(255)  NOT NULL,
 --                          total_price int  NOT NULL,
                          status char(1)  NOT NULL,
@@ -95,8 +95,8 @@ CREATE TABLE walking (
                          city_id int  NOT NULL,
                          date_from date  NOT NULL,
                          date_to date  NOT NULL,
-                         time_from int  NOT NULL,
-                         time_to int  NOT NULL,
+                         time_from time  NOT NULL,
+                         time_to time  NOT NULL,
                          status char(1)  NOT NULL,
                          CONSTRAINT walking_pk PRIMARY KEY (id)
 );

@@ -41,11 +41,11 @@ public class Walking {
 
     @NotNull
     @Column(name = "time_from", nullable = false)
-    private Integer timeFrom;
+    private LocalTime timeFrom;
 
     @NotNull
     @Column(name = "time_to", nullable = false)
-    private Integer timeTo;
+    private LocalTime timeTo;
 
     @Size(max = 1)
     @NotNull

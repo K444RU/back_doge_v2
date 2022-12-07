@@ -49,7 +49,5 @@ public class OrdersController {
         return ordersService.getAllActiveWalkers(request);
     }
 
-
-
 }
 
