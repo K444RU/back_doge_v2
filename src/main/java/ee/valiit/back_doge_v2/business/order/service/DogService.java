@@ -1,6 +1,6 @@
 package ee.valiit.back_doge_v2.business.order.service;
 
-import ee.valiit.back_doge_v2.business.dog.dto.DogNameDropdownByUserId;
+import ee.valiit.back_doge_v2.business.dog.dto.DogInfo;
 import ee.valiit.back_doge_v2.business.dog.dto.DogStatusUpdate;
 import ee.valiit.back_doge_v2.business.dog.dto.OwnerHomePageDogInfoResponse;
 import ee.valiit.back_doge_v2.domain.dog_information.breeds.Breed;
@@ -46,7 +46,7 @@ public class DogService {
 
     }
 
-    public List<DogNameDropdownByUserId> getDogNameByUserId(Integer userId) {
+    public List<DogInfo> getDogNameByUserId(Integer userId) {
         List<Dog> dogsByUserId = dogRepository.findDogsByUserId(userId, "A");
         return dogMapper.dogsNamesDropdownByUserId(dogsByUserId);
     }

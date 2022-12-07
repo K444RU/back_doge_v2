@@ -1,6 +1,6 @@
 package ee.valiit.back_doge_v2.business.dog;
 
-import ee.valiit.back_doge_v2.business.dog.dto.DogNameDropdownByUserId;
+import ee.valiit.back_doge_v2.business.dog.dto.DogInfo;
 import ee.valiit.back_doge_v2.business.dog.dto.DogRegistrationRequest;
 import ee.valiit.back_doge_v2.business.dog.dto.DogStatusUpdate;
 import ee.valiit.back_doge_v2.business.dog.dto.OwnerHomePageDogInfoResponse;
@@ -53,15 +53,15 @@ public class DogController {
 
     @GetMapping("/info")
     @Operation(summary = "Get owner all dogs and every dog information by userId and status('A')")
-    public List <OwnerHomePageDogInfoResponse> getDogInfoByUserId(@RequestParam Integer userId){
-        List <OwnerHomePageDogInfoResponse> dogInfoByUserId = dogService.getDogInfoByUserId(userId);
+    public List<OwnerHomePageDogInfoResponse> getDogInfoByUserId(@RequestParam Integer userId) {
+        List<OwnerHomePageDogInfoResponse> dogInfoByUserId = dogService.getDogInfoByUserId(userId);
         return dogInfoByUserId;
     }
 
     @GetMapping("/select")
     @Operation(summary = "Get dogName and dogId by userId")
-    public List<DogNameDropdownByUserId> getDogNameByUserId(@RequestParam Integer userId){
-        List<DogNameDropdownByUserId>  dogNameDropdownByUserId = dogService.getDogNameByUserId(userId);
+    public List<DogInfo> getDogNameByUserId(@RequestParam Integer userId) {
+        List<DogInfo> dogNameDropdownByUserId = dogService.getDogNameByUserId(userId);
         return dogNameDropdownByUserId;
     }
 
@@ -70,7 +70,6 @@ public class DogController {
     public void updateDogStatus(@RequestParam Integer dogId, @RequestBody DogStatusUpdate request) {
         dogService.updateDogStatus(dogId, request);
     }
-
 
 
 }

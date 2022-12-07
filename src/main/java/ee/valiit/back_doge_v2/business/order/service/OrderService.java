@@ -1,7 +1,11 @@
 package ee.valiit.back_doge_v2.business.order.service;
 
 
+import ee.valiit.back_doge_v2.business.dog.dto.WalkerSearchRequest;
+import ee.valiit.back_doge_v2.business.order.dto.AllActiveWalkingResponse;
 import ee.valiit.back_doge_v2.business.order.dto.OrderRequest;
+import ee.valiit.back_doge_v2.business.order.dto.WalkingRequest;
+import ee.valiit.back_doge_v2.business.order.dto.WalkingResponse;
 import ee.valiit.back_doge_v2.domain.dog_information.dog.Dog;
 import ee.valiit.back_doge_v2.domain.dog_information.dog.DogDtoToOrderRequest;
 import ee.valiit.back_doge_v2.domain.dog_information.dog.DogRepository;
@@ -15,9 +19,11 @@ import ee.valiit.back_doge_v2.domain.order_information.order.Order;
 import ee.valiit.back_doge_v2.domain.order_information.order.OrderMapper;
 import ee.valiit.back_doge_v2.domain.order_information.order.OrderRepository;
 import ee.valiit.back_doge_v2.domain.order_information.walking.Walking;
+import ee.valiit.back_doge_v2.domain.order_information.walking.WalkingService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -74,6 +80,22 @@ public class OrderService {
         }
     }
 
+    public void addNewWalking(WalkingRequest request) {
+        walkingService.addNewWalking(request);
+    }
+
+    public List<WalkingResponse> getUserAllWalkingsByUserId(Integer userId) {
+        return walkingService.getUserAllWalkingsByUserId(userId);
+    }
+
+    public List<AllActiveWalkingResponse> getAllActiveWalkers(WalkerSearchRequest request) {
+        return walkingService.getAllActiveWalkers(request);
+    }
+
+    public List<Order> findOrdersBy(Integer walkingId, LocalDate walkingDate) {
+        List<Order> orders = orderRepository.findOrdersBy(walkingId, walkingDate);
+        return orders;
+    }
 }
 
 

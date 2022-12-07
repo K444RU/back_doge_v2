@@ -1,6 +1,6 @@
 package ee.valiit.back_doge_v2.domain.dog_information.dog;
 
-import ee.valiit.back_doge_v2.business.dog.dto.DogNameDropdownByUserId;
+import ee.valiit.back_doge_v2.business.dog.dto.DogInfo;
 import ee.valiit.back_doge_v2.business.dog.dto.DogRegistrationRequest;
 import ee.valiit.back_doge_v2.business.dog.dto.DogStatusUpdate;
 import ee.valiit.back_doge_v2.business.dog.dto.OwnerHomePageDogInfoResponse;
@@ -49,8 +49,8 @@ public interface DogMapper {
 
     @Mapping(source = "id", target = "dogId")
     @Mapping(source = "name", target = "dogName")
-    DogNameDropdownByUserId dogNameDropdownByUserId(Dog dogByUserId);
-    List<DogNameDropdownByUserId> dogsNamesDropdownByUserId(List<Dog> dogsByUserId);
+    DogInfo dogNameDropdownByUserId(Dog dogByUserId);
+    List<DogInfo> dogsNamesDropdownByUserId(List<Dog> dogsByUserId);
 
     @Mapping(constant = "I", target = "status")
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)

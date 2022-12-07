@@ -7,10 +7,8 @@ import java.time.LocalDate;
 @Data
 public class AllActiveWalkingResponse {
     private Integer walkingId;
-    private Integer userId;
-    private String cityName;
+    private String walkerName;
     private LocalDate date;
     private Integer timeFrom;
     private Integer timeTo;
-    private String userPhoto;
 }
