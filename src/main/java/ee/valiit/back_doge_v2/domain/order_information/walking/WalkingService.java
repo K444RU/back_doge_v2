@@ -1,24 +1,23 @@
 package ee.valiit.back_doge_v2.domain.order_information.walking;
 
+import ee.valiit.back_doge_v2.business.dog.dto.DogSizeDto;
 import ee.valiit.back_doge_v2.business.dog.dto.WalkerSearchRequest;
+import ee.valiit.back_doge_v2.business.dog.dto.WalkingSizeDto;
+import ee.valiit.back_doge_v2.business.order.OrdersService;
 import ee.valiit.back_doge_v2.business.order.dto.AllActiveWalkingResponse;
 import ee.valiit.back_doge_v2.business.order.dto.WalkingRequest;
 import ee.valiit.back_doge_v2.business.order.dto.WalkingResponse;
-import ee.valiit.back_doge_v2.business.order.service.OrderService;
-import ee.valiit.back_doge_v2.business.order.service.WalkingSizeService;
-import ee.valiit.back_doge_v2.business.user.service.UserService;
+import ee.valiit.back_doge_v2.business.user.UsersService;
 import ee.valiit.back_doge_v2.domain.dog_information.size.Size;
-import ee.valiit.back_doge_v2.domain.dog_information.size.SizeDto;
 import ee.valiit.back_doge_v2.domain.dog_information.size.SizeMapper;
 import ee.valiit.back_doge_v2.domain.dog_information.size.SizeRepository;
 import ee.valiit.back_doge_v2.domain.order_information.city.City;
 import ee.valiit.back_doge_v2.domain.order_information.city.CityRepository;
 import ee.valiit.back_doge_v2.domain.order_information.order.Order;
 import ee.valiit.back_doge_v2.domain.order_information.walking_size.WalkingSize;
-import ee.valiit.back_doge_v2.domain.order_information.walking_size.WalkingSizeDto;
 import ee.valiit.back_doge_v2.domain.order_information.walking_size.WalkingSizeMapper;
+import ee.valiit.back_doge_v2.domain.order_information.walking_size.WalkingSizeService;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.User;
-import org.apache.tomcat.jni.OS;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -30,7 +29,7 @@ import java.util.Optional;
 public class WalkingService {
 
     @Resource
-    private UserService userService;
+    private UsersService usersService;
 
 
     @Resource
@@ -49,7 +48,6 @@ public class WalkingService {
     private SizeMapper sizeMapper;
 
 
-
     @Resource
     private WalkingSizeMapper walkingSizeMapper;
 
@@ -57,10 +55,10 @@ public class WalkingService {
     private WalkingSizeService walkingSizeService;
 
     @Resource
-    private OrderService orderService;
+    private OrdersService ordersService;
 
     public void addNewWalking(WalkingRequest request) {
-        User user = userService.getUserById(request.getUserId());
+        User user = usersService.getUserById(request.getUserId());
         City city = cityRepository.findById(request.getCityId()).get();
         Walking walking = walkingMapper.toEntity(request);
         walking.setUser(user);
@@ -70,8 +68,8 @@ public class WalkingService {
     }
 
     private void createWalkingSize(WalkingRequest request, Walking walking) {
-        List<SizeDto> sizes = request.getSizes();
-        for (SizeDto size : sizes) {
+        List<DogSizeDto> sizes = request.getSizes();
+        for (DogSizeDto size : sizes) {
             if (size.getIsSelected()) {
                 Integer sizeId = size.getSizeId();
                 Size sizeFromEntity = sizeRepository.findById(sizeId).get();
@@ -84,21 +82,10 @@ public class WalkingService {
     }
 
 
-
     public Walking getWalkingById(Integer walkingId) {
         Optional<Walking> optionalWalking = walkingRepository.findById(walkingId);
         return optionalWalking.get();
     }
-
-//    public List<WalkingResponse> getAllWalkingByUserId(Integer userId) {
-//        List<WalkingSize> walkingByUserId = walkingSizeRepository.findWalkingByUserId(userId);
-//        for (WalkingSize walkings : walkingByUserId) {
-//            if (walkings.getWalking().getStatus().equals('I')) {
-//                return null;
-//            }
-//        }
-//        return walkingSizeMapper.walkingsInfoResponse(walkingByUserId);
-//    }
 
     public List<WalkingResponse> getUserAllWalkingsByUserId(Integer userId) {
         List<Walking> walkings = walkingRepository.findWalkingByUserId(userId, "A");
@@ -127,7 +114,7 @@ public class WalkingService {
     }
 
     public List<AllActiveWalkingResponse> getAllActiveWalkers(WalkerSearchRequest request) {
-        List<Walking> walkings = walkingRepository.findWalkingsBy(request.getCityId(), request.getDate(),  "A");
+        List<Walking> walkings = walkingRepository.findWalkingsBy(request.getCityId(), request.getDate(), "A");
         Integer timeFrom = request.getTimeFrom();
         Integer timeTo = request.getTimeTo();
         List<Integer> requiredHours = getHoursBetween(timeFrom, timeTo);
@@ -137,7 +124,7 @@ public class WalkingService {
 
         for (Walking walking : walkings) {
             List<Integer> walkerHours = getHoursBetween(walking.getTimeFrom(), walking.getTimeTo());
-            List<Order> orders = orderService.findOrdersBy(walking.getId(), request.getDate());
+            List<Order> orders = ordersService.findOrdersBy(walking.getId(), request.getDate());
             List<Integer> allBookedHours = new ArrayList<>();
             for (Order order : orders) {
                 List<Integer> bookedHours = getHoursBetween(order.getTimeFrom(), order.getTimeTo());
@@ -145,8 +132,6 @@ public class WalkingService {
             }
 
             List<Integer> availableWalkerHours = new ArrayList<>();
-
-
 
 
             for (Integer walkerHour : walkerHours) {
@@ -158,11 +143,8 @@ public class WalkingService {
             }
         }
 
-
-
         return null;
     }
-
 
     private static List<Integer> getHoursBetween(Integer timeFrom, Integer timeTo) {
         List<Integer> requiredHours = new ArrayList<>();

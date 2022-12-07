@@ -1,9 +1,8 @@
 package ee.valiit.back_doge_v2.business.register;
 
-import ee.valiit.back_doge_v2.business.login.dto.LoginResponse;
+import ee.valiit.back_doge_v2.business.login.LoginResponse;
+import ee.valiit.back_doge_v2.business.login.dto.RoleDto;
 import ee.valiit.back_doge_v2.business.register.dto.NewUserRequest;
-import ee.valiit.back_doge_v2.business.register.service.UserRegistrationService;
-import ee.valiit.back_doge_v2.domain.user_role_information.role.RoleDto;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +14,7 @@ import java.util.List;
 public class RegistrationController {
 
     @Resource
-    private UserRegistrationService registrationService;
+    private RegistrationService registrationService;
 
     @PostMapping("/register")
     @Operation(summary = "Post user information (new user register)")

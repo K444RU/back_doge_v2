@@ -1,6 +1,6 @@
 package ee.valiit.back_doge_v2.business.order.dto;
 
-import ee.valiit.back_doge_v2.domain.order_information.walking_size.WalkingSizeDto;
+import ee.valiit.back_doge_v2.business.dog.dto.WalkingSizeDto;
 import lombok.Data;
 
 import java.time.LocalDate;

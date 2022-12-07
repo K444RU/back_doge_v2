@@ -1,7 +1,6 @@
 package ee.valiit.back_doge_v2.business.order.dto;
 
-import ee.valiit.back_doge_v2.domain.dog_information.dog.DogDto;
-import ee.valiit.back_doge_v2.domain.dog_information.dog.DogDtoToOrderRequest;
+import ee.valiit.back_doge_v2.business.dog.dto.DogDtoToOrderRequest;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -14,5 +13,6 @@ public class OrderRequest {
     private Integer timeFrom;
     private Integer timeTo;
     private String address;
+    // TODO: dog->dogs
     private List<DogDtoToOrderRequest> dog;
 }

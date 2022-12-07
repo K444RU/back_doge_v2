@@ -1,10 +1,9 @@
 package ee.valiit.back_doge_v2.domain.user_role_information.user;
 
-import ee.valiit.back_doge_v2.business.login.dto.LoginResponse;
+import ee.valiit.back_doge_v2.business.login.LoginResponse;
 import ee.valiit.back_doge_v2.business.register.dto.NewUserRequest;
 import ee.valiit.back_doge_v2.business.user.dto.UserHomepageInfoResponse;
 import ee.valiit.back_doge_v2.business.user.dto.UserInfoUpdate;
-import ee.valiit.back_doge_v2.domain.user_role_information.contact.Contact;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
@@ -26,8 +25,8 @@ public interface UserMapper {
         if (photoData == null) {
             return null;
         }
-            String picture = new String(photoData);
-            return picture;
+        String picture = new String(photoData);
+        return picture;
     }
 
     User newUserRequestToUser(NewUserRequest request);
@@ -41,7 +40,4 @@ public interface UserMapper {
     void updateUserInformation(UserInfoUpdate userInfoUpdate, @MappingTarget User user);
 
 
-//    @Mapping(source = "userId", target = "id")
-//    @Mapping(source = "photoData", target = "contact.photoData", qualifiedByName = "stringPhotoToBYteArray")
-//    User userPhotoRequestToContact(OwnerPictureRequest request);
 }

@@ -14,11 +14,10 @@ public class Validation {
         }
     }
 
-    public static void validationUsername(Optional<User> userOptional) {
-        if (userOptional.isPresent()) {
-            throw new BusinessException(LoginError.INCORRECT_USERNAME.getMessage(), LoginError.INCORRECT_USERNAME.getErrorCode());
+    public static void validateUserNameTaken(boolean userExits) {
+        if (userExits) {
+            throw new BusinessException(LoginError.USERNAME_TAKEN.getMessage(), LoginError.USERNAME_TAKEN.getErrorCode());
         }
     }
 
 }
-
