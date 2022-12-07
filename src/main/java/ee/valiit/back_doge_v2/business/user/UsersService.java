@@ -5,19 +5,17 @@ import ee.valiit.back_doge_v2.business.user.dto.UserInfoUpdate;
 import ee.valiit.back_doge_v2.business.user.dto.UserPhotoRequest;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.User;
 import ee.valiit.back_doge_v2.domain.user_role_information.user.UserMapper;
-import ee.valiit.back_doge_v2.domain.user_role_information.user.UserRepository;
-import ee.valiit.back_doge_v2.errors.Validation;
+import ee.valiit.back_doge_v2.domain.user_role_information.user.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.nio.charset.StandardCharsets;
-import java.util.Optional;
 
 @Service
 public class UsersService {
 
     @Resource
-    private UserRepository userRepository;
+    private UserService userService;
 
     @Resource
     private UserMapper userMapper;
@@ -27,10 +25,8 @@ public class UsersService {
         return userMapper.userToHomepageResponse(userById);
     }
 
-    public User getValidUserByNameAndPassword(String username, String password) {
-        Optional<User> userLogin = userRepository.findUserByUsernameAndPassword(username, password);
-        Validation.validationUser(userLogin);
-        return userLogin.get();
+    public User getValidUserBy(String username, String password) {
+        return userService.findValidUserBy(username, password);
     }
 
     public void addUserPhoto(UserPhotoRequest request) {
@@ -41,18 +37,16 @@ public class UsersService {
     private void saveUserPhoto(User userBy, String photoData) {
         byte[] bytes = photoData.getBytes(StandardCharsets.UTF_8);
         userBy.getContact().setPhotoData(bytes);
-        userRepository.save(userBy);
+        userService.save(userBy);
     }
 
-    public User getUserById(Integer userId){
-        Optional<User> optionalUser = userRepository.findById(userId);
-        return optionalUser.get();
+    public User getUserById(Integer userId) {
+        return userService.findById(userId);
     }
 
     public void updateUserInfo(Integer userId, UserInfoUpdate request) {
-        User user = userRepository.findById(userId).get();
+        User user = userService.findById(userId);
         userMapper.updateUserInformation(request, user);
-        userRepository.save(user);
-
+        userService.save(user);
     }
 }

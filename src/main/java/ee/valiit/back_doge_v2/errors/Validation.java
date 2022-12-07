@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public class Validation {
 
-    public static void validationUser(Optional<User> userOptional) {
+    public static void validateCorrectCredentials(Optional<User> userOptional) {
         if (userOptional.isEmpty()) {
             throw new BusinessException(LoginError.INCORRECT_CREDENTIALS.getMessage(), LoginError.INCORRECT_CREDENTIALS.getErrorCode());
         }

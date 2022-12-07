@@ -9,10 +9,9 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
     @Query("select u from User u where u.username = ?1 and u.password = ?2")
-    Optional<User> findUserByUsernameAndPassword(String username, String password);
+    Optional<User> findUserBy(String username, String password);
 
-    Optional<User> findByUsername(String username);
-
+    @Query("select (count(u) > 0) from User u where u.username = ?1")
     boolean userExists(String username);
 
 }

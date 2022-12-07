@@ -20,7 +20,6 @@ public class DogsController {
     @Resource
     private DogsService dogsService;
 
-
     @PostMapping("/registration")
     @Operation(summary = "Post dog information (new dog register)")
     public void addNewDog(@RequestBody DogRegistrationRequest request) {
@@ -58,6 +57,5 @@ public class DogsController {
     public void updateDogStatus(@RequestParam Integer dogId, @RequestBody DogStatusUpdate request) {
         dogsService.updateDogStatus(dogId, request);
     }
-
 
 }

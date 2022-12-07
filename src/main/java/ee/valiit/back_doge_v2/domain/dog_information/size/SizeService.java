@@ -19,4 +19,9 @@ public class SizeService {
         Optional<Size> optionalSize = sizeRepository.findById(dogSizeId);
         return optionalSize.get();
     }
+
+    public Size findById(Integer sizeId) {
+        return sizeRepository.findById(sizeId).get();
+    }
+
 }

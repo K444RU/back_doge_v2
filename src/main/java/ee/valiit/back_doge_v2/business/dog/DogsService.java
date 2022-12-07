@@ -33,10 +33,10 @@ public class DogsService {
     private SizeService sizeService;
 
     @Resource
-    private DogMapper dogMapper;
+    private BreedMapper breedMapper;
 
     @Resource
-    private BreedMapper breedMapper;
+    private DogMapper dogMapper;
 
     @Resource
     private SizeMapper sizeMapper;
@@ -63,7 +63,7 @@ public class DogsService {
     }
 
     public void updateDogStatus(Integer dogId, DogStatusUpdate request) {
-        Dog dog = dogService.findById(dogId).get();
+        Dog dog = dogService.findById(dogId);
         dogMapper.updateDogStatus(request, dog);
         dogService.save(dog);
     }
