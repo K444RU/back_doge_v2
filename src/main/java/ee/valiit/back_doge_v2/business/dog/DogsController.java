@@ -44,10 +44,9 @@ public class DogsController {
     }
 
     @GetMapping("/dog/ordered")
-    @Operation(summary = "Get dog active orders")
+    @Operation(summary = "Get dog active orders by dogId and status 'A'")
     public List<OwnerActiveOrdersResponse> getDogOrdersByDogId(@RequestParam Integer dogId) {
         return dogsService.getDogActiveOrders(dogId);
-
     }
 
 }

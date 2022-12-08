@@ -25,11 +25,10 @@ public class DogOrderService {
             dogs.add(dogName.getDog());
         }
         return dogs;
-
-
     }
-    public List<Order> findOrdersByOrderId(Integer dogId) {
-        List<DogOrder> orders = dogOrderRepository.findByDogId(dogId);
+
+    public List<Order> findOrdersByDogId(Integer dogId, String status) {
+        List<DogOrder> orders = dogOrderRepository.findByDogId(dogId, status);
         List<Order> orderResponses = new ArrayList<>();
         for (DogOrder order : orders) {
             orderResponses.add(order.getOrder());

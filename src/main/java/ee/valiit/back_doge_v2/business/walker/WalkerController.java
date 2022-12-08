@@ -40,4 +40,5 @@ public class WalkerController {
         walkerService.deleteWalking(walkingId);
     }
 
+
 }

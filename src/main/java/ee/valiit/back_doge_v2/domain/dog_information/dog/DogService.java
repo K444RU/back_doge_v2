@@ -20,7 +20,6 @@ public class DogService {
     }
 
 
-
     public void save(Dog dog) {
         dogRepository.save(dog);
     }

@@ -35,7 +35,7 @@ public class UsersController {
 
     @PutMapping()
     @Operation(summary = "Update user information")
-    public void updateUserInfo(@RequestParam Integer userId, @RequestBody UserInfoUpdate request){
+    public void updateUserInfo(@RequestParam Integer userId, @RequestBody UserInfoUpdate request) {
         usersService.updateUserInfo(userId, request);
     }
 }

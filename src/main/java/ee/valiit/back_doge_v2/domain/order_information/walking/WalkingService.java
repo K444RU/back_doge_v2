@@ -4,7 +4,6 @@ import ee.valiit.back_doge_v2.business.dog.dto.WalkerSearchRequest;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -24,10 +23,6 @@ public class WalkingService {
 
     public List<Walking> findWalkingByUserId(Integer userId, String status) {
         return walkingRepository.findWalkingByUserId(userId, status);
-    }
-
-    public List<Walking> findAnyDogSizeWalkingsBy(Integer cityId, LocalDate date, String status) {
-        return walkingRepository.findWalkingsBy(cityId, date, status);
     }
 
     public List<Walking> findAnyDogSizeWalkingsBy(WalkerSearchRequest request) {

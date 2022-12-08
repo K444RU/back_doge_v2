@@ -10,6 +10,10 @@ where city_id = 1
 select *
 from "order";
 
+select *
+from "order"
+full outer join "dog_order" d on "order".id = d.order_id;
+
 
 select *
 from "order"

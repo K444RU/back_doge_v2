@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Integer> {
@@ -25,9 +26,8 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
     @Query("select o from Order o where o.walking.id = ?1")
     List<Order> findByWalkingId(Integer id);
 
-    @Query("select o from Order o where o.walking.user.id = ?1 order by o.walkingDate")
-    List<Order> findBy(Integer id);
 
-
+    @Query("select o from Order o where o.walking.user.id = ?1 and o.status = ?2")
+    List<Order> findBy(Integer userId, String orderStatus);
 
 }

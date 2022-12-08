@@ -14,6 +14,5 @@ public class WalkerActiveOrderResponse {
     private Integer timeTo;
     private String cityName;
     private String address;
-
     private List<OrderedDog> dogs;
 }

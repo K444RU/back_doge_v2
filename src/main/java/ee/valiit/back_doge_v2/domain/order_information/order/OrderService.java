@@ -27,12 +27,17 @@ public class OrderService {
         LocalTime timeTo = LocalTime.of(request.getTimeTo(), 0).minusMinutes(1);
         return orderRepository.findOverlappingOrders("A", request.getDate(), timeFrom, timeTo);
     }
+
     public void deleteOrderBy(Integer walkingId) {
         List<Order> orders = orderRepository.findByWalkingId(walkingId);
         orderRepository.deleteAll(orders);
     }
 
-    public List<Order> findOrdersBy(Integer userId) {
-        return orderRepository.findBy(userId);
+    public List<Order> findOrdersBy(Integer userId, String orderStatus) {
+        return orderRepository.findBy(userId, orderStatus);
+    }
+
+    public Order findById(Integer orderId) {
+        return orderRepository.findById(orderId).get();
     }
 }

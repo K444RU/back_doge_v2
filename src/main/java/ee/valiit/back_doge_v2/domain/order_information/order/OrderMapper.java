@@ -2,12 +2,11 @@ package ee.valiit.back_doge_v2.domain.order_information.order;
 
 import ee.valiit.back_doge_v2.business.dog.dto.DogActiveOrders;
 import ee.valiit.back_doge_v2.business.order.dto.OrderRequest;
+import ee.valiit.back_doge_v2.business.order.dto.OrderStatusUpdate;
 import ee.valiit.back_doge_v2.business.order.dto.OwnerActiveOrdersResponse;
 import ee.valiit.back_doge_v2.business.order.dto.WalkerActiveOrderResponse;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Named;
-import org.mapstruct.ReportingPolicy;
+import org.aspectj.weaver.ast.Or;
+import org.mapstruct.*;
 
 import java.time.LocalTime;
 import java.util.List;
@@ -55,5 +54,8 @@ public interface OrderMapper {
         String picture = new String(photoData);
         return picture;
     }
+    @Mapping(constant = "I", target = "status")
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateOrderStatus(OrderStatusUpdate orderStatusUpdate, @MappingTarget Order order);
 }
 

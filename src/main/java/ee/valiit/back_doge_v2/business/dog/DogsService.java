@@ -85,10 +85,8 @@ public class DogsService {
     }
 
     private void addOrderToResponse(OwnerActiveOrdersResponse response) {
-        List<Order> orders = dogOrderService.findOrdersByOrderId(response.getDogId());
+        List<Order> orders = dogOrderService.findOrdersByDogId(response.getDogId(), "A");
         List<DogActiveOrders> ordersResponses = orderMapper.entityToOrderedDogsResponses(orders);
         response.setOrders(ordersResponses);
-
-
     }
 }

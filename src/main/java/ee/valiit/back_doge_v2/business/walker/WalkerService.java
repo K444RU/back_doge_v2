@@ -1,13 +1,13 @@
 package ee.valiit.back_doge_v2.business.walker;
 
 import ee.valiit.back_doge_v2.business.dog.dto.DogInfo;
-import ee.valiit.back_doge_v2.business.form.dto.DogSizeDto;
 import ee.valiit.back_doge_v2.business.dog.dto.WalkerSearchRequest;
 import ee.valiit.back_doge_v2.business.dog.dto.WalkingSizeDto;
+import ee.valiit.back_doge_v2.business.form.dto.DogSizeDto;
+import ee.valiit.back_doge_v2.business.user.UsersService;
 import ee.valiit.back_doge_v2.business.walker.dto.AllActiveWalkingResponse;
 import ee.valiit.back_doge_v2.business.walker.dto.WalkingRequest;
 import ee.valiit.back_doge_v2.business.walker.dto.WalkingResponse;
-import ee.valiit.back_doge_v2.business.user.UsersService;
 import ee.valiit.back_doge_v2.domain.dog_information.dog.Dog;
 import ee.valiit.back_doge_v2.domain.dog_information.dog.DogService;
 import ee.valiit.back_doge_v2.domain.dog_information.size.Size;
@@ -79,12 +79,10 @@ public class WalkerService {
     }
 
 
-
     public void addSizeTypeToWalkingResponse(WalkingResponse response) {
         List<Size> sizes = walkingSizeService.findSizeBy(response.getWalkingId());
         List<WalkingSizeDto> sizeDtos = sizeMapper.fromEntityToWalkingSizeDtos(sizes);
         response.setSizeTypes(sizeDtos);
-
     }
 
     public List<AllActiveWalkingResponse> getAllActiveWalkers(WalkerSearchRequest request) {
@@ -139,11 +137,9 @@ public class WalkerService {
                     break;
                 }
             }
-
             if (addToAvailable) {
                 availableWalkings.add(walking);
             }
-
         }
         return availableWalkings;
     }
@@ -180,4 +176,5 @@ public class WalkerService {
         orderService.deleteOrderBy(walkingId);
         walkingService.deleteWalkingBy(walkingId);
     }
+
 }

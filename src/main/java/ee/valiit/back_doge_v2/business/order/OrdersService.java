@@ -4,6 +4,7 @@ package ee.valiit.back_doge_v2.business.order;
 import ee.valiit.back_doge_v2.business.dog.dto.DogDtoToOrderRequest;
 import ee.valiit.back_doge_v2.business.dog.dto.OrderedDog;
 import ee.valiit.back_doge_v2.business.order.dto.OrderRequest;
+import ee.valiit.back_doge_v2.business.order.dto.OrderStatusUpdate;
 import ee.valiit.back_doge_v2.business.order.dto.WalkerActiveOrderResponse;
 import ee.valiit.back_doge_v2.domain.dog_information.dog.Dog;
 import ee.valiit.back_doge_v2.domain.dog_information.dog.DogMapper;
@@ -43,8 +44,6 @@ public class OrdersService {
     private DogOrderService dogOrderService;
 
 
-
-
     public void addNewOrder(OrderRequest request) {
         Walking walking = walkingService.findById(request.getWalkingId());
         Order order = orderMapper.toEntity(request);
@@ -70,7 +69,7 @@ public class OrdersService {
     }
 
     public List<WalkerActiveOrderResponse> getWalkerActiveOrders(Integer userId) {
-        List<Order> orders = orderService.findOrdersBy(userId);
+        List<Order> orders = orderService.findOrdersBy(userId, "A");
         List<WalkerActiveOrderResponse> orderResponses = orderMapper.entityToOrdersResponses(orders);
         addOrderDogName(orderResponses);
         return orderResponses;
@@ -87,5 +86,12 @@ public class OrdersService {
         List<Dog> dogNames = dogOrderService.findDogBy(response.getOrderId());
         List<OrderedDog> orderedDogs = dogMapper.entityToOrdersResponses(dogNames);
         response.setDogs(orderedDogs);
+    }
+
+    public void updateOrderStatus(OrderStatusUpdate request) {
+        Order order = orderService.findById(request.getOrderId());
+        orderMapper.updateOrderStatus(request, order);
+        orderService.save(order);
+
     }
 }
