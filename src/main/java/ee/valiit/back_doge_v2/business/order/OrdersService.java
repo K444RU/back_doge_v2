@@ -3,9 +3,11 @@ package ee.valiit.back_doge_v2.business.order;
 
 import ee.valiit.back_doge_v2.business.dog.dto.DogDtoToOrderRequest;
 import ee.valiit.back_doge_v2.business.order.dto.OrderRequest;
+import ee.valiit.back_doge_v2.business.order.dto.WalkerActiveOrderResponse;
 import ee.valiit.back_doge_v2.domain.dog_information.dog.Dog;
 import ee.valiit.back_doge_v2.domain.dog_information.dog.DogService;
 import ee.valiit.back_doge_v2.domain.order_information.dog_order.DogOrder;
+import ee.valiit.back_doge_v2.domain.order_information.dog_order.DogOrderMapper;
 import ee.valiit.back_doge_v2.domain.order_information.dog_order.DogOrderService;
 import ee.valiit.back_doge_v2.domain.order_information.order.Order;
 import ee.valiit.back_doge_v2.domain.order_information.order.OrderMapper;
@@ -35,6 +37,10 @@ public class OrdersService {
 
     @Resource
     private DogOrderService dogOrderService;
+    @Resource
+    private DogOrderMapper dogOrderMapper;
+
+
 
     public void addNewOrder(OrderRequest request) {
         Walking walking = walkingService.findById(request.getWalkingId());
@@ -60,4 +66,8 @@ public class OrdersService {
         }
     }
 
+    public List<WalkerActiveOrderResponse> getWalkerActiveOrders(Integer userId) {
+        List<DogOrder> orders = dogOrderService.findOrdersBy(userId);
+        return dogOrderMapper.entityToOrdersResponses(orders);
+    }
 }
