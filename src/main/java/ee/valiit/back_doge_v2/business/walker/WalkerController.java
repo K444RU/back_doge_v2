@@ -29,10 +29,16 @@ public class WalkerController {
         return walkerService.getUserAllWalkingsByUserId(userId);
     }
 
-    @PostMapping("/walking")
-    @Operation(summary = "Get walkings by cityId && date && timeFrom && timeTo && dogSize && status 'A' ")
+    @PostMapping("/walking/active")
+    @Operation(summary = "Get all active walkings by cityId && date && timeFrom && timeTo && dogSize && status 'A' ")
     public List<AllActiveWalkingResponse> getAllActiveWalkers(@RequestBody WalkerSearchRequest request) {
         return walkerService.getAllActiveWalkers(request);
+    }
+
+    @DeleteMapping("/walking/delete")
+    @Operation(summary = "Delete walking by walkingId")
+    public void getAllActiveWalkers(@RequestParam Integer walkingId) {
+        walkerService.deleteWalking(walkingId);
     }
 
 }

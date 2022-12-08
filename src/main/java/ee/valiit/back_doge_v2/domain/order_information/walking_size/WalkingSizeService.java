@@ -25,4 +25,10 @@ public class WalkingSizeService {
         }
         return sizes;
     }
+
+    public void deleteWalkingSizeBy(Integer walkingId) {
+        List<WalkingSize> walkingSizes = walkingSizeRepository.findByWalkingId(walkingId);
+        walkingSizeRepository.deleteAll(walkingSizes);
+    }
+
 }

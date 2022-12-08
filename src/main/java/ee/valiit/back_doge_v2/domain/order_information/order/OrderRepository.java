@@ -12,4 +12,8 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
     @Query("select o from Order o where o.walking.id = ?1 and o.walkingDate = ?2")
     List<Order> findOrdersBy(Integer walkingId, LocalDate walkingDate);
 
+    @Query("select o from Order o where o.walking.id = ?1")
+    List<Order> findByWalkingId(Integer id);
+
+
 }

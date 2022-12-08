@@ -19,4 +19,9 @@ public class OrderService {
     public List<Order> findOrdersBy(Integer walkingId, LocalDate walkingDate) {
         return orderRepository.findOrdersBy(walkingId, walkingDate);
     }
+
+    public void deleteOrderBy(Integer walkingId) {
+        List<Order> orders = orderRepository.findByWalkingId(walkingId);
+        orderRepository.deleteAll(orders);
+    }
 }

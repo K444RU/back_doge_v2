@@ -16,6 +16,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class  DogStatusUpdate implements Serializable {
+    private Integer dogId;
     @Size(max = 1)
     @NotNull
     private String dogStatus;

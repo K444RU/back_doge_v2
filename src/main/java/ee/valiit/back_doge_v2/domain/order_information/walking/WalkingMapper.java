@@ -14,14 +14,14 @@ public interface WalkingMapper {
 
     // TODO: FIX mappings
     @Mapping(constant = "A", target = "status")
-    @Mapping(target = "timeTo", ignore = true)
-    @Mapping(target = "timeFrom", ignore = true)
+//    @Mapping(target = "timeTo", ignore = true)
+//    @Mapping(target = "timeFrom", ignore = true)
     Walking toEntity(WalkingRequest request);
 
     @Mapping(source = "id", target = "walkingId")
     @Mapping(source = "city.name", target = "cityName")
-    @Mapping(target = "timeTo", ignore = true)
-    @Mapping(target = "timeFrom", ignore = true)
+//    @Mapping(target = "timeTo", ignore = true)
+//    @Mapping(target = "timeFrom", ignore = true)
     WalkingResponse fromEntityToResponse(Walking byUserId);
 
     List<WalkingResponse> fromEntityToResponses(List<Walking> byUserIds);

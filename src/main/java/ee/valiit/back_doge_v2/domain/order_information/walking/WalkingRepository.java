@@ -16,14 +16,4 @@ public interface WalkingRepository extends JpaRepository<Walking, Integer> {
             where w.city.id = ?1 and ?2 between w.dateFrom and w.dateTo and w.status = ?3
             order by w.user.contact.firstname""")
     List<Walking> findWalkingsBy(Integer cityId, LocalDate date, String status);
-
-
-
-
-
-
-
-
-
-
 }

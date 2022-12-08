@@ -28,4 +28,11 @@ public class WalkingService {
         return walkingRepository.findWalkingsBy(cityId, date, status);
     }
 
+    public void deleteWalkingBy(Integer walkingId) {
+        if (walkingRepository.findById(walkingId).isPresent()) {
+            Walking walking = walkingRepository.findById(walkingId).get();
+            walkingRepository.delete(walking);
+        }
+
+    }
 }

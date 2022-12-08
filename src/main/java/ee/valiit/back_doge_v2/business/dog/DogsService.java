@@ -48,8 +48,8 @@ public class DogsService {
     }
 
 
-    public void updateDogStatus(Integer dogId, DogStatusUpdate request) {
-        Dog dog = dogService.findById(dogId);
+    public void updateDogStatus(DogStatusUpdate request) {
+        Dog dog = dogService.findById(request.getDogId());
         dogMapper.updateDogStatus(request, dog);
         dogService.save(dog);
     }

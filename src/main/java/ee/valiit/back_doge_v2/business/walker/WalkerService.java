@@ -1,19 +1,20 @@
 package ee.valiit.back_doge_v2.business.walker;
 
-import ee.valiit.back_doge_v2.business.form.dto.DogSizeDto;
 import ee.valiit.back_doge_v2.business.dog.dto.WalkerSearchRequest;
 import ee.valiit.back_doge_v2.business.dog.dto.WalkingSizeDto;
+import ee.valiit.back_doge_v2.business.form.dto.DogSizeDto;
 import ee.valiit.back_doge_v2.business.order.OrdersService;
+import ee.valiit.back_doge_v2.business.user.UsersService;
 import ee.valiit.back_doge_v2.business.walker.dto.AllActiveWalkingResponse;
 import ee.valiit.back_doge_v2.business.walker.dto.WalkingRequest;
 import ee.valiit.back_doge_v2.business.walker.dto.WalkingResponse;
-import ee.valiit.back_doge_v2.business.user.UsersService;
 import ee.valiit.back_doge_v2.domain.dog_information.size.Size;
 import ee.valiit.back_doge_v2.domain.dog_information.size.SizeMapper;
 import ee.valiit.back_doge_v2.domain.dog_information.size.SizeService;
 import ee.valiit.back_doge_v2.domain.order_information.city.City;
 import ee.valiit.back_doge_v2.domain.order_information.city.CityService;
 import ee.valiit.back_doge_v2.domain.order_information.order.Order;
+import ee.valiit.back_doge_v2.domain.order_information.order.OrderService;
 import ee.valiit.back_doge_v2.domain.order_information.walking.Walking;
 import ee.valiit.back_doge_v2.domain.order_information.walking.WalkingMapper;
 import ee.valiit.back_doge_v2.domain.order_information.walking.WalkingService;
@@ -23,6 +24,7 @@ import ee.valiit.back_doge_v2.domain.user_role_information.user.User;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +36,8 @@ public class WalkerService {
 
     @Resource
     private OrdersService ordersService;
+    @Resource
+    private OrderService orderService;
 
     @Resource
     private UsersService usersService;
@@ -104,43 +108,64 @@ public class WalkerService {
     }
 
     public List<AllActiveWalkingResponse> getAllActiveWalkers(WalkerSearchRequest request) {
-        List<Walking> walkings = walkingService.findWalkingsBy(request.getCityId(), request.getDate(), "A");
-        Integer timeFrom = request.getTimeFrom();
-        Integer timeTo = request.getTimeTo();
+        List<Walking> walkings = walkingService.findWalkingsBy(request.getCityId(), request.getWalkingDate(), "A");
+        LocalTime timeFrom = request.getTimeFrom();
+        LocalTime timeTo = request.getTimeTo();
         List<Integer> requiredHours = getHoursBetween(timeFrom, timeTo);
-
 
         List<Walking> availableWalkings = new ArrayList<>();
 
         for (Walking walking : walkings) {
-            List<Integer> walkerHours = getHoursBetween(null, null);
-            List<Order> orders = ordersService.findOrdersBy(walking.getId(), request.getDate());
+            List<Integer> walkerHours = getHoursBetween(walking.getTimeFrom(), walking.getTimeTo());
+            List<Order> orders = orderService.findOrdersBy(walking.getId(), request.getWalkingDate());
             List<Integer> allBookedHours = new ArrayList<>();
             for (Order order : orders) {
-                List<Integer> bookedHours = getHoursBetween(null, null);
+                List<Integer> bookedHours = getHoursBetween(order.getTimeFrom(), order.getTimeTo());
                 allBookedHours.addAll(bookedHours);
             }
 
             List<Integer> availableWalkerHours = new ArrayList<>();
 
-
             for (Integer walkerHour : walkerHours) {
                 if (!allBookedHours.contains(walkerHour)) {
                     availableWalkerHours.add(walkerHour);
                 }
+            }
 
-
+            for (Integer requiredHour : requiredHours) {
+                for (Integer availableWalkerHour : availableWalkerHours) {
+                    if (requiredHour.equals(availableWalkerHour) && !availableWalkings.contains(walking)) {
+                        availableWalkings.add(walking);
+                    }
+                }
             }
         }
 
-        return null;
+        List<AllActiveWalkingResponse> allActiveWalkingResponse = new ArrayList<>();
+        for (Walking availableWalking : availableWalkings) {
+            allActiveWalkingResponse.add(new AllActiveWalkingResponse(availableWalking.getId(),
+                    availableWalking.getUser().getContact().getFirstname(),
+                    request.getWalkingDate(),
+                    availableWalking.getTimeFrom(),
+                    availableWalking.getTimeTo()));
+        }
+
+        return allActiveWalkingResponse;
     }
 
-    private static List<Integer> getHoursBetween(Integer timeFrom, Integer timeTo) {
+    private static List<Integer> getHoursBetween(LocalTime timeFrom, LocalTime timeTo) {
         List<Integer> requiredHours = new ArrayList<>();
-        for (int hour = timeFrom; hour < timeTo; hour++) {
+        for (int hour = timeFrom.getHour(); hour < timeTo.getHour(); hour++) {
             requiredHours.add(hour);
         }
         return requiredHours;
     }
+
+    public void deleteWalking(Integer walkingId) {
+        walkingSizeService.deleteWalkingSizeBy(walkingId);
+        orderService.deleteOrderBy(walkingId);
+        walkingService.deleteWalkingBy(walkingId);
+    }
+
 }
+
