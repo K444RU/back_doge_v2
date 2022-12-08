@@ -4,7 +4,7 @@ import ee.valiit.back_doge_v2.business.dog.dto.DogInfo;
 import ee.valiit.back_doge_v2.business.dog.dto.DogRegistrationRequest;
 import ee.valiit.back_doge_v2.business.dog.dto.DogStatusUpdate;
 import ee.valiit.back_doge_v2.business.dog.dto.OwnerHomePageDogInfoResponse;
-import ee.valiit.back_doge_v2.business.order.dto.OwnerActiveOrdersResponse;
+import ee.valiit.back_doge_v2.business.order.dto.OwnerOrdersResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,7 +45,7 @@ public class DogsController {
 
     @GetMapping("/dog/ordered")
     @Operation(summary = "Get dog active orders by dogId and status 'A'")
-    public List<OwnerActiveOrdersResponse> getDogOrdersByDogId(@RequestParam Integer dogId) {
+    public List<OwnerOrdersResponse> getDogOrdersByDogId(@RequestParam Integer dogId) {
         return dogsService.getDogActiveOrders(dogId);
     }
 

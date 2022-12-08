@@ -1,14 +1,14 @@
 package ee.valiit.back_doge_v2.business.order.dto;
 
-import ee.valiit.back_doge_v2.business.dog.dto.DogActiveOrders;
+import ee.valiit.back_doge_v2.business.dog.dto.DogOrders;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class OwnerActiveOrdersResponse {
+public class OwnerOrdersResponse {
     private Integer dogId;
     private String dogName;
-    List<DogActiveOrders> orders;
+    List<DogOrders> orders;
 
 }

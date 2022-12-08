@@ -1,11 +1,9 @@
 package ee.valiit.back_doge_v2.domain.order_information.order;
 
-import ee.valiit.back_doge_v2.business.dog.dto.DogActiveOrders;
+import ee.valiit.back_doge_v2.business.dog.dto.DogOrders;
 import ee.valiit.back_doge_v2.business.order.dto.OrderRequest;
 import ee.valiit.back_doge_v2.business.order.dto.OrderStatusUpdate;
-import ee.valiit.back_doge_v2.business.order.dto.OwnerActiveOrdersResponse;
-import ee.valiit.back_doge_v2.business.order.dto.WalkerActiveOrderResponse;
-import org.aspectj.weaver.ast.Or;
+import ee.valiit.back_doge_v2.business.order.dto.WalkerOrdersResponse;
 import org.mapstruct.*;
 
 import java.time.LocalTime;
@@ -25,8 +23,8 @@ public interface OrderMapper {
     @Mapping(source = "walking.city.name", target = "cityName")
     @Mapping(source = "timeFrom", target = "timeFrom", qualifiedByName = "localTimeToInteger")
     @Mapping(source = "timeTo", target = "timeTo", qualifiedByName = "localTimeToInteger")
-    WalkerActiveOrderResponse entityToOrdersResponse(Order response);
-    List<WalkerActiveOrderResponse> entityToOrdersResponses(List<Order> responses);
+    WalkerOrdersResponse entityToOrdersResponse(Order response);
+    List<WalkerOrdersResponse> entityToOrdersResponses(List<Order> responses);
 
 
     @Mapping(source = "id", target = "orderId")
@@ -38,8 +36,8 @@ public interface OrderMapper {
     @Mapping(source = "status", target = "orderStatus")
     @Mapping(source = "timeFrom", target = "timeFrom", qualifiedByName = "localTimeToInteger")
     @Mapping(source = "timeTo", target = "timeTo", qualifiedByName = "localTimeToInteger")
-    DogActiveOrders entityToOrderedDogsResponse(Order response);
-    List<DogActiveOrders> entityToOrderedDogsResponses(List<Order> responses);
+    DogOrders entityToOrderedDogsResponse(Order response);
+    List<DogOrders> entityToOrderedDogsResponses(List<Order> responses);
 
     @Named("localTimeToInteger")
     static Integer localTimeToInteger(LocalTime time) {

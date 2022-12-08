@@ -1,7 +1,7 @@
 package ee.valiit.back_doge_v2.domain.dog_information.dog;
 
 import ee.valiit.back_doge_v2.business.dog.dto.*;
-import ee.valiit.back_doge_v2.business.order.dto.OwnerActiveOrdersResponse;
+import ee.valiit.back_doge_v2.business.order.dto.OwnerOrdersResponse;
 import org.mapstruct.*;
 
 import java.nio.charset.StandardCharsets;
@@ -58,6 +58,6 @@ public interface DogMapper {
 
     @Mapping(source = "id", target = "dogId")
     @Mapping(source = "name", target = "dogName")
-    OwnerActiveOrdersResponse entityToOwnerResponse(Dog dogName);
-    List<OwnerActiveOrdersResponse> entityToOwnerResponses(List<Dog> dogNames);
+    OwnerOrdersResponse entityToOwnerResponse(Dog dogName);
+    List<OwnerOrdersResponse> entityToOwnerResponses(List<Dog> dogNames);
 }

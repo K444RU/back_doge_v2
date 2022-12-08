@@ -5,7 +5,7 @@ import lombok.Data;
 import java.time.LocalDate;
 
 @Data
-public class DogActiveOrders {
+public class DogOrders {
     private Integer orderId;
     private String walkerFirstname;
     private String walkerLastname;

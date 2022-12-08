@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Data
-public class WalkerActiveOrderResponse {
+public class WalkerOrdersResponse {
     private Integer orderId;
     private LocalDate walkingDate;
     private Integer timeFrom;

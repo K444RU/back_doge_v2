@@ -5,7 +5,7 @@ import ee.valiit.back_doge_v2.business.dog.dto.DogDtoToOrderRequest;
 import ee.valiit.back_doge_v2.business.dog.dto.OrderedDog;
 import ee.valiit.back_doge_v2.business.order.dto.OrderRequest;
 import ee.valiit.back_doge_v2.business.order.dto.OrderStatusUpdate;
-import ee.valiit.back_doge_v2.business.order.dto.WalkerActiveOrderResponse;
+import ee.valiit.back_doge_v2.business.order.dto.WalkerOrdersResponse;
 import ee.valiit.back_doge_v2.domain.dog_information.dog.Dog;
 import ee.valiit.back_doge_v2.domain.dog_information.dog.DogMapper;
 import ee.valiit.back_doge_v2.domain.dog_information.dog.DogService;
@@ -68,21 +68,21 @@ public class OrdersService {
         }
     }
 
-    public List<WalkerActiveOrderResponse> getWalkerActiveOrders(Integer userId) {
+    public List<WalkerOrdersResponse> getWalkerActiveOrders(Integer userId) {
         List<Order> orders = orderService.findOrdersBy(userId, "A");
-        List<WalkerActiveOrderResponse> orderResponses = orderMapper.entityToOrdersResponses(orders);
+        List<WalkerOrdersResponse> orderResponses = orderMapper.entityToOrdersResponses(orders);
         addOrderDogName(orderResponses);
         return orderResponses;
     }
 
-    private void addOrderDogName(List<WalkerActiveOrderResponse> orderResponses) {
-        for (WalkerActiveOrderResponse orderResponse : orderResponses) {
+    private void addOrderDogName(List<WalkerOrdersResponse> orderResponses) {
+        for (WalkerOrdersResponse orderResponse : orderResponses) {
             addDogNameToWalkerOrderResponse(orderResponse);
         }
 
     }
 
-    private void addDogNameToWalkerOrderResponse(WalkerActiveOrderResponse response) {
+    private void addDogNameToWalkerOrderResponse(WalkerOrdersResponse response) {
         List<Dog> dogNames = dogOrderService.findDogBy(response.getOrderId());
         List<OrderedDog> orderedDogs = dogMapper.entityToOrdersResponses(dogNames);
         response.setDogs(orderedDogs);

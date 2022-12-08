@@ -1,7 +1,7 @@
 package ee.valiit.back_doge_v2.business.dog;
 
 import ee.valiit.back_doge_v2.business.dog.dto.*;
-import ee.valiit.back_doge_v2.business.order.dto.OwnerActiveOrdersResponse;
+import ee.valiit.back_doge_v2.business.order.dto.OwnerOrdersResponse;
 import ee.valiit.back_doge_v2.business.user.UsersService;
 import ee.valiit.back_doge_v2.domain.dog_information.breed.Breed;
 import ee.valiit.back_doge_v2.domain.dog_information.breed.BreedService;
@@ -71,22 +71,22 @@ public class DogsService {
         dogService.save(dog);
     }
 
-    public List<OwnerActiveOrdersResponse> getDogActiveOrders(Integer dogId) {
+    public List<OwnerOrdersResponse> getDogActiveOrders(Integer dogId) {
         List<Dog> dogs = dogService.findBy(dogId);
-        List<OwnerActiveOrdersResponse> dogResponses = dogMapper.entityToOwnerResponses(dogs);
+        List<OwnerOrdersResponse> dogResponses = dogMapper.entityToOwnerResponses(dogs);
         addDogOrder(dogResponses);
         return dogResponses;
     }
 
-    private void addDogOrder(List<OwnerActiveOrdersResponse> dogResponses) {
-        for (OwnerActiveOrdersResponse dogResponse : dogResponses) {
+    private void addDogOrder(List<OwnerOrdersResponse> dogResponses) {
+        for (OwnerOrdersResponse dogResponse : dogResponses) {
             addOrderToResponse(dogResponse);
         }
     }
 
-    private void addOrderToResponse(OwnerActiveOrdersResponse response) {
+    private void addOrderToResponse(OwnerOrdersResponse response) {
         List<Order> orders = dogOrderService.findOrdersByDogId(response.getDogId(), "A");
-        List<DogActiveOrders> ordersResponses = orderMapper.entityToOrderedDogsResponses(orders);
+        List<DogOrders> ordersResponses = orderMapper.entityToOrderedDogsResponses(orders);
         response.setOrders(ordersResponses);
     }
 }

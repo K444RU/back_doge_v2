@@ -2,7 +2,7 @@ package ee.valiit.back_doge_v2.business.order;
 
 import ee.valiit.back_doge_v2.business.order.dto.OrderRequest;
 import ee.valiit.back_doge_v2.business.order.dto.OrderStatusUpdate;
-import ee.valiit.back_doge_v2.business.order.dto.WalkerActiveOrderResponse;
+import ee.valiit.back_doge_v2.business.order.dto.WalkerOrdersResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +23,7 @@ public class OrdersController {
 
     @GetMapping("/walking/order")
     @Operation(summary = "Get walker all active Orders by userId and status 'A")
-    public List<WalkerActiveOrderResponse> getWalkerActiveOrders(@RequestParam Integer userId) {
+    public List<WalkerOrdersResponse> getWalkerActiveOrders(@RequestParam Integer userId) {
         return ordersService.getWalkerActiveOrders(userId);
     }
 
@@ -32,5 +32,10 @@ public class OrdersController {
     public void updateWalkingStatus(@RequestBody OrderStatusUpdate request) {
         ordersService.updateOrderStatus(request);
     }
+//
+//    @GetMapping("/walking/finishedorders")
+//    @Operation("Get finished orders by userId (walker user id) and status 'I'")
+//
+//
 }
 
