@@ -3,15 +3,18 @@ VALUES (DEFAULT, 'walker');
 INSERT INTO public.role (id, type)
 VALUES (DEFAULT, 'owner');
 
-INSERT INTO public.contact (id, e_mail, city, firstname, lastname, additional_information, photo_data)
-VALUES (DEFAULT, 'olegtrofimov@gmail.com', 'Tartu', 'Oleg', 'Trofimov', null, null);
-INSERT INTO public.contact (id, e_mail, city, firstname, lastname, additional_information, photo_data)
-VALUES (DEFAULT, 'vladislavjagu@gmail.com', 'Tartu', 'Vlad', 'Jagur', null, null);
+INSERT INTO public.contact (id, firstname, lastname, e_mail, city, additional_information, photo_data) VALUES (DEFAULT, 'Oleg', 'Trofimov', 'olegtrofimov@gmail.com', 'Tartu', 'Olen väga sõbralik inimene', null);
+INSERT INTO public.contact (id, firstname, lastname, e_mail, city, additional_information, photo_data) VALUES (DEFAULT, 'Rain', 'Tüür', 'rain.tuur@gmail.com', 'Tallinn', 'Mulle meeldivad kõik koerad', null);
+INSERT INTO public.contact (id, firstname, lastname, e_mail, city, additional_information, photo_data) VALUES (DEFAULT, 'Nipi', 'Tiri', 'nipi.tiri@gmail.com', 'Tallinn', 'Ei meeldi koera kaka', null);
+INSERT INTO public.contact (id, firstname, lastname, e_mail, city, additional_information, photo_data) VALUES (DEFAULT, 'Heli', 'Kopter', 'heli.kopter@gmail.com', 'Tallinn', 'Ei meeldi vihmaga jalutada', null);
+INSERT INTO public.contact (id, firstname, lastname, e_mail, city, additional_information, photo_data) VALUES (DEFAULT, 'Vlad', 'Jagur', 'vladislavjagu@gmail.com', 'Tartu', null, null);
 
-INSERT INTO public."user" (id, role_id, contact_id, username, password)
-VALUES (DEFAULT, 1, 1, 'oleg', '123');
-INSERT INTO public."user" (id, role_id, contact_id, username, password)
-VALUES (DEFAULT, 2, 2, 'vlad', '123');
+
+INSERT INTO public."user" (id, role_id, contact_id, username, password) VALUES (DEFAULT, 1, 1, 'oleg', '123');
+INSERT INTO public."user" (id, role_id, contact_id, username, password) VALUES (DEFAULT, 1, 2, 'rain', '123');
+INSERT INTO public."user" (id, role_id, contact_id, username, password) VALUES (DEFAULT, 1, 3, 'nipi', '123');
+INSERT INTO public."user" (id, role_id, contact_id, username, password) VALUES (DEFAULT, 1, 4, 'heli', '123');
+INSERT INTO public."user" (id, role_id, contact_id, username, password) VALUES (DEFAULT, 2, 5, 'vlad', '123');
 
 INSERT INTO public.city (id, name)
 VALUES (DEFAULT, 'Tallinn');
@@ -34,14 +37,10 @@ VALUES (DEFAULT, 'Kuressaa');
 INSERT INTO public.city (id, name)
 VALUES (DEFAULT, 'Sillamäe');
 
-INSERT INTO public.size (id, type, price)
-VALUES (DEFAULT, 'Small(0-7 kg)', 5);
-INSERT INTO public.size (id, type, price)
-VALUES (DEFAULT, 'Medium(7-15 kg)', 7);
-INSERT INTO public.size (id, type, price)
-VALUES (DEFAULT, 'Large(15-30 kg)', 10);
-INSERT INTO public.size (id, type, price)
-VALUES (DEFAULT, 'Extra Large(30+ kg)', 13);
+INSERT INTO public.size (id, type, price) VALUES (DEFAULT, 'Small(0-7 kg)', 5);
+INSERT INTO public.size (id, type, price) VALUES (DEFAULT, 'Medium(7-15 kg)', 7);
+INSERT INTO public.size (id, type, price) VALUES (DEFAULT, 'Large(15-30 kg)', 10);
+INSERT INTO public.size (id, type, price) VALUES (DEFAULT, 'Extra Large(30+ kg)', 13);
 
 INSERT INTO public.breed (id, name)
 VALUES (DEFAULT, 'Akita');
@@ -144,32 +143,32 @@ VALUES (DEFAULT, 'West Highland White');
 INSERT INTO public.breed (id, name)
 VALUES (DEFAULT, 'Yorkshire Terrier');
 
-INSERT INTO public.dog (id, user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) VALUES (DEFAULT, 2, 4, 3, 'Charlie', 5, 'Big Beagle', null, 'A');
 INSERT INTO public.dog (id, user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) VALUES (DEFAULT, 1, 38, 1, 'Valera', 28, 'Big Papa Valera', null, 'A');
-insert into public.dog (id, user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) values (DEFAULT, 2, 3, 2, 'NotActiveTest', 7, 'Test to not active dog', null, 'I');
-insert into public.dog (id, user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) values (DEFAULT, 2, 3, 2, 'Tori', 1, 'Corgi', null, 'A');
-insert into public.dog (id, user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) values (DEFAULT, 2, 35, 2, 'Tori', 1, 'Corgi', null, 'A');
-insert into public.dog (id, user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) values (DEFAULT, 2, 1, 1, 'Yato', 3, 'Cat', null, 'A');
-insert into public.dog (id, user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) values (DEFAULT, 2, 3, 2, 'Test', 7, 'Test', null, 'I');
+INSERT INTO public.dog (id, user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) VALUES (DEFAULT, 5, 4, 1, 'Charlie', 5, 'Big Beagle', null, 'A');
+insert into public.dog (id, user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) values (DEFAULT, 5, 3, 2, 'NotActiveTest', 7, 'Test to not active dog', null, 'I');
+insert into public.dog (id, user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) values (DEFAULT, 5, 3, 2, 'Muki', 1, 'Corgi', null, 'A');
+insert into public.dog (id, user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) values (DEFAULT, 5, 35, 3, 'Pontu', 1, 'Corgi', null, 'A');
+insert into public.dog (id, user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) values (DEFAULT, 5, 1, 4, 'Yato', 3, 'Cat', null, 'A');
+insert into public.dog (id, user_id, breed_id, size_id, name, age, additional_information, dog_photo, status) values (DEFAULT, 5, 3, 2, 'Test', 7, 'Test', null, 'I');
 
 insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-06', '2022-12-08', '10:00:00', '13:00:00', 'A');
-insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-06', '2022-12-08', '10:00:00', '15:00:00', 'A');
-insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-06', '2022-12-06', '10:00:00', '15:00:00', 'A');
-insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-06', '2022-12-06', '09:00:00', '23:00:00', 'A');
-insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 1, 1, '2022-12-06', '2022-12-06', '10:00:00', '13:00:00', 'A');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 2, 1, '2022-12-06', '2022-12-08', '10:00:00', '15:00:00', 'A');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 3, 1, '2022-12-06', '2022-12-06', '10:00:00', '15:00:00', 'A');
+insert into public.walking (id, user_id, city_id, date_from, date_to, time_from, time_to, status) values (DEFAULT, 4, 1, '2022-12-06', '2022-12-06', '09:00:00', '23:00:00', 'A');
 
 
 insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 1, 1);
 insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 1, 2);
 insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 1, 3);
 insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 1, 4);
+insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 2, 1);
 insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 2, 2);
+insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 2, 3);
+insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 3, 2);
 insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 3, 3);
+insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 3, 4);
 insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 4, 1);
-insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 4, 3);
-insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 4, 4);
-insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 5, 2);
-insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 5, 3);
+insert into public.walking_size (id, walking_id, size_id) values (DEFAULT, 3, 2);
 
 
 INSERT INTO public."order" (id, walking_id, walking_date, time_from, time_to, address, status) VALUES (DEFAULT, 1, '2022-12-07', '10:00:00', '11:00:00', 'some address 1', 'A');

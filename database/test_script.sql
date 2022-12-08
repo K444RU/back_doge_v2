@@ -1,21 +1,19 @@
-SELECT *
-FROM walking w
-WHERE city_id = 1
-  AND status = 'A'
-  AND ('2022-12-07' BETWEEN date_from AND date_to)
-  AND ('11:00:00' BETWEEN time_from AND time_to)
-  AND ('14:00:00' BETWEEN time_from AND time_to);
+select *
+from walking w
+where city_id = 1
+  and status = 'A'
+  and ('2022-12-08' between date_from and date_to)
+  and ('11:00:00' between time_from and time_to)
+  and ('13:00:00' between time_from and time_to);
 
 
-SELECT *
-FROM "order";
+select *
+from "order";
 
 
-SELECT *
-FROM "order"
-WHERE status = 'A'
-    AND ('2022-12-07' = walking_date)
-    AND ('12:01:00' BETWEEN time_from AND time_to)
-   OR ('13:59:00' BETWEEN time_from AND time_to);
-
-
+select *
+from "order"
+where status = 'A'
+  and ('2022-12-07' = walking_date)
+  and (('11:01:00' between time_from and time_to)
+    or ('12:59:00' between time_from and time_to));

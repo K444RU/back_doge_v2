@@ -13,6 +13,5 @@ public class OrderRequest {
     private Integer timeFrom;
     private Integer timeTo;
     private String address;
-    // TODO: dog->dogs
-    private List<DogDtoToOrderRequest> dog;
+    private List<DogDtoToOrderRequest> dogs;
 }

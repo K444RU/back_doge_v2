@@ -1,6 +1,7 @@
 package ee.valiit.back_doge_v2.domain.order_information.walking_size;
 
 import ee.valiit.back_doge_v2.domain.dog_information.size.Size;
+import ee.valiit.back_doge_v2.domain.order_information.walking.Walking;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -24,5 +25,9 @@ public class WalkingSizeService {
             sizes.add(walkingSize.getSize());
         }
         return sizes;
+    }
+
+    public List<Size> findSizesBy(Walking walking) {
+        return walkingSizeRepository.findSizesBy(walking);
     }
 }

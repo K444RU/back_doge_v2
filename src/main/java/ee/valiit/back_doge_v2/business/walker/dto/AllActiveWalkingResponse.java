@@ -8,6 +8,8 @@ import java.time.LocalDate;
 public class AllActiveWalkingResponse {
     private Integer walkingId;
     private String walkerName;
+    private String additionalInfo;
+    private String userPhoto;
     private LocalDate date;
     private Integer timeFrom;
     private Integer timeTo;

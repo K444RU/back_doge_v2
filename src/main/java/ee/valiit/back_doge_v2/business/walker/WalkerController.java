@@ -22,7 +22,6 @@ public class WalkerController {
         walkerService.addNewWalking(request);
     }
 
-
     @GetMapping("/walking")
     @Operation(summary = "Get all walkings by userId and status 'A'")
     public List<WalkingResponse> getUserAllWalkingsByUserId(@RequestParam Integer userId) {
