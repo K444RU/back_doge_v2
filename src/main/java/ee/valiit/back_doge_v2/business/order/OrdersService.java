@@ -39,9 +39,6 @@ public class OrdersService {
     @Resource
     private DogMapper dogMapper;
 
-
-
-
     @Resource
     private DogOrderService dogOrderService;
 
@@ -88,7 +85,7 @@ public class OrdersService {
 
     private void addDogNameToWalkerOrderResponse(WalkerActiveOrderResponse response) {
         List<Dog> dogNames = dogOrderService.findDogBy(response.getOrderId());
-        List<OrderedDog> orderedDogs = dogMapper.froEntityToWalkerOrdersResponses(dogNames);
+        List<OrderedDog> orderedDogs = dogMapper.entityToOrdersResponses(dogNames);
         response.setDogs(orderedDogs);
     }
 }

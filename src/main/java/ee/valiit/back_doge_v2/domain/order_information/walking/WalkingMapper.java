@@ -23,11 +23,15 @@ public interface WalkingMapper {
 
     @Mapping(source = "id", target = "walkingId")
     @Mapping(source = "city.name", target = "cityName")
-    @Mapping(target = "timeTo", ignore = true)
-    @Mapping(target = "timeFrom", ignore = true)
+    @Mapping(source = "timeFrom", target = "timeFrom", qualifiedByName = "localTimeToInteger")
+    @Mapping(source = "timeTo", target = "timeTo", qualifiedByName = "localTimeToInteger")
     WalkingResponse fromEntityToResponse(Walking byUserId);
-
     List<WalkingResponse> fromEntityToResponses(List<Walking> byUserIds);
+
+    @Named("localTimeToInteger")
+    static Integer localTimeToInteger(LocalTime time) {
+        return time.getHour();
+    }
 
     @Mapping(source = "id", target = "walkingId")
     @Mapping(source = "user.contact.firstname", target = "walkerName")

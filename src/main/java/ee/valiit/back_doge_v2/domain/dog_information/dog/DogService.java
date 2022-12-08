@@ -19,7 +19,14 @@ public class DogService {
         return dogRepository.findById(dogId).get();
     }
 
+
+
     public void save(Dog dog) {
         dogRepository.save(dog);
+    }
+
+    public List<Dog> findBy(Integer dogId) {
+        return dogRepository.findBy(dogId);
+
     }
 }

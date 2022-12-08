@@ -4,6 +4,7 @@ import ee.valiit.back_doge_v2.business.dog.dto.DogInfo;
 import ee.valiit.back_doge_v2.business.dog.dto.DogRegistrationRequest;
 import ee.valiit.back_doge_v2.business.dog.dto.DogStatusUpdate;
 import ee.valiit.back_doge_v2.business.dog.dto.OwnerHomePageDogInfoResponse;
+import ee.valiit.back_doge_v2.business.order.dto.OwnerActiveOrdersResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,6 +41,13 @@ public class DogsController {
     @Operation(summary = "Update dogStatus by dogId (Change status to 'I')")
     public void updateDogStatus(@RequestBody DogStatusUpdate request) {
         dogsService.updateDogStatus(request);
+    }
+
+    @GetMapping("/dog/ordered")
+    @Operation(summary = "Get dog active orders")
+    public List<OwnerActiveOrdersResponse> getDogOrdersByDogId(@RequestParam Integer dogId) {
+        return dogsService.getDogActiveOrders(dogId);
+
     }
 
 }

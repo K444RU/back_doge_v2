@@ -14,5 +14,10 @@ public interface DogOrderRepository extends JpaRepository<DogOrder, Integer> {
     @Query("select d from DogOrder d where d.order.id = ?1 order by d.dog.name")
     List<DogOrder> findDogNameByOrderId(Integer id);
 
+    @Query("select d from DogOrder d where d.dog.id = ?1")
+    List<DogOrder> findByDogId(Integer dogId);
+
+
+
 
 }

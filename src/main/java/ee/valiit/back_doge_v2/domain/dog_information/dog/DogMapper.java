@@ -1,6 +1,7 @@
 package ee.valiit.back_doge_v2.domain.dog_information.dog;
 
 import ee.valiit.back_doge_v2.business.dog.dto.*;
+import ee.valiit.back_doge_v2.business.order.dto.OwnerActiveOrdersResponse;
 import org.mapstruct.*;
 
 import java.nio.charset.StandardCharsets;
@@ -25,8 +26,6 @@ public interface DogMapper {
     @Mapping(source = "dogPhoto", target = "dogPhoto", qualifiedByName = "dogPhotoToString")
     OwnerHomePageDogInfoResponse ownerHomePageDogInfoResponse(Dog dogByUserId);
     List<OwnerHomePageDogInfoResponse> ownerHomePageDogsInfoResponse(List<Dog> dogsByUserId);
-
-
 
     @Named("byteArrayToString")
     static byte[] byteArrayToString(String dogPhoto) {
@@ -54,6 +53,11 @@ public interface DogMapper {
     void updateDogStatus(DogStatusUpdate dogStatusUpdate, @MappingTarget Dog dog);
 
     @Mapping(source = "name", target = "dogName")
-    OrderedDog froEntityToWalkerOrdersResponse(Dog dogName);
-    List<OrderedDog> froEntityToWalkerOrdersResponses(List<Dog> dogNames);
+    OrderedDog entityToOrdersResponse(Dog dogName);
+    List<OrderedDog> entityToOrdersResponses(List<Dog> dogNames);
+
+    @Mapping(source = "id", target = "dogId")
+    @Mapping(source = "name", target = "dogName")
+    OwnerActiveOrdersResponse entityToOwnerResponse(Dog dogName);
+    List<OwnerActiveOrdersResponse> entityToOwnerResponses(List<Dog> dogNames);
 }

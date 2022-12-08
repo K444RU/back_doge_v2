@@ -5,6 +5,7 @@ import lombok.Data;
 import org.springframework.lang.Nullable;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Data
 public class OwnerHomePageDogInfoResponse {
@@ -19,5 +20,6 @@ public class OwnerHomePageDogInfoResponse {
     private String dogAdditionalInformation;
     @NotNull
     private String status;
+
 
 }
