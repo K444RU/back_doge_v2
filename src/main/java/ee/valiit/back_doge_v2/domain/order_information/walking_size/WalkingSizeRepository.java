@@ -19,5 +19,6 @@ public interface WalkingSizeRepository extends JpaRepository<WalkingSize, Intege
     @Query("select w.size from WalkingSize w where w.walking = ?1")
     List<Size> findSizesBy(Walking walking);
 
-
+    @Query("select w from WalkingSize w where w.walking.id = ?1")
+    List<WalkingSize> findByWalkingId(Integer id);
 }

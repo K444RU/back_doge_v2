@@ -21,4 +21,8 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
                 and ((?3 between o.timeFrom and o.timeTo)
                 or (?4 between o.timeFrom and o.timeTo))""")
     List<Order> findOverlappingOrders(String status, LocalDate walkingDate, LocalTime timeFrom, LocalTime timeTo);
+
+    @Query("select o from Order o where o.walking.id = ?1")
+    List<Order> findByWalkingId(Integer id);
+
 }

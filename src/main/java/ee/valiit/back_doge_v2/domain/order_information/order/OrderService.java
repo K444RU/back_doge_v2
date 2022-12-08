@@ -27,4 +27,9 @@ public class OrderService {
         LocalTime timeTo = LocalTime.of(request.getTimeTo(), 0).minusMinutes(1);
         return orderRepository.findOverlappingOrders("A", request.getDate(), timeFrom, timeTo);
     }
+    public void deleteOrderBy(Integer walkingId) {
+        List<Order> orders = orderRepository.findByWalkingId(walkingId);
+        orderRepository.deleteAll(orders);
+    }
+
 }

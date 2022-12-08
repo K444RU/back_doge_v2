@@ -175,4 +175,9 @@ public class WalkerService {
         }
     }
 
+    public void deleteWalking(Integer walkingId) {
+        walkingSizeService.deleteWalkingSizeBy(walkingId);
+        orderService.deleteOrderBy(walkingId);
+        walkingService.deleteWalkingBy(walkingId);
+    }
 }

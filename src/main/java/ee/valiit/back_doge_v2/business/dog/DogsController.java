@@ -36,10 +36,10 @@ public class DogsController {
         return dogNameDropdownByUserId;
     }
 
-    @PutMapping("/dog")
+    @PutMapping("/dog/update")
     @Operation(summary = "Update dogStatus by dogId (Change status to 'I')")
-    public void updateDogStatus(@RequestParam Integer dogId, @RequestBody DogStatusUpdate request) {
-        dogsService.updateDogStatus(dogId, request);
+    public void updateDogStatus(@RequestBody DogStatusUpdate request) {
+        dogsService.updateDogStatus(request);
     }
 
 }

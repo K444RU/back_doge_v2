@@ -30,4 +30,9 @@ public class WalkingSizeService {
     public List<Size> findSizesBy(Walking walking) {
         return walkingSizeRepository.findSizesBy(walking);
     }
+
+    public void deleteWalkingSizeBy(Integer walkingId) {
+        List<WalkingSize> walkingSizes = walkingSizeRepository.findByWalkingId(walkingId);
+        walkingSizeRepository.deleteAll(walkingSizes);
+    }
 }

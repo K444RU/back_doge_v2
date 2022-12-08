@@ -36,4 +36,11 @@ public class WalkingService {
 
         return walkingRepository.findWalkingsBy(request.getCityId(), "A", request.getDate(), timeFrom, timeTo);
     }
+
+    public void deleteWalkingBy(Integer walkingId) {
+        if (walkingRepository.findById(walkingId).isPresent()) {
+            Walking walking = walkingRepository.findById(walkingId).get();
+            walkingRepository.delete(walking);
+        }
+    }
 }
