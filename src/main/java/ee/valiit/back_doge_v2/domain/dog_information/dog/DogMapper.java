@@ -1,9 +1,6 @@
 package ee.valiit.back_doge_v2.domain.dog_information.dog;
 
-import ee.valiit.back_doge_v2.business.dog.dto.DogInfo;
-import ee.valiit.back_doge_v2.business.dog.dto.DogRegistrationRequest;
-import ee.valiit.back_doge_v2.business.dog.dto.DogStatusUpdate;
-import ee.valiit.back_doge_v2.business.dog.dto.OwnerHomePageDogInfoResponse;
+import ee.valiit.back_doge_v2.business.dog.dto.*;
 import org.mapstruct.*;
 
 import java.nio.charset.StandardCharsets;
@@ -55,4 +52,8 @@ public interface DogMapper {
     @Mapping(constant = "I", target = "status")
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateDogStatus(DogStatusUpdate dogStatusUpdate, @MappingTarget Dog dog);
+
+    @Mapping(source = "name", target = "dogName")
+    OrderedDog froEntityToWalkerOrdersResponse(Dog dogName);
+    List<OrderedDog> froEntityToWalkerOrdersResponses(List<Dog> dogNames);
 }

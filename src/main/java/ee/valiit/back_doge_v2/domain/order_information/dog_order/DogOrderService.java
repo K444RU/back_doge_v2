@@ -1,8 +1,10 @@
 package ee.valiit.back_doge_v2.domain.order_information.dog_order;
 
+import ee.valiit.back_doge_v2.domain.dog_information.dog.Dog;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -17,5 +19,16 @@ public class DogOrderService {
 
     public List<DogOrder> findOrdersBy(Integer userId) {
         return dogOrderRepository.findBy(userId);
+    }
+
+    public List<Dog> findDogBy(Integer orderId) {
+        List<DogOrder> dogNames = dogOrderRepository.findDogNameByOrderId(orderId);
+        List<Dog> dogs = new ArrayList<>();
+        for (DogOrder dogName : dogNames) {
+            dogs.add(dogName.getDog());
+        }
+        return dogs;
+
+
     }
 }

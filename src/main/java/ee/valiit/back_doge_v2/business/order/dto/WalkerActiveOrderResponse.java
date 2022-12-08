@@ -9,9 +9,10 @@ import java.util.List;
 
 @Data
 public class WalkerActiveOrderResponse {
+    private Integer orderId;
     private LocalDate walkingDate;
-    private LocalTime timeFrom;
-    private LocalTime timeTo;
+    private Integer timeFrom;
+    private Integer timeTo;
     private String cityName;
     private String address;
     private List<OrderedDog> dogs;

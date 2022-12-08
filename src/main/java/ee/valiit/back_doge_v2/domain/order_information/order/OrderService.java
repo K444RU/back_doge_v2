@@ -32,5 +32,7 @@ public class OrderService {
         orderRepository.deleteAll(orders);
     }
 
-
+    public List<Order> findOrdersBy(Integer userId) {
+        return orderRepository.findBy(userId);
+    }
 }

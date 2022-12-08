@@ -2,12 +2,13 @@ package ee.valiit.back_doge_v2.business.order;
 
 
 import ee.valiit.back_doge_v2.business.dog.dto.DogDtoToOrderRequest;
+import ee.valiit.back_doge_v2.business.dog.dto.OrderedDog;
 import ee.valiit.back_doge_v2.business.order.dto.OrderRequest;
 import ee.valiit.back_doge_v2.business.order.dto.WalkerActiveOrderResponse;
 import ee.valiit.back_doge_v2.domain.dog_information.dog.Dog;
+import ee.valiit.back_doge_v2.domain.dog_information.dog.DogMapper;
 import ee.valiit.back_doge_v2.domain.dog_information.dog.DogService;
 import ee.valiit.back_doge_v2.domain.order_information.dog_order.DogOrder;
-import ee.valiit.back_doge_v2.domain.order_information.dog_order.DogOrderMapper;
 import ee.valiit.back_doge_v2.domain.order_information.dog_order.DogOrderService;
 import ee.valiit.back_doge_v2.domain.order_information.order.Order;
 import ee.valiit.back_doge_v2.domain.order_information.order.OrderMapper;
@@ -36,9 +37,14 @@ public class OrdersService {
     private DogService dogService;
 
     @Resource
-    private DogOrderService dogOrderService;
+    private DogMapper dogMapper;
+
+
+
+
     @Resource
-    private DogOrderMapper dogOrderMapper;
+    private DogOrderService dogOrderService;
+
 
 
 
@@ -67,7 +73,22 @@ public class OrdersService {
     }
 
     public List<WalkerActiveOrderResponse> getWalkerActiveOrders(Integer userId) {
-        List<DogOrder> orders = dogOrderService.findOrdersBy(userId);
-        return dogOrderMapper.entityToOrdersResponses(orders);
+        List<Order> orders = orderService.findOrdersBy(userId);
+        List<WalkerActiveOrderResponse> orderResponses = orderMapper.entityToOrdersResponses(orders);
+        addOrderDogName(orderResponses);
+        return orderResponses;
+    }
+
+    private void addOrderDogName(List<WalkerActiveOrderResponse> orderResponses) {
+        for (WalkerActiveOrderResponse orderResponse : orderResponses) {
+            addDogNameToWalkerOrderResponse(orderResponse);
+        }
+
+    }
+
+    private void addDogNameToWalkerOrderResponse(WalkerActiveOrderResponse response) {
+        List<Dog> dogNames = dogOrderService.findDogBy(response.getOrderId());
+        List<OrderedDog> orderedDogs = dogMapper.froEntityToWalkerOrdersResponses(dogNames);
+        response.setDogs(orderedDogs);
     }
 }
